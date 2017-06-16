@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import { $util } from 'helper'
+import {mapState, mapActions} from 'vuex'
 import { Fingerprint2 } from 'assets/js/fingerprint2.min'
 
 let cFingerprint = null
@@ -14,8 +15,18 @@ Vue.mixin({
     }
   },
 
+  computed: {
+    ...mapState([
+      '$userInfo'
+    ])
+  },
+
   methods: {
-    getFingerPrint () {
+    ...mapActions([
+      'getUserInfo'
+    ]),
+
+    $getFingerPrint () {
       return this.fingerprint || ''
     },
 

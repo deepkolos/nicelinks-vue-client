@@ -55,7 +55,6 @@
 
 <script>
 import { $config } from 'config'
-import {mapState} from 'vuex'
 
 export default {
   data () {
@@ -72,11 +71,8 @@ export default {
   },
 
   computed: {
-    ...mapState([
-      'userInfo'
-    ]),
     userSign () {
-      let userInfo = this.userInfo
+      let userInfo = this.$userInfo
       if (userInfo && !this.isMobile) {
         return userInfo.profile && userInfo.profile.username || userInfo.email
       }
@@ -130,6 +126,7 @@ export default {
           message: result.message,
           type: 'success'
         })
+        this.$util.removeStorage('NiceLinksUserId')
       }).catch((error) => {
         this.$message.error(`${error}`)
       })

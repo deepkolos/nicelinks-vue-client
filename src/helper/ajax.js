@@ -28,10 +28,10 @@ function requestHandle (url, method = 'get', params = {}, query = {}, op = {}) {
       } else if (res.type === 'application/x-msdownload') {
         redirectToIframe(res.req.url)
       } else if (res.body) {
-        if (res.body) {
-          defer.resolve(res.body)
+        if (res.body.success) {
+          defer.resolve(res.body.value)
         } else {
-          defer.reject(res.body || err)
+          defer.reject(res.body.message || err)
         }
       } else {
         defer.reject()

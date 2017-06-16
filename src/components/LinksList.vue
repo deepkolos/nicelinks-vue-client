@@ -64,7 +64,7 @@ export default {
   methods: {
     dispatchAction (row, action) {
       let params = {
-        'fingerprint': this.getFingerPrint(),
+        'fingerprint': this.$getFingerPrint(),
         '_id': row._id,
         'action': action
       }

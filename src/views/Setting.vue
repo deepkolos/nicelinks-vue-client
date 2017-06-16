@@ -68,8 +68,6 @@
 </template>
 
 <script>
-import {getUserInfo, setUserInfo} from 'service/index'
-
 export default{
   name: 'Setting',
 
@@ -112,7 +110,7 @@ export default{
   methods: {
     init () {
       let params = {_id: window.localStorage.getItem('NiceLinksUserId')}
-      getUserInfo(params).then(result => {
+      this.$apis.getProfile(params).then(result => {
         this.username = result.value.profile.username
         Object.assign(this.fillForm, result.value)
       })
@@ -132,7 +130,7 @@ export default{
         if (valid) {
           this.isLoading = true
           let params = this.fillForm
-          setUserInfo(params).then(result => {
+          this.$apis.setProfile(params).then(result => {
             this.isLoading = false
             this.tip(result.message, 'success')
             this.init()

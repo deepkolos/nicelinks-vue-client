@@ -2,7 +2,7 @@ var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
 var webpack = require('webpack')
-var autoprefixer = require('autoprefixer');
+var autoprefixer = require('autoprefixer')
 var vueLoaderConfig = require('./vue-loader.conf')
 var svgoConfig = require('../config/svgo-config.json')
 var chalk = require('chalk')
@@ -15,7 +15,7 @@ function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
-function createHappyPlugin(id, loaders) {
+function createHappyPlugin (id, loaders) {
   return new HappyPack({
     id: id,
     loaders: loaders,
@@ -25,7 +25,7 @@ function createHappyPlugin(id, loaders) {
     cache: process.env.HAPPY_CACHE !== '0',
 
     // make happy more verbose with HAPPY_VERBOSE=1
-    verbose: process.env.HAPPY_VERBOSE === '1',
+    verbose: process.env.HAPPY_VERBOSE === '1'
   })
 }
 
@@ -55,7 +55,7 @@ module.exports = {
       'helper': resolve('src/helper'),
       'views': resolve('src/views'),
       'partials': resolve('src/partials'),
-      'store': resolve('src/store'),
+      'store': resolve('src/store')
     }
   },
   module: {
@@ -63,13 +63,13 @@ module.exports = {
     rules: [
       {
         test: /\.svg$/,
-        enforce: "pre",
+        enforce: 'pre',
         loader: 'svgo-loader?' + JSON.stringify(svgoConfig)
       },
       {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
-        enforce: "pre",
+        enforce: 'pre',
         include: [resolve('src'), resolve('test')],
         options: {
           formatter: require('eslint-friendly-formatter')

@@ -1,18 +1,15 @@
-import {
-  GET_USERINFO,
-  RECORD_USERINFO
-} from 'store/types'
-import {$util} from 'helper'
+import { $util } from 'helper'
+import $types from 'store/types'
 
 export default {
-  [RECORD_USERINFO] (state, info) {
+  [$types.RECORD_USERINFO] (state, info) {
     state.userId = info._id
     state.isLogin = true
     state.userInfo = info
     $util.setStorage('NiceLinksUserId', info._id)
   },
 
-  [GET_USERINFO] (state, info) {
+  [$types.GET_USERINFO] (state, info) {
     if (state.userInfo && (state.userInfo.username !== info.username)) {
       return
     }

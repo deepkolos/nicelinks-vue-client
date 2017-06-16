@@ -20,8 +20,7 @@ export default {
     return {
       title: 'Nice Links',
       isMobile: window.innerWidth <= 960,
-      isShowSideNav: false,
-      userInfo: {}
+      isShowSideNav: false
     }
   },
 

@@ -1,9 +1,10 @@
-import {GET_USERINFO} from 'store/types'
-import {getUserInfo} from 'service/index'
+import { $apis } from 'helper'
+import $types from 'store/types'
 
 export default {
   async getUserInfo ({commit, state}) {
-    let res = await getUserInfo({_id: state.userId})
-    commit(GET_USERINFO, res.value)
+    if (!state.userId) return
+    let res = await $apis.getProfile({_id: state.userId})
+    commit($types.GET_USERINFO, res.value)
   }
 }

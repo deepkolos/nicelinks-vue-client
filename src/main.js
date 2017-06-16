@@ -18,6 +18,9 @@ Vue.prototype.$util = $util
 Vue.prototype.$auth = $auth
 Vue.prototype.$document = $document
 
+import $types from 'store/types'
+Vue.prototype.$types = $types
+
 import 'element-ui/lib/theme-default/index.css'
 Vue.use(VueI18n)
 Vue.use(ElementUI)

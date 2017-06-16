@@ -34,9 +34,6 @@
 </template>
 
 <script>
-  import { $apis, $util } from 'helper'
-  import {mapState, mapActions} from 'vuex'
-
   export default{
     data () {
       return {
@@ -72,20 +69,13 @@
     },
 
     computed: {
-      ...mapState([
-        'userInfo'
-      ])
     },
 
     methods: {
-      ...mapActions([
-        'getUserInfo'
-      ]),
-
       composeParams () {
         return {
           email: this.account.email,
-          password: $util.encryptPwd(this.account.password)
+          password: this.$util.encryptPwd(this.account.password)
         }
       },
 
@@ -94,11 +84,11 @@
         this.$refs['validateForm'].validate((valid) => {
           if (valid) {
             this.isLoading = false
-            $apis.login(this.composeParams()).then(result => {
+            this.$apis.login(this.composeParams()).then(result => {
               this.isLoading = false
 
               // save user-id into vuex-state(& localStorage)
-              this.$store.commit('RECORD_USERINFO', {_id: result._id})
+              this.$store.commit(this.types.RECORD_USERINFO, {_id: result._id})
 
               this.$router.push('/')
             }).catch(error => {
@@ -119,7 +109,7 @@
         this.$refs['validateForm'].validate((valid) => {
           if (valid) {
             this.isLoading = false
-            $apis.signup(this.composeParams()).then(result => {
+            this.$apis.signup(this.composeParams()).then(result => {
               this.tipMessageObj = {
                 message: result.message,
                 type: 'success'
