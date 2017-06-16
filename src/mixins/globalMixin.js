@@ -17,7 +17,7 @@ Vue.mixin({
 
   computed: {
     ...mapState([
-      '$userInfo'
+      'userInfo'
     ])
   },
 

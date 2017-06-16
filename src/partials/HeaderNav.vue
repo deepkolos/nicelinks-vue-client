@@ -72,7 +72,7 @@ export default {
 
   computed: {
     userSign () {
-      let userInfo = this.$userInfo
+      let userInfo = this.userInfo
       if (userInfo && !this.isMobile) {
         return userInfo.profile && userInfo.profile.username || userInfo.email
       }
@@ -123,7 +123,7 @@ export default {
       this.$apis.logout().then(result => {
         this.$router.push('/login')
         this.$message({
-          message: result.message,
+          message: result,
           type: 'success'
         })
         this.$util.removeStorage('NiceLinksUserId')

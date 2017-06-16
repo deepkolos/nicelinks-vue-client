@@ -88,11 +88,11 @@
               this.isLoading = false
 
               // save user-id into vuex-state(& localStorage)
-              this.$store.commit(this.types.RECORD_USERINFO, {_id: result._id})
+              this.$store.commit(this.$types.RECORD_USERINFO, {_id: result._id})
 
               this.$router.push('/')
             }).catch(error => {
-              console.log(error)
+              debugger
               this.isLoading = false
               this.tipMessageObj = {
                 message: error,
@@ -111,7 +111,7 @@
             this.isLoading = false
             this.$apis.signup(this.composeParams()).then(result => {
               this.tipMessageObj = {
-                message: result.message,
+                message: result,
                 type: 'success'
               }
             }).catch((error) => {

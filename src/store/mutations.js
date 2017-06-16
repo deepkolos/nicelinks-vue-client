@@ -10,7 +10,7 @@ export default {
   },
 
   [$types.GET_USERINFO] (state, info) {
-    if (state.userInfo && (state.userInfo.username !== info.username)) {
+    if (!info || (state.userInfo.username !== info.username)) {
       return
     }
 
@@ -18,10 +18,6 @@ export default {
       return
     }
 
-    if (!info.message) {
-      state.userInfo = {...info}
-    } else {
-      state.userInfo = null
-    }
+    state.userInfo = {...info}
   }
 }
