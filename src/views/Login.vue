@@ -88,7 +88,7 @@
               this.isLoading = false
 
               // save user-id into vuex-state(& localStorage)
-              this.$store.commit(this.$types.RECORD_USERINFO, {_id: result._id})
+              this.$store.commit('$vuexSetUserInfo', {_id: result._id})
 
               this.$router.push('/')
             }).catch(error => {

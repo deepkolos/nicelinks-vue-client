@@ -4,17 +4,23 @@ import actions from './actions'
 import getters from './getters'
 import mutations from './mutations'
 import createLogger from 'vuex/dist/logger'
-import {$util} from 'helper'
+import createPersistedState from 'vuex-persistedstate'
+
+let STORAGE_KEY = 'nicelinks-vuex-storage'
 
 Vue.use(Vuex)
 
 const state = {
   isLogin: true,
-  userId: $util.getStorage('NiceLinksUserId') || '',
+  userId: '',
   userInfo: null
 }
 
 const debug = process.env.NODE_ENV !== 'production'
+
+const persitedState = createPersistedState({
+  key: STORAGE_KEY
+})
 
 export default new Vuex.Store({
   state,
@@ -22,5 +28,5 @@ export default new Vuex.Store({
   getters,
   mutations,
   strict: debug,
-  plugins: debug ? [createLogger()] : []
+  plugins: debug ? [createLogger(), persitedState] : [persitedState]
 })
