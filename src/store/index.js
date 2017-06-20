@@ -5,8 +5,7 @@ import getters from './getters'
 import mutations from './mutations'
 import createLogger from 'vuex/dist/logger'
 import createPersistedState from 'vuex-persistedstate'
-
-let STORAGE_KEY = 'nicelinks-vuex-storage'
+import {STORAGE_KEY} from 'config/constant'
 
 Vue.use(Vuex)
 

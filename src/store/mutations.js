@@ -1,11 +1,11 @@
 export default {
-  '$vuexSetUserInfo' (state, info) {
+  $vuexSetUserInfo (state, info) {
     state.userId = info._id
-    state.isLogin = true
+    state.isLogin = !!info._id
     state.userInfo = info
   },
 
-  '$vuexGetUserInfo' (state, info) {
+  $vuexGetUserInfo (state, info) {
     if (!info || (state.userInfo.username !== info.username)) {
       return
     }

@@ -121,12 +121,13 @@ export default {
 
     onLogoutClick () {
       this.$apis.logout().then(result => {
-        this.$router.push('/login')
         this.$message({
           message: result,
           type: 'success'
         })
-        this.$util.removeStorage('NiceLinksUserId')
+
+        this.$router.push('/login')
+        this.$store.commit('$vuexSetUserInfo', {})
       }).catch((error) => {
         this.$message.error(`${error}`)
       })
