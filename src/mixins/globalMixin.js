@@ -1,17 +1,10 @@
 import Vue from 'vue'
 import { $util } from 'helper'
 import {mapState, mapActions} from 'vuex'
-import { Fingerprint2 } from 'assets/js/fingerprint2.min'
-
-let cFingerprint = null
-new Fingerprint2().get((result, components) => {
-  cFingerprint = result
-})
 
 Vue.mixin({
   data () {
     return {
-      fingerprint: cFingerprint
     }
   },
 
@@ -26,8 +19,8 @@ Vue.mixin({
       'getUserInfo'
     ]),
 
-    $getFingerPrint () {
-      return this.fingerprint || ''
+    $isLogin () {
+      return this.$auth.checkSession()
     },
 
     $verifyUrl (rule, value, callback) {

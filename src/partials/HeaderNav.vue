@@ -29,7 +29,7 @@
         </el-button>
       </div>
 
-      <div class="account-dropdown" v-if="isLogin">
+      <div class="account-dropdown" v-if="$isLogin()">
         <el-dropdown @command="handleCommand" trigger="click">
           <span class="el-dropdown-link">
             <img class="avatar" src="https://secure.gravatar.com/avatar/aa70f832a1d99c89afcbfae9070f38d6?default=https%3A%2F%2Fcloud.digitalocean.com%2Favatars%2Fdefault42.png&secure=true" alt="">
@@ -62,8 +62,7 @@ export default {
       isShowDlgFlag: false,
       isMobile: window.innerWidth <= 960,
       activeName: '-1',
-      navList: $config.classify,
-      isLogin: this.$auth.checkSession()
+      navList: $config.classify
     }
   },
 
@@ -80,7 +79,6 @@ export default {
   },
 
   mounted () {
-    this.isLogin = this.$auth.checkSession()
   },
 
   methods: {

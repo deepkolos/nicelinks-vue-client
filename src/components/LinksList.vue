@@ -23,11 +23,11 @@
       </h3>
       <div class="action-list">
         <div class="action-item" @click="onLikeClick(item)">
-          <icon class="icons heart" name="heart"></icon>
+          <icon class="icons" :name="item.isLikes ? 'likes-down' : 'likes'"></icon>
           <span class="item-num">{{ item.likes }}</span>
         </div>
         <div class="action-item" @click="onDislikeClick(item)">
-          <icon class="icons heart" name="dislike"></icon>
+          <icon class="icons" name="dislike"></icon>
           <span class="item-num">{{ item.dislikes }}</span>
         </div>
       </div>
@@ -64,7 +64,7 @@ export default {
   methods: {
     dispatchAction (row, action) {
       let params = {
-        'fingerprint': this.$getFingerPrint(),
+        'userId': this.userInfo._id,
         '_id': row._id,
         'action': action
       }
@@ -103,10 +103,18 @@ export default {
     },
 
     onLikeClick (row) {
+      if (!this.$isLogin()) {
+        this.$router.push('/login')
+        return
+      }
       this.dispatchAction(row, 'likes')
     },
 
     onDislikeClick (row) {
+      if (!this.$isLogin()) {
+        this.$router.push('/login')
+        return
+      }
       this.dispatchAction(row, 'dislikes')
     }
   }
@@ -175,6 +183,9 @@ export default {
           .icons{
             width: 1.6rem;
             height: 1.6rem;
+          }
+          .icon-green{
+            color: #ff0
           }
           .item-num{
             margin-left: .2em;

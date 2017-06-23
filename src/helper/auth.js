@@ -2,6 +2,6 @@ import Cookies from 'js-cookie'
 
 export default {
   checkSession () {
-    return Cookies.get('NiceLinksLoginCookie')
+    return Cookies.get('NiceLinksLoginCookie') || false
   }
 }
