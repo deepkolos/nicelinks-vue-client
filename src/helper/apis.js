@@ -17,6 +17,12 @@ export default {
     return $ajax.post(requestUrl('dispatchAction'), data)
   },
 
+  getMyPublish (data) {
+    return $ajax.get(requestUrl('getMyPublish'), data)
+  },
+
+  /* auth */
+
   signup (data) {
     return $ajax.post(requestUrl('auth/signup'), data)
   },

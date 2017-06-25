@@ -104,17 +104,19 @@ export default{
   },
 
   created () {
-    this.init()
+    this.initFetch()
   },
 
   methods: {
-    init () {
-      let params = {_id: window.localStorage.getItem('NiceLinksUserId')}
-      this.$apis.getProfile(params).then(result => {
-        this.username = result.value.profile.username
+    initFetch () {
+      this.$apis.getProfile({
+        _id: this.userInfo._id
+      }).then(result => {
+        this.username = result.username
         Object.assign(this.fillForm, result.value)
       })
     },
+
     tip (message, type) {
       let vm = this
       vm.tipMessageObj = {
@@ -125,6 +127,7 @@ export default{
         vm.tipMessageObj = {}
       }, 2000)
     },
+
     onSaveClick () {
       this.$refs['fillForm'].validate((valid) => {
         if (valid) {

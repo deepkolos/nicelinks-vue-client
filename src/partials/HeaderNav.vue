@@ -110,7 +110,8 @@ export default {
     },
 
     onMainPageClick () {
-      this.$router.push('/member/yunjeff@163.com')
+      let userName = this.userInfo.userName || this.userInfo._id
+      this.$router.push(`/member/${userName}`)
     },
 
     onSettingClick () {

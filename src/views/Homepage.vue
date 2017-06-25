@@ -16,6 +16,7 @@
                 <el-tab-pane label="我的发布" name="first"></el-tab-pane>
                 <el-tab-pane label="我的点赞" name="second"></el-tab-pane>
               </el-tabs>
+              <links-list :pdata="myPublishArr"></links-list>
             </el-card>
           </div>
           <aside-list></aside-list>
@@ -26,20 +27,32 @@
 </template>
 
 <script>
+import LinksList from 'components/LinksList'
+
 export default{
   name: 'HomePage',
 
   components: {
+    LinksList
   },
 
   data () {
     return {
       isLoading: false,
       activeName: 'first',
+      myPublishArr: [],
       fillForm: {
       },
       rules: {}
     }
+  },
+
+  created () {
+    this.$apis.getMyPublish({userId: this.userInfo._id}).then(result => {
+      this.myPublishArr = result
+    }).catch((error) => {
+      this.$message.error(`${error}`)
+    })
   },
 
   methods: {

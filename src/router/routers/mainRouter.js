@@ -35,14 +35,14 @@ export default {
     component: resolve => require(['views/ForgotPwd'], resolve)
   }, {
     path: 'account',
-    needAuth: false,
+    needAuth: true,
     meta: {
       title: setTitleLang('账户激活', 'Activate Account')
     },
     component: resolve => require(['views/Account'], resolve)
   }, {
     path: 'member/:id',
-    needAuth: false,
+    needAuth: true,
     meta: {
       title: setTitleLang('我的主页', 'My Homepage')
     },
