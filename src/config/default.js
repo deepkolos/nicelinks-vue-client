@@ -1,7 +1,7 @@
 export default [
   {
     '_id': '58eb41c15420d209bb343725',
-    'url_path': 'jeffjade.com',
+    'urlPath': 'jeffjade.com',
     'title': '晚晴幽草轩',
     'classify': '0',
     'tags': 'Frontend;Programmer;Backend',
@@ -26,7 +26,7 @@ export default [
   },
   {
     '_id': '58eb762c5420d209bb343726',
-    'url_path': 'http://nicejade.github.io/',
+    'urlPath': 'http://nicejade.github.io/',
     'title': '天意人间舫',
     'classify': '0',
     'tags': 'Programmer;Frontend;Backend',
@@ -46,7 +46,7 @@ export default [
   },
   {
     '_id': '58ecaa8e8cdb573cd13604c0',
-    'url_path': 'http://www.ruanyifeng.com/blog/',
+    'urlPath': 'http://www.ruanyifeng.com/blog/',
     'title': '阮一峰的个人网站',
     'classify': '0',
     'tags': 'Programmer;Frontend',
@@ -69,7 +69,7 @@ export default [
   },
   {
     '_id': '58ecb5298cdb573cd13604c1',
-    'url_path': 'http://evanyou.me/',
+    'urlPath': 'http://evanyou.me/',
     'title': 'Evan You',
     'classify': '0',
     'tags': 'Programmer;Frontend',
@@ -85,7 +85,7 @@ export default [
   },
   {
     '_id': '58ed90187f71915c43e77671',
-    'url_path': 'http://blog.codingnow.com/',
+    'urlPath': 'http://blog.codingnow.com/',
     'title': '云风的 BLOG',
     'classify': '0',
     'tags': 'Programmer',
@@ -102,7 +102,7 @@ export default [
   },
   {
     '_id': '58ef7497d3d54d03ad35b212',
-    'url_path': 'http://www.zhangxinxu.com/',
+    'urlPath': 'http://www.zhangxinxu.com/',
     'title': '鑫空间，鑫生活',
     'classify': '0',
     'tags': 'Programmer;Frontend',
@@ -115,7 +115,7 @@ export default [
   },
   {
     '_id': '58ef7c3399482a068b88e77a',
-    'url_path': 'http://www.williamlong.info/',
+    'urlPath': 'http://www.williamlong.info/',
     'title': '月光博客',
     'classify': '3',
     'tags': 'Technology',
@@ -131,7 +131,7 @@ export default [
   },
   {
     '_id': '58ef7d2799482a068b88e77b',
-    'url_path': 'https://www.huxiu.com/',
+    'urlPath': 'https://www.huxiu.com/',
     'title': '虎嗅网',
     'classify': '3',
     'tags': 'Technology',

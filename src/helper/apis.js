@@ -22,6 +22,9 @@ export default {
   },
 
   /* auth */
+  checkIsExisted (data) {
+    return $ajax.post(requestUrl('auth/checkIsExisted'), data)
+  },
 
   signup (data) {
     return $ajax.post(requestUrl('auth/signup'), data)

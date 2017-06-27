@@ -16,16 +16,15 @@ export default {
     var arg = arguments
     var now = arg[1] ? arg[1] : new Date().getTime()
     var offsetValue = now - new Date(arg[0]).getTime()
-    var result = ''
     var minute = 1000 * 60
     var hour = minute * 60
     var day = hour * 24
-    var halfamonth = day * 15
+    var week = day * 7
     var month = day * 30
     var year = month * 12
 
     let unitArr = ['年前', '月前', '周前', '天前', '小时前', '分钟前', '刚刚']
-    let offsetArr = [year, month, halfamonth, day, hour, minute].map((item, index) => {
+    let offsetArr = [year, month, week, day, hour, minute].map((item, index) => {
       return {
         value: offsetValue / item,
         unit: unitArr[index]
@@ -33,9 +32,8 @@ export default {
     })
 
     for (let key in offsetArr) {
-      if (parseInt(offsetArr[key].value) >= 1) {
-        result = parseInt(offsetArr[key].value) + ' ' + offsetArr[key].unit
-        return result
+      if (offsetArr[key].value >= 1) {
+        return parseInt(offsetArr[key].value) + ' ' + offsetArr[key].unit
       }
     }
 

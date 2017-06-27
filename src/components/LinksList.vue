@@ -19,7 +19,7 @@
         </span>
       </div>
       <h3 class="title">
-        <a  class="title-link" :href="item.url_path" target="_blank">{{ item.title }}</a>
+        <a  class="title-link" :href="item.urlPath" target="_blank">{{ item.title }}</a>
       </h3>
       <div class="action-list">
         <div class="action-item" @click="onLikeClick(item)">

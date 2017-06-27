@@ -7,9 +7,9 @@
           <div class="form-group">
             <label class="col-sm-3 control-label"> {{ this.$t('linkAddressStr') }} <em>*</em>：</label>
             <div class="col-sm-8">
-              <el-form-item prop="url_path">
+              <el-form-item prop="urlPath">
                 <el-input
-                  v-model="fillForm.url_path"
+                  v-model="fillForm.urlPath"
                   :placeholder="this.$t('pleaseEnter') + this.$t('linkAddressStr')"></el-input>
               </el-form-item>
             </div>
@@ -88,7 +88,7 @@ export default {
       isShowDlgFlag: false,
       isLoading: false,
       fillForm: {
-        url_path: '',
+        urlPath: '',
         title: '',
         desc: '',
         classify: '',
@@ -97,7 +97,7 @@ export default {
       },
       classifyList: $config.classify,
       rules: {
-        url_path: [
+        urlPath: [
           { required: true, validator: this.$verifyUrl, trigger: 'change,blur' }
         ],
         title: [

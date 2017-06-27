@@ -73,7 +73,7 @@ export default {
     fetchSearch (params = {}) {
       this.isLoading = true
       Object.assign(params, this.tableControl)
-      params.userId = this.userInfo._id
+      params.userId = this.userInfo && this.userInfo._id
       $apis.getNiceLinks(params).then(result => {
         this.isLoading = false
         this.niceLinksArr = result

@@ -10,6 +10,12 @@
         </el-alert>
       </div>
       <el-form :model="account" :rules="rules" ref="validateForm">
+        <el-form-item prop="username">
+          <el-input v-model="account.username" placeholder="Your Username" @blur="onBlurCheck"
+            @keydown.enter.native="onLoginClick">
+            <template slot="prepend"><icon class="icons" name="login-email"></icon></template>
+          </el-input>
+        </el-form-item>
         <el-form-item prop="email">
           <el-input v-model="account.email" placeholder="Your email address"
             @keydown.enter.native="onLoginClick">
@@ -41,22 +47,18 @@
         tipMessageObj: {},
         account: {
           email: '',
+          username: '',
           password: ''
         },
         rules: {
           email: [
-            {
-              required: true,
-              message: '请输入邮箱',
-              trigger: 'change,blur'
-            }
+            {required: true, message: '请输入邮箱', trigger: 'change,blur'}
+          ],
+          username: [
+            {required: true, message: '请输入用户名', trigger: 'change,blur'}
           ],
           password: [
-            {
-              required: true,
-              message: '请输入密码',
-              trigger: 'change,blur'
-            }
+            {required: true, message: '请输入密码', trigger: 'change,blur'}
           ]
         }
       }
@@ -75,8 +77,20 @@
       composeParams () {
         return {
           email: this.account.email,
+          username: this.account.username,
           password: this.$util.encryptPwd(this.account.password)
         }
+      },
+
+      onBlurCheck () {
+        this.$apis.checkIsExisted({username: this.account.username}).then(result => {
+        }).catch(error => {
+          this.isLoading = false
+          this.tipMessageObj = {
+            message: error,
+            type: 'error'
+          }
+        })
       },
 
       // ----------------------------onClickEvent-----------------------------
