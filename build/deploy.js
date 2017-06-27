@@ -2,7 +2,7 @@ var path = require('path')
 var shell = require('shelljs')
 
 let sourcePath = path.resolve(__dirname, '../dist/*')
-let targetPath = '/data/site/jade-blog'
+let targetPath = '/data/site/nicelinks-api'
 shell.rm('-rf', targetPath)
 shell.mkdir('-p', targetPath)
 shell.config.silent = true
