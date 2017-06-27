@@ -1,7 +1,7 @@
 {
-  "name": "jade-blog",
+  "name": "nicelinks-vue-client",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "A nice website for assembling nice links created using Vue.js",
   "author": "jeffjade <jeffygisgreat@gmail.com>",
   "private": true,
   "scripts": {

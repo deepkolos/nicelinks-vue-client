@@ -85,14 +85,12 @@
           if (valid) {
             this.isLoading = false
             this.$apis.login(this.composeParams()).then(result => {
-              this.isLoading = false
-
               // save user-id into vuex-state(& localStorage)
               this.$store.commit('$vuexSetUserInfo', {_id: result._id})
 
+              this.isLoading = false
               this.$router.push('/')
             }).catch(error => {
-              debugger
               this.isLoading = false
               this.tipMessageObj = {
                 message: error,
