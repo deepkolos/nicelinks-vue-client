@@ -6,6 +6,7 @@ import 'element-ui/lib/theme-default/index.css'
 import locales from './locales'
 import Cookies from 'js-cookie'
 import VueBus from 'vue-bus'
+import _ from 'lodash'
 import { $apis, $util, $document, $auth } from 'helper'
 
 Vue.use(VueI18n)
@@ -16,6 +17,7 @@ Vue.prototype.$apis = $apis
 Vue.prototype.$util = $util
 Vue.prototype.$auth = $auth
 Vue.prototype.$document = $document
+Vue.prototype.$_ = _
 
 /* inject i18n */
 const browserLanguage = (window.navigator.language || window.navigator.browserLanguage).split('-')[0]

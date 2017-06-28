@@ -46,7 +46,7 @@
       <div v-else class="not-loggedin">
         <el-button type="text" @click="onGotoLoginClick">登录</el-button>
         <span>/</span>
-        <el-button type="text" @click="onGotoLoginClick">注册</el-button>
+        <el-button type="text" @click="onGotoSignUpClick">注册</el-button>
       </div>
     </nav>
   </header>
@@ -71,9 +71,8 @@ export default {
 
   computed: {
     userSign () {
-      let userInfo = this.userInfo
-      if (userInfo && !this.isMobile) {
-        return userInfo.profile && userInfo.profile.username || userInfo.email
+      if (this.userInfo && !this.isMobile) {
+        return this.userInfo.username || this.userInfo.email
       }
     }
   },
@@ -109,8 +108,12 @@ export default {
       this.$router.push('/login')
     },
 
+    onGotoSignUpClick () {
+      this.$router.push('/register')
+    },
+
     onMainPageClick () {
-      let userName = this.userInfo.userName || this.userInfo._id
+      let userName = this.userInfo.username || this.userInfo._id
       this.$router.push(`/member/${userName}`)
     },
 

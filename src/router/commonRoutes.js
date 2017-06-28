@@ -4,6 +4,7 @@ import { $util } from 'helper'
 
 let commonConf = [{
   path: '/login',
+  alias: '/register',
   meta: {
     title: $util.titleLang('登录', 'Login'),
     ignoreAuth: true

@@ -88,6 +88,21 @@ export default {
     return pattern.test(str)
   },
 
+  isLegalUsername (str) {
+    let pattern = /^[a-zA-Z0-9]{3,16}$/
+    return pattern.test(str)
+  },
+
+  isLegalEmail (str) {
+    let pattern = new RegExp('^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$', 'g')
+    return pattern.test(str)
+  },
+
+  isLegalPassword (str) {
+    let pattern = new RegExp('^(?=.*[0-9])(?=.*[A-Za-z])[a-zA-Z0-9!@#$%^&*]{6,18}$', 'g')
+    return pattern.test(str)
+  },
+
   /* -----------------------------localStorage------------------------------------ */
   /*
    * set localStorage

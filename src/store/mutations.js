@@ -6,11 +6,7 @@ export default {
   },
 
   $vuexGetUserInfo (state, info) {
-    if (!info || (state.userInfo.username !== info.username)) {
-      return
-    }
-
-    if (!state.isLogin) {
+    if (!info || !state.isLogin) {
       return
     }
 
