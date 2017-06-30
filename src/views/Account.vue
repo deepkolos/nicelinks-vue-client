@@ -48,10 +48,9 @@ export default {
       this.isLoading = true
       $apis.active(params).then(result => {
         this.$message({
-          message: result.message,
+          message: result,
           type: 'success'
         })
-
         setTimeout(() => {
           this.isLoading = false
           this.$router.push('/login')

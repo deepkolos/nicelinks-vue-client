@@ -38,8 +38,11 @@
           @click="onForgotPwdClick" size="large">{{ $t('forgetPwd') }}</el-button>
       </el-form>
     </div>
-    <div class="form-group login-bottom-tip" v-if="isSignUpPage">
-      <p class="text-center">{{ $t('loginBottomTip') }}<a class="el-button--text" href="/login">{{ $t('signIn') }}</a></p>
+    <div class="form-group login-bottom-tip">
+      <p class="text-center">{{ isSignUpPage ? $t('signupBottomTip') : $t('signinBottomTip') }}
+        <a class="el-button--text" :href="isSignUpPage ? '/login' : '/register'">
+        {{ isSignUpPage ? $t('signIn') : $t('signUp') }}</a>
+      </p>
     </div>
   </div>
 </template>
@@ -135,6 +138,11 @@
       },
 
       validatePassword (rule, value, callback) {
+        if (!this.isSignUpPage) {
+          callback()
+          return
+        }
+
         if (!value || value.length <= 0) {
           callback(new Error(this.$t('enterPwdTip')))
         } else if (!this.$util.isLegalPassword(value)) {
@@ -150,8 +158,9 @@
           if (valid) {
             this.isLoading = false
             this.$apis.login(this.composeParams()).then(result => {
+              debugger
               // save user-id into vuex-state(& localStorage)
-              this.$store.commit('$vuexSetUserInfo', {_id: result._id})
+              this.$store.commit('$vuexSetUserInfo', result)
 
               this.isLoading = false
               this.$router.push('/')
@@ -203,7 +212,8 @@
         enterLegalEmailTip: 'Please Enter A Valid Email Box',
         enterPwdTip: 'Enter Password(Contains at least one letter and number, 6-18)',
         enterLegalPwdTip: 'Enter A Valid Password',
-        loginBottomTip: `Don't have an account ?`
+        signupBottomTip: `Don't have an account ?`,
+        signinBottomTip: `Already have an account?`
       },
       zh: {
         enterUsernameTip: '请输入用户名(仅限字母和数字，3至16位)',
@@ -212,7 +222,8 @@
         enterLegalEmailTip: '请输入有效邮箱',
         enterPwdTip: '请输入密码(至少包含一个字母和数字，6至18位)',
         enterLegalPwdTip: '请输入合法密码',
-        loginBottomTip: `你已拥有一个账号？`
+        signupBottomTip: `你已拥有一个账号？`,
+        signinBottomTip: `还未拥有一个账号？`
       }
     }
   }
