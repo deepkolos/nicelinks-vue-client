@@ -11,7 +11,7 @@ export default {
   path: '/',
   component: Frame,
   children: [{
-    path: 'nicelinks',
+    path: 'index',
     needAuth: false,
     alias: '/',
     meta: {

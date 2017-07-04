@@ -11,9 +11,9 @@ module.exports = {
       'superagent',
       'vue/dist/vue.common.js',
       'vue-router',
-      'vue-i18n'
+      'vue-i18n',
       // 'moment',
-      // 'vuex'
+      'vuex'
     ]
   },
   output: {

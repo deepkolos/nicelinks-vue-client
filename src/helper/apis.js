@@ -31,7 +31,7 @@ export default {
   },
 
   login (data) {
-    return $ajax.post(requestUrl('auth/login'), data)
+    return $ajax.post(requestUrl('login'), data)
   },
 
   logout () {

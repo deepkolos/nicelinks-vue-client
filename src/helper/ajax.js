@@ -2,9 +2,6 @@ import Request from 'superagent'
 import $q from 'q'
 import _ from 'lodash'
 
-// Report Error To Raven(*Stronge)
-// import Raven from 'raven-js'
-
 const defaultHeader = {
   'Accept': 'application/json',
   'Content-Type': 'application/json'
@@ -21,9 +18,6 @@ function requestHandle (url, method = 'get', params = {}, query = {}, op = {}) {
         window.location.href = '/login'
       }
       if (err) {
-        // if (process.env.NODE_ENV === 'production') {
-        //   Raven.captureException(err)
-        // }
         defer.reject(res && res.text || err)
       } else if (res.type === 'application/x-msdownload') {
         redirectToIframe(res.req.url)

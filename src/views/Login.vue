@@ -158,7 +158,6 @@
           if (valid) {
             this.isLoading = false
             this.$apis.login(this.composeParams()).then(result => {
-              debugger
               // save user-id into vuex-state(& localStorage)
               this.$store.commit('$vuexSetUserInfo', result)
 
