@@ -12,7 +12,6 @@
 <script>
 import HeaderNav from 'partials/HeaderNav'
 import SideNav from 'partials/SideNav'
-import {mapActions} from 'vuex'
 
 export default {
   name: 'homepage',
@@ -39,16 +38,9 @@ export default {
     if (!this.$auth.checkSession()) {
       this.$store.commit('$vuexSetUserInfo', {})
     }
-
-    /* Annotation: Gets the latest UserInfo when the page is refreshed */
-    this.getUserInfo()
   },
 
   methods: {
-    ...mapActions([
-      'getUserInfo'
-    ]),
-
     hideMenu () {
       if (this.isShowSideNav) {
         this.$bus.$emit('trigger-sidenav')

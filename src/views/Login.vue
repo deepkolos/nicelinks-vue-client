@@ -12,21 +12,21 @@
       </div>
       <el-form :model="account" :rules="rules" ref="validateForm">
         <el-form-item prop="username" v-if="isSignUpPage">
-          <el-input v-model.trim.lazy="account.username" :placeholder="$t('enterUsernameTip')"
+          <el-input v-model.trim.lazy="account.username"
             :icon="checkLoading ? 'loading' : ''"  :autofocus='true'
             @keydown.enter.native="onLoginClick">
             <template slot="prepend"><icon class="icons" name="login-user"></icon></template>
           </el-input>
         </el-form-item>
         <el-form-item prop="email">
-          <el-input v-model.trim="account.email" :placeholder="$t('enterEmailTip')"
+          <el-input v-model.trim="account.email"
             @keydown.enter.native="onLoginClick">
             <template slot="prepend"><icon class="icons" name="login-email"></icon></template>
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
           <el-input v-model="account.password" type="password"
-            :placeholder="$t('enterPwdTip')" @keydown.enter.native="onLoginClick">
+            @keydown.enter.native="onLoginClick">
             <template slot="prepend"><icon class="icons" name="password"></icon></template>
           </el-input>
         </el-form-item>

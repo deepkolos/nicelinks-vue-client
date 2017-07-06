@@ -75,10 +75,9 @@ export default {
       Object.assign(params, this.tableControl)
       params.userId = this.userInfo && this.userInfo._id
       $apis.getNiceLinks(params).then(result => {
-        this.isLoading = false
         this.niceLinksArr = result
+        this.isLoading = false
       }).catch((error) => {
-        console.log(error)
         this.isLoading = false
         this.$message.error(`${error}`)
         this.niceLinksArr = $config.default

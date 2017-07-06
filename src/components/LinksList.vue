@@ -27,7 +27,7 @@
           <span class="item-num">{{ item.likes }}</span>
         </div>
         <div class="action-item" @click="onDislikeClick(item)">
-          <icon class="icons" name="dislike"></icon>
+          <icon class="icons" :name="item.isDislikes ? 'dislike-down' : 'dislike'"></icon>
           <span class="item-num">{{ item.dislikes }}</span>
         </div>
       </div>
@@ -70,6 +70,8 @@ export default {
       }
       this.$apis.dispatchAction(params).then(result => {
         row[action] = result.count
+        let actionIdx = action === 'likes' ? 'isLikes' : 'isDislikes'
+        row[actionIdx] = !row[actionIdx]
       }).catch((error) => {
         this.isLoading = false
         this.$message.error(`${error}`)

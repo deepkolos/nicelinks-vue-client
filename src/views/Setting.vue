@@ -17,8 +17,8 @@
                   <div class="form-group">
                     <label class="col-sm-3 control-label">{{$t('setUsername')}}<em>*</em>:</label>
                     <div class="col-sm-9">
-                      <el-form-item prop="profile.username">
-                        <el-input :disabled="username !== ''" placeholder="" v-model="fillForm.profile.username"></el-input>
+                      <el-form-item prop="username">
+                        <el-input :disabled="true" placeholder="" v-model="fillForm.username"></el-input>
                       </el-form-item>
                     </div>
                   </div>
@@ -81,16 +81,15 @@ export default{
       fillForm: {
         _id: '',
         email: '',
+        username: '',
         profile: {
-          username: '',
           nickname: '',
           website: '',
           description: ''
         }
       },
-      username: '',
       rules: {
-        'profile.username': [
+        'username': [
           { required: true, message: this.$t('pleaseEnter'), trigger: 'change,blur' }
         ],
         'profile.nickname': [
@@ -109,22 +108,21 @@ export default{
 
   methods: {
     initFetch () {
-      this.$apis.getProfile({
-        _id: this.userInfo._id
-      }).then(result => {
-        this.username = result.username
-        Object.assign(this.fillForm, result.value)
+      this.$apis.getProfile({_id: this.userInfo._id}).then(result => {
+        Object.assign(this.fillForm, result)
+      }).catch(error => {
+        this.errorAletTip(error, 'error')
+        this.isLoading = false
       })
     },
 
-    tip (message, type) {
-      let vm = this
-      vm.tipMessageObj = {
+    errorAletTip (message, type) {
+      this.tipMessageObj = {
         message: message,
         type: type
       }
-      setTimeout(function () {
-        vm.tipMessageObj = {}
+      setTimeout(() => {
+        this.tipMessageObj = {}
       }, 2000)
     },
 
@@ -135,10 +133,12 @@ export default{
           let params = this.fillForm
           this.$apis.setProfile(params).then(result => {
             this.isLoading = false
-            this.tip(result.message, 'success')
-            this.init()
+            this.$message({
+              message: result,
+              type: 'success'
+            })
           }).catch(error => {
-            this.tip(error, 'error')
+            this.errorAletTip(error, 'error')
             this.isLoading = false
           })
         } else {

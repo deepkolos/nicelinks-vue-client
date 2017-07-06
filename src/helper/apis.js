@@ -1,7 +1,7 @@
 import $ajax from './ajax'
 
 function requestUrl (path) {
-  return `http://localhost:4000/api/${path}`
+  return `/api/${path}`
 }
 
 export default {
@@ -23,11 +23,11 @@ export default {
 
   /* auth */
   checkIsExisted (data) {
-    return $ajax.post(requestUrl('auth/checkIsExisted'), data)
+    return $ajax.post(requestUrl('checkIsExisted'), data)
   },
 
   signup (data) {
-    return $ajax.post(requestUrl('auth/signup'), data)
+    return $ajax.post(requestUrl('signup'), data)
   },
 
   login (data) {
@@ -35,26 +35,26 @@ export default {
   },
 
   logout () {
-    return $ajax.post(requestUrl('auth/logout'))
+    return $ajax.post(requestUrl('logout'))
   },
 
   logoff (data) {
-    return $ajax.post(requestUrl('auth/logoff'), data)
+    return $ajax.post(requestUrl('logoff'), data)
   },
 
   active (data) {
-    return $ajax.post(requestUrl('auth/active'), data)
+    return $ajax.post(requestUrl('active'), data)
   },
 
   requestResetPwd (data) {
-    return $ajax.post(requestUrl('auth/requestResetPwd'), data)
+    return $ajax.post(requestUrl('requestResetPwd'), data)
   },
 
   getProfile (data) {
-    return $ajax.get(requestUrl('auth/getProfile'), data)
+    return $ajax.get(requestUrl('getProfile'), data)
   },
 
   setProfile (data) {
-    return $ajax.post(requestUrl('auth/setProfile'), data)
+    return $ajax.post(requestUrl('setProfile'), data)
   }
 }
