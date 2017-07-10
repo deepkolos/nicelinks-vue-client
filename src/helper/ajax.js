@@ -2,15 +2,15 @@ import Request from 'superagent'
 import $q from 'q'
 import _ from 'lodash'
 
-const defaultHeader = {
-  'Accept': 'application/json',
-  'Content-Type': 'application/json'
-}
+// const defaultHeader = {
+//   'Accept': 'application/json',
+//   'Content-Type': 'application/json'
+// }
 
 function requestHandle (url, method = 'get', params = {}, query = {}, op = {}) {
   let defer = $q.defer()
   Request(method, url)
-    .set(defaultHeader)
+    // .set(defaultHeader)
     .query(query)
     .send(params)
     .end((err, res) => {

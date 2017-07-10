@@ -1,7 +1,7 @@
 <template>
-  <div id="ads-position">
-    <h3 class="jade-ads-title">广告位</h3>
-    <el-carousel trigger="click" class="ads-body">
+  <div id="jade-gg-position">
+    <h3 class="jade-jade-gg-title">广而告之位</h3>
+    <el-carousel trigger="click" class="jade-gg-body">
       <el-carousel-item v-for="(item, index) in adsList" :key="index">
         <a :href="item.path" target=_blank>
           <img :src="item.image">
@@ -31,13 +31,13 @@ export default {
 </script>
 
 <style lang="scss">
-#ads-position{
-  .jade-ads-title{
+#jade-gg-position{
+  .jade-jade-gg-title{
     font-weight: 700;
     margin: 10px 0;
     padding-top: 10px;
   }
-  .ads-body{
+  .jade-gg-body{
     width: 100%;
   }
 }

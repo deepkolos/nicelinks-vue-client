@@ -1,27 +1,37 @@
 var path = require('path')
 var shell = require('shelljs')
 
+require('colors')
+
 let sourcePath = path.resolve(__dirname, '../dist/*')
-// let targetPath = './../nice-koa2-api/public'
-// shell.rm('-rf', `${targetPath}/static`)
-let targetPath = './../nicelinks/'
-shell.rm('-rf', `${targetPath}/static`)
+let targetPath = path.resolve(__dirname, '../../nicelinks/')
+
+console.log('Start exec copy ...'.grey)
+
+shell.rm('-rf', `${targetPath}static`)
 shell.mkdir('-p', targetPath)
 shell.config.silent = true
-shell.cp('-R', sourcePath, targetPath)
+shell.cp('-R', sourcePath, `${targetPath}`)
+
+console.log('Copy Has been completed.'.green)
 
 shell.cd(targetPath)
 
-if (!which('git')) {
-  echo('Sorry, this script requires git')
-  exit(1)
-}
-
-if (shell.exec('git commit -am "Auto-commit"').code !== 0) {
-  shell.echo('Error: Git commit failed')
+if (!shell.which('git')) {
+  shell.echo('Sorry, this script requires git')
   shell.exit(1)
 }
 
-shell.config.silent = false
+console.log('Start exec Git auto commit')
+shell.exec('git add .')
 
-console.log('Deploy Has been completed.')
+if (shell.exec('git commit -m "auto commit"').code !== 0) {
+  shell.echo('Error: Git commit failed'.yellow)
+  shell.exit(1)
+} else {
+  shell.exec('git push')
+}
+
+console.log('Deploy Has been completed .'.green)
+
+shell.config.silent = false
