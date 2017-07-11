@@ -40,7 +40,7 @@
     </div>
     <div class="form-group login-bottom-tip">
       <p class="text-center">{{ isSignUpPage ? $t('signupBottomTip') : $t('signinBottomTip') }}
-        <a class="el-button--text" :href="isSignUpPage ? '/login' : '/register'">
+        <a class="el-button--text" href="javascript:;" @click="onBottomClick">
         {{ isSignUpPage ? $t('signIn') : $t('signUp') }}</a>
       </p>
     </div>
@@ -200,6 +200,10 @@
 
       onForgotPwdClick () {
         this.$router.push('forgot-pwd')
+      },
+
+      onBottomClick () {
+        this.$router.push(this.isSignUpPage ? '/login' : '/register')
       }
     },
 
