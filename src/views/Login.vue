@@ -199,7 +199,7 @@
       },
 
       onForgotPwdClick () {
-        this.$router.push('forgot-pwd')
+        this.$router.push('/forgot-pwd')
       },
 
       onBottomClick () {

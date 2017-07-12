@@ -29,7 +29,7 @@ export default {
     path: 'forgot-pwd',
     alias: 'reset-pwd',
     meta: {
-      needAuth: true,
+      needAuth: false,
       title: setTitleLang('重设密码', 'Reset Password')
     },
     component: resolve => require(['views/ForgotPwd'], resolve)
