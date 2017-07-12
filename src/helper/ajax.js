@@ -1,5 +1,6 @@
 import axios from 'axios'
 import $q from 'q'
+import { $util } from 'helper'
 
 function requestHandle (params) {
   let defer = $q.defer()
@@ -47,8 +48,7 @@ export default {
   get: function (url, params, op) {
     return requestHandle({
       method: 'get',
-      url: url,
-      data: params
+      url: $util.queryString(url, params)
     })
   }
 }
