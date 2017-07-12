@@ -1,9 +1,9 @@
 import axios from 'axios'
 import $q from 'q'
 
-function requestHandle (url, params, op) {
+function requestHandle (params) {
   let defer = $q.defer()
-  axios(url, params, op)
+  axios(params)
     .then(res => {
       if (res && (res.unauthorized || res.statusCode === 401)) {
         window.location.href = '/login'

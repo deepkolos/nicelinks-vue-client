@@ -12,10 +12,8 @@ module.exports = {
       'vue/dist/vue.common.js',
       'vue-router',
       'vue-i18n',
-      'babel-polyfill',
       'vuex',
-      'vue-bus',
-      'crypto-js'
+      'babel-polyfill'
     ]
   },
   output: {

@@ -28,8 +28,9 @@ Object.keys(locales).forEach(lang => {
 })
 
 import Icon from 'components/Icon/Icon.vue'
-import AsideList from 'components/AsideList'
 Vue.component('icon', Icon)
+
+import AsideList from 'components/AsideList'
 Vue.component('aside-list', AsideList)
 
 /* Public Filter */
