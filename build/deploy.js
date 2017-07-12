@@ -18,9 +18,9 @@ shell.cp('-R', sourcePath, targetPath)
 
 shell.cd(targetPath)
 
-if (!which('git')) {
-  echo('Sorry, this script requires git')
-  exit(1)
+if (!shell.which('git')) {
+  shell.echo('Sorry, this script requires git')
+  shell.exit(1)
 }
 
 if (shell.exec('git commit -am "Auto-commit"').code !== 0) {
