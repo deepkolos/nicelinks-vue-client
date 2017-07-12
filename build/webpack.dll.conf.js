@@ -8,12 +8,14 @@ module.exports = {
       // 加入 element-ui 会报错
       'js-cookie',
       'lodash',
-      'superagent',
+      'q',
       'vue/dist/vue.common.js',
       'vue-router',
       'vue-i18n',
-      // 'moment',
-      'vuex'
+      'babel-polyfill',
+      'vuex',
+      'vue-bus',
+      'crypto-js'
     ]
   },
   output: {

@@ -1,7 +1,7 @@
 import $ajax from './ajax'
 
 function requestUrl (path) {
-  return `http://107.170.204.15:4000/api/${path}`
+  return `/api/${path}`
 }
 
 export default {
