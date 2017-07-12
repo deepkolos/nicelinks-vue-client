@@ -1,35 +1,26 @@
-import Request from 'superagent'
+import axios from 'axios'
 import $q from 'q'
-import _ from 'lodash'
 
-const defaultHeader = {
-  'Accept': 'application/json',
-  'Content-Type': 'application/json'
-}
-
-function requestHandle (url, method = 'get', params = {}, query = {}, op = {}) {
+function requestHandle (url, params, op) {
   let defer = $q.defer()
-  Request(method, url)
-    .set(defaultHeader)
-    .query(query)
-    .send(params)
-    .end((err, res) => {
+  axios(url, params, op)
+    .then(res => {
       if (res && (res.unauthorized || res.statusCode === 401)) {
         window.location.href = '/login'
       }
-      if (err) {
-        defer.reject(res && res.text || err)
-      } else if (res.type === 'application/x-msdownload') {
-        redirectToIframe(res.req.url)
-      } else if (res.body) {
-        if (res.body.success) {
-          defer.resolve(res.body.value)
+      if (res.type === 'application/x-msdownload') {
+        redirectToIframe(res.request.responseURL)
+      } else if (res.data) {
+        if (res.data.success) {
+          defer.resolve(res.data.value)
         } else {
-          defer.reject(res.body.message || err)
+          defer.reject(res.data.message)
         }
       } else {
         defer.reject()
       }
+    }).catch(err => {
+      defer.reject(err)
     })
 
   return defer.promise
@@ -45,29 +36,19 @@ function redirectToIframe (url) {
   document.body.appendChild(iframe)
 }
 
-var res = {
-  ajax: requestHandle
-}
-
-res = _.assignIn(res, {
+export default {
   post: function (url, params, op) {
-    return res.ajax(url, 'post', params, op)
+    return requestHandle({
+      method: 'post',
+      url: url,
+      data: params
+    })
   },
-  get: function (url, query, op) {
-    return res.ajax(url, 'get', {}, query, op)
-  },
-  put: function (url, params, op) {
-    return res.ajax(url, 'PUT', params, op)
-  },
-  patch: function (url, params, op) {
-    return res.ajax(url, 'PATCH', params, op)
-  },
-  delete: function (url, params, op) {
-    return res.ajax(url, 'DELETE', params, op)
-  },
-  create: function (url, params, op) {
-    return res.ajax(url, 'post', params, op)
+  get: function (url, params, op) {
+    return requestHandle({
+      method: 'get',
+      url: url,
+      data: params
+    })
   }
-})
-
-export default res
+}

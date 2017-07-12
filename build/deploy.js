@@ -2,9 +2,15 @@ var path = require('path')
 var shell = require('shelljs')
 
 let sourcePath = path.resolve(__dirname, '../dist/*')
-// let targetPath = './../nice-koa2-api/public'
-// shell.rm('-rf', `${targetPath}/static`)
-let targetPath = './../nicelinks/'
+
+// Copy To NiceLinks-API (1)
+let targetPath = './../nice-koa2-api/public'
+shell.rm('-rf', `${targetPath}/static`)
+shell.mkdir('-p', targetPath)
+shell.cp('-R', sourcePath, targetPath)
+
+// Copy To NiceLinks-Static (2)
+targetPath = './../nicelinks/'
 shell.rm('-rf', `${targetPath}/static`)
 shell.mkdir('-p', targetPath)
 shell.config.silent = true
