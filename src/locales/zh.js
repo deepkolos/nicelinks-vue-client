@@ -16,6 +16,7 @@ export default {
   linkNameStr: '链接名称',
   linkDescStr: '链接描述',
   linkClassifyStr: '链接分类',
+  linkThemeStr: '链接主题',
   linkTagsStr: '链接标签',
   createdDateStr: '创建日期',
   beLikedStr: '喜欢程度',

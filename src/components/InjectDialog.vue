@@ -43,6 +43,22 @@
           </div>
 
           <div class="form-group">
+            <label class="col-sm-3 control-label"> {{ this.$t('linkThemeStr') }} <em>*</em>：</label>
+            <div class="col-sm-8">
+              <el-form-item prop="tagsArr">
+                <el-select class="wrap-block" v-model="fillForm.tagsArr" multiple :multiple-limit="3"
+                  :placeholder="this.$t('pleaseSelect') + this.$t('linkThemeStr')">
+                  <el-option
+                    v-for="item in tagsList" :key="item.key"
+                    :label="item.key"
+                    :value="item.value">
+                  </el-option>
+                </el-select>
+              </el-form-item>
+            </div>
+          </div>
+
+          <div class="form-group">
             <label class="col-sm-3 control-label"> {{ this.$t('linkTagsStr') }} <em>*</em>：</label>
             <div class="col-sm-8">
               <el-form-item prop="tagsArr">

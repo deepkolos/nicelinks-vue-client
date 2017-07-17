@@ -17,6 +17,7 @@ export default {
   linkNameStr: 'Link Name',
   linkDescStr: 'Links Desc',
   linkClassifyStr: 'Links Classify',
+  linkThemeStr: 'Links Theme',
   linkTagsStr: 'Links Tags',
   createdDateStr: 'Created Date',
   beLikedStr: 'Like Degree',
