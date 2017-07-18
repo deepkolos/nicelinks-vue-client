@@ -11,8 +11,8 @@ export default {
   path: '/',
   component: Frame,
   children: [{
-    path: 'index',
-    alias: '/',
+    path: '/',
+    alias: ['resource', 'info', 'skill', 'life'],
     meta: {
       needAuth: false,
       title: setTitleLang('Nice Links', 'Nice Links')

@@ -56,17 +56,30 @@ export default {
     LinksList
   },
 
+  watch: {
+    '$route': function (to, from) {
+      // 只是别名变化, Vue 无法监听到@17-07-18;
+    }
+  },
+
   created () {
     this.$bus.on('inject-success', this.fetchSearch)
     this.$bus.on('fetch-search', this.fetchSearch)
-    this.$bus.on('switch-nav', this.switchNav)
     this.$bus.on('activate-inject-dlg', () => {
       this.isShowDlgFlag = true
     })
   },
 
   mounted () {
-    this.fetchSearch()
+    let currntRouter = this.$route.path.replace('/', '')
+    let currntItem = $config.classify.find(item => {
+      return currntRouter === item.name
+    })
+    let index = currntItem && currntItem['value'] || '0'
+    let params = {
+      'classify': index
+    }
+    this.fetchSearch(params)
   },
 
   methods: {
@@ -84,13 +97,6 @@ export default {
       }).finally(() => {
         this.isLoading = false
       })
-    },
-
-    switchNav (target = '') {
-      let params = {
-        'classify': target
-      }
-      this.fetchSearch(params)
     },
 
     handleSortChange (obj) {

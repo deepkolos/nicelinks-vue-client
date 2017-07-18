@@ -11,10 +11,15 @@
   <div class="moudle" v-for="(item, index) in pdata" v-if="pdata.length > 0">
     <div class="content">
       <div class="meta">
-        <span class="item classify" @click="onClassifyClick(item.classify)">{{ classifyList[item.classify]['key'] }}</span>
-        <span class="item"> user </span>
-        <span class="item">{{ item.created | dateOffset }}</span>
-        <span class="tag" v-for="item in queryTagsArr(item.classify, item.tags)" :key="item.value" @click="onTagClick(item.value)">
+        <span class="item classify"
+          @click="onClassifyClick(item.classify)">
+          {{ classifyList[item.classify]['key'] }}
+        </span>
+        <span class="item">{{ item.createdBy || '' }}</span>
+        <span >{{ item.created | dateOffset }}</span>
+        <span class="tag"
+          v-for="item in queryTagsArr(item.classify, item.tags)"
+          :key="item.value" @click="onTagClick(item.value)">
           {{ item.key }}
         </span>
       </div>

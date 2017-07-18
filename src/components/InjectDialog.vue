@@ -157,6 +157,7 @@ export default {
 
           let params = _.clone(this.fillForm, true)
           params.userId = this.userInfo && this.userInfo._id
+          params.createdBy = this.userInfo && this.userInfo.username
           delete params.tagsArr
 
           $apis.addNiceLinks(params).then(result => {

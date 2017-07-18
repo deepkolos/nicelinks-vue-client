@@ -1,4 +1,4 @@
-<template>
+ <template>
 <div class="">
   <header class="header">
     <nav class="nav">
@@ -15,7 +15,7 @@
       <div class="operate-link">
         <el-tabs v-model="activeName" @tab-click="handleClick">
           <el-tab-pane v-for="item in navList"
-            :key="item.value" :label="item.key" :name="item.value">
+            :key="item.value" :label="item.key" :name="item.name">
           </el-tab-pane>
         </el-tabs>
       </div>
@@ -86,8 +86,7 @@ export default {
     },
 
     handleClick (tab) {
-      this.$router.push('/')
-      this.$bus.emit('switch-nav', tab.name)
+      this.$router.push('/' + tab.name)
     },
 
     handleCommand (command) {
