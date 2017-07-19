@@ -45,8 +45,8 @@
           <div class="form-group">
             <label class="col-sm-3 control-label"> {{ this.$t('linkThemeStr') }} <em>*</em>：</label>
             <div class="col-sm-8">
-              <el-form-item prop="tagsArr">
-                <el-select class="wrap-block" v-model="fillForm.tagsArr" multiple :multiple-limit="3"
+              <el-form-item prop="theme">
+                <el-select class="wrap-block" v-model="fillForm.theme"
                   :placeholder="this.$t('pleaseSelect') + this.$t('linkThemeStr')">
                   <el-option
                     v-for="item in tagsList" :key="item.key"
@@ -108,6 +108,7 @@ export default {
         title: '',
         desc: '',
         classify: '',
+        theme: '',
         tagsArr: [],
         tags: ''
       },
@@ -118,6 +119,9 @@ export default {
         ],
         title: [
           { required: true, message: this.$t('pleaseEnter') + this.$t('linkNameStr'), trigger: 'change,blur' }
+        ],
+        theme: [
+          { required: true, message: this.$t('pleaseSelect') + this.$t('linkThemeStr'), trigger: 'change,blur' }
         ],
         classify: [
           { required: true, message: this.$t('pleaseSelect') + this.$t('linkClassifyStr'), trigger: 'change,blur' }
@@ -164,7 +168,7 @@ export default {
             this.isLoading = false
             this.isShowDlgFlag = false
             this.$message({
-              message: '很好，你已成功添加该链接',
+              message: this.$t('successAddTip'),
               type: 'success'
             })
             this.$bus.emit('inject-success')
@@ -175,6 +179,15 @@ export default {
           })
         }
       })
+    }
+  },
+
+  locales: {
+    en: {
+      successAddTip: 'Well, you have successfully added the link'
+    },
+    zh: {
+      successAddTip: '很好，您已成功添加该链接'
     }
   }
 }

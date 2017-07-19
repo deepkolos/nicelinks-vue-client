@@ -8,7 +8,7 @@
             <div slot="header" class="clearfix">
               <h4>{{ $t('validateFailure') }}</h4>
             </div>
-            <div class="failure-mesage" v-html="failureMessage"></div>
+            <div class="no-result-tip" v-html="failureMessage"></div>
           </el-card>
         </div>
         <aside-list></aside-list>
@@ -65,14 +65,4 @@ export default {
 </script>
 
 <style type="text/css" lang="scss">
-.active-fail{
-  .failure-mesage{
-    text-align: left;
-    line-height: 20px;
-    margin: 15px;
-    a{
-      color: #20a0ff;
-    }
-  }
-}
 </style>

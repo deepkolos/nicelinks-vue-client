@@ -71,9 +71,9 @@ export default {
   },
 
   mounted () {
-    let currntRouter = this.$route.path.replace('/', '')
+    let currentPath = this.$route.path.replace('/', '')
     let currntItem = $config.classify.find(item => {
-      return currntRouter === item.name
+      return currentPath === item.name
     })
     let index = currntItem && currntItem['value'] || '0'
     let params = {

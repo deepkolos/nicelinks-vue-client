@@ -24,6 +24,7 @@ export default {
   beDisikedStr: 'Dislike Degree',
 
   validateFailure: 'Verification Failed',
+  noResultTip: 'Sorry, no data available, try <a class="no-result-tip-a" href="/"> Nice link </a>.',
 
   homepage: 'My Homepage',
   homePage: 'Home Page',

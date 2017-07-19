@@ -54,6 +54,9 @@ export default [
     },
     {
       key: '字体', value: 'Typeface'
+    },
+    {
+      key: '酷工作', value: 'Jobs'
     }
   ],
   // 2. 写意人生

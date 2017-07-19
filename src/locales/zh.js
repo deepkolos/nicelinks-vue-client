@@ -23,6 +23,7 @@ export default {
   beDisikedStr: '厌恶程度',
 
   validateFailure: '验证失败',
+  noResultTip: '抱歉，暂未有相关数据，请移步 <a class="no-result-tip-a" href="/">Nice Links</a> 试试。',
 
   homepage: '个人主页',
   homePage: '首页',

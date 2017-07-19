@@ -5,7 +5,7 @@
       <div slot="header" class="clearfix">
         <h4>{{ $t('warmReminder') }}</h4>
       </div>
-      <div class="failure-mesage">暂未有相关数据</div>
+      <div class="no-result-tip" v-html="$t('noResultTip')"></div>
     </el-card>
   </div>
   <div class="moudle" v-for="(item, index) in pdata" v-if="pdata.length > 0">

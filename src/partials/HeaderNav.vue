@@ -25,7 +25,7 @@
           type="primary"
           icon="plus"
           size="small"
-          @click="activateInjectDlg">{{ $t('injectLinks') }}
+          @click="onActivateInjectDlg">{{ $t('injectLinks') }}
         </el-button>
       </div>
 
@@ -78,11 +78,13 @@ export default {
   },
 
   mounted () {
+    this.updateNavActive()
   },
 
   methods: {
-    activateInjectDlg () {
-      this.$bus.emit('activate-inject-dlg')
+    updateNavActive () {
+      let currentPath = this.$route.path.replace('/', '')
+      this.activeName = currentPath
     },
 
     handleClick (tab) {
@@ -94,6 +96,10 @@ export default {
     },
 
     // -------------------------onClickEvent-------------------------Start
+    onActivateInjectDlg () {
+      this.$bus.emit('activate-inject-dlg')
+    },
+
     onLogoClick () {
       this.$router.push('/')
       this.$bus.emit('switch-nav')

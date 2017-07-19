@@ -30,6 +30,17 @@
           padding: 15px 0;
         }
       }
+      .no-result-tip{
+        text-align: left;
+        text-indent: 2em;
+        .no-result-tip-a{
+          color: $element-blue;
+          &:hover{
+            text-decoration: none;
+            color: $dark-blue;
+          }
+        }
+      }
     }
   }
 }
