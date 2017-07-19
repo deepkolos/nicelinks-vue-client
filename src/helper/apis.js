@@ -56,5 +56,9 @@ export default {
 
   setProfile (data) {
     return $ajax.post(requestUrl('setProfile'), data)
+  },
+
+  crawlLinksInfo (data) {
+    return $ajax.get(requestUrl('crawlLinksInfo'), data)
   }
 }

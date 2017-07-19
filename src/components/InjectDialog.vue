@@ -10,6 +10,7 @@
               <el-form-item prop="urlPath">
                 <el-input
                   v-model="fillForm.urlPath"
+                  @blur="getLinkPageData"
                   :placeholder="this.$t('pleaseEnter') + this.$t('linkAddressStr')"></el-input>
               </el-form-item>
             </div>
@@ -94,7 +95,6 @@
 </template>
 
 <script>
-import { $apis } from 'helper'
 import { $config } from 'config'
 import _ from 'lodash'
 
@@ -153,6 +153,17 @@ export default {
   },
 
   methods: {
+    getLinkPageData () {
+      this.$apis.crawlLinksInfo({url: this.fillForm.urlPath}).then(result => {
+        this.fillForm.title = result.title
+        this.fillForm.desc = result.desc
+      }).catch((error) => {
+        console.log(error)
+        this.isLoading = false
+        this.$message.error(`${error}`)
+      })
+    },
+
     onCommitClick () {
       this.$refs.fillForm.validate((valid) => {
         if (valid) {
@@ -164,7 +175,7 @@ export default {
           params.createdBy = this.userInfo && this.userInfo.username
           delete params.tagsArr
 
-          $apis.addNiceLinks(params).then(result => {
+          this.$apis.addNiceLinks(params).then(result => {
             this.isLoading = false
             this.isShowDlgFlag = false
             this.$message({
