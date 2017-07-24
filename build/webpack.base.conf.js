@@ -117,6 +117,11 @@ module.exports = {
       // }
     ]
   },
+  externals: {
+    'element-ui': 'ElementUI',
+    'vue': 'Vue',
+    'lodash': '_'
+  },
   plugins: [
     new ProgressBarPlugin({
       format: '  build [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)'

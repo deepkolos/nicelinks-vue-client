@@ -5,11 +5,10 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: {
     vendor: [
-      // 加入 element-ui 会报错
       'js-cookie',
-      'lodash',
+      // 'lodash',
       'q',
-      'vue/dist/vue.common.js',
+      // 'vue/dist/vue.common.js',
       'vue-router',
       'vue-i18n',
       'vuex',
