@@ -10,24 +10,24 @@ shell.mkdir('-p', `${targetPath}public/static`)
 shell.cp('-R', sourcePath, `${targetPath}public/`)
 
 // Copy To NiceLinks-Static (2)
-// targetPath = './../nicelinks/'
-// shell.rm('-rf', `${targetPath}/static`)
-// shell.mkdir('-p', targetPath)
+targetPath = './../nicelinks/'
+shell.rm('-rf', `${targetPath}/static`)
+shell.mkdir('-p', targetPath)
+shell.cp('-R', sourcePath, targetPath)
+
+// shell.cd(targetPath)
+
+// if (!shell.which('git')) {
+//   shell.echo('Sorry, this script requires git')
+//   shell.exit(1)
+// }
+
+// if (shell.exec('git commit -am "Auto-commit"').code !== 0) {
+//   shell.echo('Error: Git commit failed')
+//   shell.exit(1)
+// }
+
 // shell.config.silent = true
-// shell.cp('-R', sourcePath, targetPath)
-
-shell.cd(targetPath)
-
-if (!shell.which('git')) {
-  shell.echo('Sorry, this script requires git')
-  shell.exit(1)
-}
-
-if (shell.exec('git commit -am "Auto-commit"').code !== 0) {
-  shell.echo('Error: Git commit failed')
-  shell.exit(1)
-}
-
-shell.config.silent = false
+// shell.config.silent = false
 
 console.log('Deploy Has been completed.')

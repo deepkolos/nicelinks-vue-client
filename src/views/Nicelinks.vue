@@ -28,7 +28,7 @@
 
 <script>
 import { $apis } from 'helper'
-import { $config } from 'config'
+import $config from 'config'
 
 import LinksList from 'components/LinksList'
 import InjectDialog from 'components/InjectDialog'

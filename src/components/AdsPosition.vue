@@ -1,7 +1,7 @@
 <template>
   <div id="jade-gg-position">
-    <h3 class="jade-jade-gg-title">广而告之位</h3>
-    <el-carousel trigger="click" class="jade-gg-body">
+    <h3 class="aside-widget-title">广而告之位</h3>
+    <el-carousel trigger="click" class="jade-gg-body" height="256px">
       <el-carousel-item v-for="(item, index) in adsList" :key="index">
         <a :href="item.path" target=_blank>
           <img :src="item.image">
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { $config } from 'config'
+import $config from 'config'
 
 export default {
   name: 'AdsPosition',
@@ -32,11 +32,6 @@ export default {
 
 <style lang="scss">
 #jade-gg-position{
-  .jade-jade-gg-title{
-    font-weight: 700;
-    margin: 10px 0;
-    padding-top: 10px;
-  }
   .jade-gg-body{
     width: 100%;
   }

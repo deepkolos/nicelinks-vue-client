@@ -1,11 +1,13 @@
 <template>
   <aside class="aside-list">
     <ads-position></ads-position>
+    <visit-count></visit-count>
   </aside>
 </template>
 
 <script>
 import AdsPosition from 'components/AdsPosition'
+import VisitCount from 'components/VisitCount'
 
 export default {
   name: 'AsideList',
@@ -18,7 +20,8 @@ export default {
   },
 
   components: {
-    AdsPosition
+    AdsPosition,
+    VisitCount
   },
 
   mounted () {

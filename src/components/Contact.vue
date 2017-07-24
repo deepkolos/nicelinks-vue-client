@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { $config } from 'config'
+import $config from 'config'
 import { $document } from 'helper'
 
 export default {

@@ -50,7 +50,7 @@
                 <el-select class="wrap-block" v-model="fillForm.theme"
                   :placeholder="this.$t('pleaseSelect') + this.$t('linkThemeStr')">
                   <el-option
-                    v-for="item in tagsList" :key="item.key"
+                    v-for="item in themeList" :key="item.key"
                     :label="item.key"
                     :value="item.value">
                   </el-option>
@@ -63,7 +63,9 @@
             <label class="col-sm-3 control-label"> {{ this.$t('linkTagsStr') }} <em>*</em>：</label>
             <div class="col-sm-8">
               <el-form-item prop="tagsArr">
-                <el-select class="wrap-block" v-model="fillForm.tagsArr" multiple :multiple-limit="3"
+                <el-select class="wrap-block"
+                  v-model="fillForm.tagsArr" allow-create multiple filterable
+                  :multiple-limit="3"
                   :placeholder="this.$t('pleaseSelect') + this.$t('linkTagsStr')">
                   <el-option
                     v-for="item in tagsList" :key="item.key"
@@ -95,7 +97,7 @@
 </template>
 
 <script>
-import { $config } from 'config'
+import $config from 'config'
 import _ from 'lodash'
 
 export default {
@@ -138,6 +140,9 @@ export default {
   },
 
   computed: {
+    themeList () {
+      return $config.theme[this.fillForm.classify]
+    },
     tagsList () {
       return $config.tags[this.fillForm.classify]
     }

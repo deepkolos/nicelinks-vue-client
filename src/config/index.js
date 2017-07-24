@@ -6,4 +6,4 @@ files.keys().forEach((key) => {
   configs[key.replace(/(\.\/|\.js)/g, '')] = files(key).default
 })
 
-export const $config = configs
+export default configs

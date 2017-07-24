@@ -23,7 +23,7 @@
 
 <script>
 import { $document } from 'helper'
-import { $config } from 'config'
+import $config from 'config'
 
 export default {
   name: 'rewardMe',
