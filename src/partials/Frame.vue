@@ -6,12 +6,14 @@
       <!-- <transition name="fade"></transition> -->
       <router-view  :key="$route.path"></router-view>
     </main>
+    <footer-nav></footer-nav>
   </div>
 </template>
 
 <script>
 import HeaderNav from 'partials/HeaderNav'
 import SideNav from 'partials/SideNav'
+import FooterNav from 'partials/FooterNav'
 
 export default {
   name: 'homepage',
@@ -25,7 +27,8 @@ export default {
 
   components: {
     HeaderNav,
-    SideNav
+    SideNav,
+    FooterNav
   },
 
   created () {
