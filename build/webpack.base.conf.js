@@ -117,10 +117,12 @@ module.exports = {
       // }
     ]
   },
+  // externals中：key 是 require 的包名，value 是全局的变量。
   externals: {
     'element-ui': 'ElementUI',
     'vue': 'Vue',
-    'lodash': '_'
+    'lodash': '_',
+    'babel-polyfill': 'window'
   },
   plugins: [
     new ProgressBarPlugin({
