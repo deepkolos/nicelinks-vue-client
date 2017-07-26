@@ -1,3 +1,7 @@
+/*
+  FixBug: [vuex] already installed. Vue.use(Vuex) should be called only once.
+  Details: https://github.com/vuejs/vuex/issues/731
+ */
 const GlobalVue = window.Vue
 window.Vue = null
 import Vuex from 'vuex'

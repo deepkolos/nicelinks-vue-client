@@ -6,13 +6,12 @@ module.exports = {
   entry: {
     vendor: [
       'js-cookie',
-      // 'lodash',
       'q',
       // 'vue/dist/vue.common.js',
       'vue-router',
       'vue-i18n',
-      'vuex',
-      'babel-polyfill'
+      'vuex'
+      // 'babel-polyfill'
     ]
   },
   output: {
