@@ -5,8 +5,8 @@
     <main @click="hideMenu" class="main">
       <!-- <transition name="fade"></transition> -->
       <router-view  :key="$route.path"></router-view>
+      <footer-nav></footer-nav>
     </main>
-    <footer-nav></footer-nav>
   </div>
 </template>
 
@@ -54,4 +54,7 @@ export default {
 </script>
 
 <style lang="scss">
+.main {
+  min-height: 300px;
+}
 </style>

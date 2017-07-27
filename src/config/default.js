@@ -68,52 +68,6 @@ export default [
     'desc': '阮一峰的个人网站'
   },
   {
-    '_id': '58ecb5298cdb573cd13604c1',
-    'urlPath': 'http://evanyou.me/',
-    'title': 'Evan You',
-    'classify': '0',
-    'tags': 'Programmer;Frontend',
-    '__v': 0,
-    'like_ip_arr': {
-      '8e041bb79cc45ccdc902ca4db0381df9': true
-    },
-    'updated': '2017-04-11T10:51:21.149Z',
-    'created': '2017-04-11T10:51:21.149Z',
-    'dislike': 0,
-    'like': 1,
-    'desc': 'Design, Code & Things in Between '
-  },
-  {
-    '_id': '58ed90187f71915c43e77671',
-    'urlPath': 'http://blog.codingnow.com/',
-    'title': '云风的 BLOG',
-    'classify': '0',
-    'tags': 'Programmer',
-    '__v': 0,
-    'like_ip_arr': {
-      '053ccd3883941566cee519786910e77e': true,
-      '8e041bb79cc45ccdc902ca4db0381df9': false
-    },
-    'updated': '2017-04-12T02:25:28.284Z',
-    'created': '2017-04-12T02:25:28.284Z',
-    'dislike': 0,
-    'like': 1,
-    'desc': '思绪来得快去得也快，偶尔会在这里停留'
-  },
-  {
-    '_id': '58ef7497d3d54d03ad35b212',
-    'urlPath': 'http://www.zhangxinxu.com/',
-    'title': '鑫空间，鑫生活',
-    'classify': '0',
-    'tags': 'Programmer;Frontend',
-    '__v': 0,
-    'updated': '2017-04-13T12:52:39.961Z',
-    'created': '2017-04-13T12:52:39.961Z',
-    'dislike': 0,
-    'like': 0,
-    'desc': '张鑫旭的个人博客，张鑫旭的技术作品，张鑫旭的生活成长'
-  },
-  {
     '_id': '58ef7c3399482a068b88e77a',
     'urlPath': 'http://www.williamlong.info/',
     'title': '月光博客',
