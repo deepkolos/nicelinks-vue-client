@@ -8,7 +8,7 @@ function setTitleLang (zhStr, enStr) {
 export default {
   path: '/about',
   meta: {
-    title: setTitleLang('晚晴幽草轩', 'Nice Home Blog')
+    title: setTitleLang('晚晴幽草轩', '晚晴幽草轩')
   },
-  component: resolve => require(['views/Homepage'], resolve)
+  component: resolve => require(['views/AboutMe'], resolve)
 }

@@ -1,7 +1,7 @@
 <template>
 <div class="wrapper theme-jade-color">
   <div class="home-wrapper">
-    <h1><a href="http://www.jeffjade.com" class="main-site" :title="title">
+    <h1><a href="http://jeffjade.com" class="main-site" :title="title">
       <img class="main-site-img" src="../assets/images/jade_blog_title.png" alt="">
     </a></h1>
     <div class="container">
@@ -32,7 +32,7 @@ export default {
 
   methods: {
     onBlogLinksClick () {
-      this.$router.push({path: 'nicelinks'})
+      this.$router.push({path: '/'})
     }
   }
 }

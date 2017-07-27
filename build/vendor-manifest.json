@@ -5,24 +5,32 @@
       "id": 0,
       "meta": {}
     },
-    "./node_modules/js-cookie/src/js.cookie.js": {
+    "./node_modules/webpack/buildin/global.js": {
       "id": 1,
       "meta": {}
     },
-    "./node_modules/q/q.js": {
+    "./node_modules/js-cookie/src/js.cookie.js": {
       "id": 2,
       "meta": {}
     },
-    "./node_modules/vue-i18n/dist/vue-i18n.common.js": {
+    "./node_modules/q/q.js": {
       "id": 3,
       "meta": {}
     },
-    "./node_modules/vue-router/dist/vue-router.common.js": {
+    "./node_modules/vue-i18n/dist/vue-i18n.common.js": {
       "id": 4,
       "meta": {}
     },
-    "./node_modules/vuex/dist/vuex.esm.js": {
+    "./node_modules/vue-router/dist/vue-router.common.js": {
       "id": 5,
+      "meta": {}
+    },
+    "./node_modules/vue/dist/vue.common.js": {
+      "id": 6,
+      "meta": {}
+    },
+    "./node_modules/vuex/dist/vuex.esm.js": {
+      "id": 7,
       "meta": {
         "harmonyModule": true
       },
@@ -36,15 +44,11 @@
       ]
     },
     "./node_modules/setimmediate/setImmediate.js": {
-      "id": 6,
+      "id": 8,
       "meta": {}
     },
     "./node_modules/timers-browserify/main.js": {
-      "id": 7,
-      "meta": {}
-    },
-    "./node_modules/webpack/buildin/global.js": {
-      "id": 8,
+      "id": 9,
       "meta": {}
     }
   }

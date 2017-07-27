@@ -1,12 +1,22 @@
 <template>
   <div id="footer-nav">
     <footer class="footer">
-      <div class="row">
+      <div class="row footer-body">
         <div class="content">
           <p><a target="_blank" class="link" href="/">倾城之链</a>: 云集世间优秀站点</p>
         </div>
+        <div class="contact">
+          <a v-for="item in contactArray"
+            :href="item.path + item.name"
+            :title="item.title"
+            target="_blank"
+            :class="item.class"
+            class="social-btn">
+            <icon class="icons" :name="item.class"></icon>
+          </a>
+        </div>
         <div class="icp">
-          © 2017 nicelinks.com
+          <span>{{ copyright }}</span>
           <a class="link" target="_blank" href="http://jeffjade.com">晚晴幽草轩</a>出品
         </div>
       </div>
@@ -15,20 +25,35 @@
 </template>
 
 <script>
+import $config from 'config'
+
 export default {
   name: 'FooterNav',
   data () {
     return {
+      copyright: '',
+      contactArray: this.filterEntryInMobile($config.contact)
     }
   },
 
   components: {
   },
 
+  created () {
+    let currentYear = (new Date(this.$util.getCurrentDate())).getFullYear()
+    this.copyright = `Copyright © ${currentYear} nicelinks.com`
+  },
+
   mounted () {
   },
 
   methods: {
+    filterEntryInMobile (sourceData) {
+      let isMobile = window.innerWidth <= 768
+      return sourceData.filter((element) => {
+        return isMobile ? !element['notInMobile'] : true
+      })
+    }
   }
 }
 </script>
@@ -36,21 +61,32 @@ export default {
 <style lang="scss">
 @import "../assets/scss/variables.scss";
 @import "../assets/scss/mixins.scss";
+
 .footer{
-  height: $footer-height;
-  padding: 15px 20px;
-  background-color: $footer-grey-bg;
-  .content{
-    font-size: $font-medium;
-  }
-  .icp{
-    font-size: $font-small;
-  }
-  .link{
-    color: $footer-link;
-    &:hover{
-      color: $footer-link-hover;
-      text-decoration: none;
+  .footer-body{
+    @include flex-box-center(column);
+    height: $footer-height;
+    padding: 15px 20px;
+    color: $footer-grey;
+    background-color: $footer-grey-bg;
+    .content{
+      font-size: $font-medium;
+      font-weight: 500;
+      text-shadow: 1px 1px 0px #fff;
+    }
+    .icp{
+      font-size: $font-small;
+    }
+    .link{
+      color: $footer-link;
+      &:link, &:visited{
+        color: $footer-link;
+        text-decoration: none;
+      };
+      &:hover, &:active{
+        color: $footer-link-hover;
+        text-decoration: none;
+      }
     }
   }
 }

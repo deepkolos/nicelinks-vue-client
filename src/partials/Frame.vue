@@ -52,9 +52,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.main {
-  min-height: 300px;
-}
-</style>

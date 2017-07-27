@@ -103,6 +103,14 @@ export default {
     return pattern.test(str)
   },
 
+  setCurrentDate (date) {
+    Vue.config.currentDate = date
+  },
+
+  getCurrentDate () {
+    return Vue.config.currentDate || new Date()
+  },
+
   /* -----------------------------localStorage------------------------------------ */
   /*
    * set localStorage

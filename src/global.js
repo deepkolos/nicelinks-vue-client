@@ -1,16 +1,14 @@
 import Vue from 'vue'
+import ElementUI from 'element-ui'
 import Filters from './filters'
 import VueI18n from 'vue-i18n'
-// import ElementUI from 'element-ui'
-// import 'element-ui/lib/theme-default/index.css'
 import locales from './locales'
 import Cookies from 'js-cookie'
 import VueBus from 'vue-bus'
-// import _ from 'lodash'
 import { $apis, $util, $document, $auth } from 'helper'
 
+Vue.use(ElementUI)
 Vue.use(VueI18n)
-// Vue.use(ElementUI)
 Vue.use(VueBus)
 
 Vue.prototype.$apis = $apis

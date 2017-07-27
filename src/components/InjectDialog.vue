@@ -1,5 +1,5 @@
 <template>
-  <div id="inject-links">
+  <div id="inject-links-dlg">
     <el-dialog stripe :title="$t('injectLinks')"
       v-model="isShowDlgFlag" size="small" v-loading.body="isLoading">
       <div class="form form-horizontal">
@@ -114,6 +114,8 @@ export default {
         tagsArr: [],
         tags: ''
       },
+      themeList: [],
+      tagsList: [],
       classifyList: $config.classify,
       rules: {
         urlPath: [
@@ -140,12 +142,6 @@ export default {
   },
 
   computed: {
-    themeList () {
-      return $config.theme[this.fillForm.classify]
-    },
-    tagsList () {
-      return $config.tags[this.fillForm.classify]
-    }
   },
 
   watch: {
@@ -154,6 +150,10 @@ export default {
     },
     isShowDlgFlag (val) {
       this.$emit('input', val)
+    },
+    'fillForm.classify': function (val) {
+      this.themeList = $config.theme[this.fillForm.classify] || []
+      this.tagsList = $config.tags[this.fillForm.classify] || []
     }
   },
 

@@ -12,6 +12,8 @@ function requestHandle (params) {
       if (res.type === 'application/x-msdownload') {
         redirectToIframe(res.request.responseURL)
       } else if (res.data) {
+        // update current date according backend@17-07-27
+        $util.setCurrentDate(res.headers && res.headers.date)
         if (res.data.success) {
           defer.resolve(res.data.value)
         } else {

@@ -7,11 +7,10 @@ module.exports = {
     vendor: [
       'js-cookie',
       'q',
-      // 'vue/dist/vue.common.js',
+      'vue/dist/vue.common.js',
       'vue-router',
       'vue-i18n',
       'vuex'
-      // 'babel-polyfill'
     ]
   },
   output: {

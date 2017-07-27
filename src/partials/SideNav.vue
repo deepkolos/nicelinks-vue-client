@@ -11,7 +11,6 @@
       </el-menu-item>
     </el-submenu>
     <el-menu-item index="2" @click="activateInjectDlg">{{ $t('injectLinks') }}</el-menu-item>
-    <el-menu-item index="3">导航三</el-menu-item>
   </el-menu>
 </div>
 </template>
