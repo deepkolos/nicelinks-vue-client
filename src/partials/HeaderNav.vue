@@ -89,6 +89,9 @@ export default {
 
     handleClick (tab) {
       this.$router.push('/' + tab.name)
+      this.$bus.emit('fetch-search', {
+        'classify': tab.value
+      })
     },
 
     handleCommand (command) {
@@ -158,6 +161,7 @@ export default {
   .nav{
     height: 100%;
     padding: 0 15px;
+    box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.1), 0 1px rgba(0,0,0,0.1);
     .header-logo{
       display: inline-block;
       float: left;

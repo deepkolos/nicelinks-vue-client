@@ -1,7 +1,11 @@
 <template>
   <aside class="aside-list">
     <ads-position></ads-position>
-    <visit-count></visit-count>
+    <el-collapse v-model="activeNames" @change="handleChange">
+      <el-collapse-item :title="$t('visitCount')" name="visitCount">
+        <visit-count v-if="activeNames.includes('visitCount')"></visit-count>
+      </el-collapse-item>
+    </el-collapse>
   </aside>
 </template>
 
@@ -13,6 +17,7 @@ export default {
   name: 'AsideList',
   data () {
     return {
+      activeNames: []
     }
   },
 
@@ -28,6 +33,7 @@ export default {
   },
 
   methods: {
+    handleChange () {}
   }
 }
 </script>
@@ -41,5 +47,9 @@ export default {
   max-width: 360px;
   width: 32%;
   float: right;
+  .el-collapse-item__header{
+    text-align: left;
+    font-size: $font-medium;
+  }
 }
 </style>

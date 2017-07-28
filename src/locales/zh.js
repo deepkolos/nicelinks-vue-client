@@ -21,6 +21,7 @@ export default {
   createdDateStr: '创建日期',
   beLikedStr: '喜欢程度',
   beDisikedStr: '厌恶程度',
+  loadMoreStr: '加载更多',
 
   validateFailure: '验证失败',
   noResultTip: '抱歉，暂未有相关数据，请移步 <a class="no-result-tip-a" href="/">Nice Links</a> 试试。',
@@ -33,5 +34,8 @@ export default {
   setNickname: '账号昵称',
   personalWebsite: '个人网站',
   profile: '个人简介',
-  saveSeting: '保存设置'
+  saveSeting: '保存设置',
+
+  adPosition: '广告位',
+  visitCount: '网站统计'
 }

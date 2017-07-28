@@ -7,10 +7,14 @@ module.exports = {
     vendor: [
       'js-cookie',
       'q',
+      'axios',
       'vue/dist/vue.common.js',
       'vue-router',
       'vue-i18n',
-      'vuex'
+      'vuex',
+      'vue-bus',
+      'crypto-js/sha256',
+      'crypto-js/md5'
     ]
   },
   output: {
@@ -32,6 +36,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh-cn|en-gb/),
     new webpack.DllPlugin({
       path: path.join(__dirname, '.', '[name]-manifest.json'),

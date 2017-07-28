@@ -98,7 +98,6 @@
 
 <script>
 import $config from 'config'
-import _ from 'lodash'
 
 export default {
   data () {
@@ -175,7 +174,7 @@ export default {
           this.isLoading = true
           this.fillForm.tags = this.fillForm.tagsArr.join(';')
 
-          let params = _.clone(this.fillForm, true)
+          let params = this.$_.clone(this.fillForm, true)
           params.userId = this.userInfo && this.userInfo._id
           params.createdBy = this.userInfo && this.userInfo.username
           delete params.tagsArr

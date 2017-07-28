@@ -121,7 +121,7 @@ module.exports = {
   externals: {
     // 'element-ui': 'ElementUI',
     // 'vue': 'Vue',
-    'lodash': '_',
+    // 'lodash': '_',
     'babel-polyfill': 'window'
   },
   plugins: [

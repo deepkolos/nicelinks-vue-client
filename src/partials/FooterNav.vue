@@ -1,7 +1,7 @@
 <template>
   <div id="footer-nav">
     <footer class="footer">
-      <div class="row footer-body">
+      <div class="footer-body">
         <div class="content">
           <p><a target="_blank" class="link" href="/">倾城之链</a>: 云集世间优秀站点</p>
         </div>
@@ -64,6 +64,7 @@ export default {
 
 .footer{
   .footer-body{
+    width: 100%;
     @include flex-box-center(column);
     height: $footer-height;
     padding: 15px 20px;

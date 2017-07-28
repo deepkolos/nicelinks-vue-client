@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import _ from 'lodash'
+import values from 'lodash/values'
 import Router from 'vue-router'
 import beforeEachHooks from './beforeEachHooks'
 import RoutesMapConfig from './routers'
@@ -14,7 +14,7 @@ const routerInstance = new Router({
   routes: RoutesMapConfig.concat(commonRoutesMap)
 })
 
-_.values(beforeEachHooks).forEach((hook) => {
+values(beforeEachHooks).forEach((hook) => {
   routerInstance.beforeEach(hook)
 })
 
