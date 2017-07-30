@@ -11,6 +11,7 @@ export default {
   cancel: 'Cancel',
   confirm: 'Confirm',
   warmReminder: 'Warm Reminder',
+  niceLinksStr: 'Nice Links',
 
   injectLinks: 'Inject New Link',
   linkAddressStr: 'Address Link',

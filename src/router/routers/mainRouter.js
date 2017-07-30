@@ -15,7 +15,7 @@ export default {
     alias: ['resource', 'info', 'skill', 'life'],
     meta: {
       needAuth: false,
-      title: setTitleLang('Nice Links', 'Nice Links')
+      title: setTitleLang('倾城之链', 'Nice Links')
     },
     component: resolve => require(['views/Nicelinks'], resolve)
   }, {
@@ -36,7 +36,7 @@ export default {
   }, {
     path: 'account',
     meta: {
-      needAuth: true,
+      needAuth: false,
       title: setTitleLang('账户激活', 'Activate Account')
     },
     component: resolve => require(['views/Account'], resolve)
@@ -47,5 +47,12 @@ export default {
       title: setTitleLang('我的主页', 'My Homepage')
     },
     component: resolve => require(['views/Homepage'], resolve)
+  }, {
+    path: 'post/:id',
+    meta: {
+      needAuth: false,
+      title: setTitleLang('倾城之链', 'Nice Links')
+    },
+    component: resolve => require(['views/Post'], resolve)
   }]
 }

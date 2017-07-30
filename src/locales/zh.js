@@ -10,6 +10,7 @@ export default {
   cancel: '取 消',
   confirm: '确 定',
   warmReminder: '温馨提示',
+  niceLinksStr: '倾城之链',
 
   injectLinks: '注入新链接',
   linkAddressStr: '链接地址',

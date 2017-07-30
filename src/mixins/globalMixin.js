@@ -25,7 +25,7 @@ Vue.mixin({
 
     $verifyUrl (rule, value, callback) {
       if (!value || value.length <= 0) {
-        callback(new Error('请输入地址'))
+        callback()
       } if (!$util.isLegalUrl(value)) {
         callback(new Error('请输入合法地址'))
       } else {

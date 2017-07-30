@@ -150,7 +150,7 @@ export default {
 }
 </script>
 
-<style type="text/css" lang="scss">
+<style type="text/css" lang="scss" scoped>
 @import "../assets/scss/variables.scss";
 .entry-list{
   .operate-sort{

@@ -18,12 +18,12 @@
                     <label class="col-sm-3 control-label">{{$t('setUsername')}}<em>*</em>:</label>
                     <div class="col-sm-9">
                       <el-form-item prop="username">
-                        <el-input :disabled="true" placeholder="" v-model="fillForm.username"></el-input>
+                        <el-input placeholder="" v-model="fillForm.username"></el-input>
                       </el-form-item>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-3 control-label">{{$t('setNickname')}}<em>*</em>:</label>
+                    <label class="col-sm-3 control-label">{{$t('setNickname')}}:</label>
                     <div class="col-sm-9">
                       <el-form-item prop="profile.nickname">
                         <el-input placeholder="" v-model="fillForm.profile.nickname"></el-input>
@@ -31,7 +31,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <label class="col-sm-3 control-label">{{$t('personalWebsite')}}<em>*</em>:</label>
+                    <label class="col-sm-3 control-label">{{$t('personalWebsite')}}:</label>
                     <div class="col-sm-9">
                       <el-form-item prop="profile.website">
                         <el-input placeholder="" v-model="fillForm.profile.website"></el-input>
@@ -93,10 +93,10 @@ export default{
           { required: true, message: this.$t('pleaseEnter'), trigger: 'change,blur' }
         ],
         'profile.nickname': [
-          { required: true, message: this.$t('pleaseEnter'), trigger: 'change,blur' }
+          { required: false, message: this.$t('pleaseEnter'), trigger: 'change,blur' }
         ],
         'profile.website': [
-          { required: true, validator: this.$verifyUrl, trigger: 'change,blur' }
+          { required: false, validator: this.$verifyUrl, trigger: 'change,blur' }
         ]
       }
     }

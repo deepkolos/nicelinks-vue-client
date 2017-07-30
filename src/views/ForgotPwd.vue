@@ -11,9 +11,8 @@
                   <el-breadcrumb-item>{{ $t('resetPwd') }}</el-breadcrumb-item>
                 </el-breadcrumb>
               </div>
-              <div class="form-group">
+              <div class="form-group" v-if="tipMessageObj.message">
                 <el-alert
-                  v-if="tipMessageObj.message"
                   :title="tipMessageObj.message"
                   :type="tipMessageObj.type">
                 </el-alert>
