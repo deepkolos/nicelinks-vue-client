@@ -8,8 +8,9 @@ var svgoConfig = require('../config/svgo-config.json')
 var chalk = require('chalk')
 var ProgressBarPlugin = require('progress-bar-webpack-plugin')
 var HappyPack = require('happypack')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
-// var happyThreadPool = HappyPack.ThreadPool({ size: 3 })
+// var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var os = require('os')
+var happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -19,7 +20,7 @@ function createHappyPlugin (id, loaders) {
   return new HappyPack({
     id: id,
     loaders: loaders,
-    // threadPool: happyThreadPool,
+    threadPool: happyThreadPool,
 
     // disable happy caching with HAPPY_CACHE=0
     cache: process.env.HAPPY_CACHE !== '0',
@@ -64,7 +65,8 @@ module.exports = {
       {
         test: /\.svg$/,
         enforce: 'pre',
-        loader: 'svgo-loader?' + JSON.stringify(svgoConfig)
+        loader: 'svgo-loader?' + JSON.stringify(svgoConfig),
+        include: /assets\/icons/
       },
       {
         test: /\.(js|vue)$/,
@@ -79,7 +81,7 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig,
-        exclude: /node_modules\/(?!(autotrack|dom-utils))|vendor\.dll\.js/
+        exclude: /node_modules\/(?!(autotrack))|vendor\.dll\.js/
       },
       {
         test: /\.js[x]?$/,
@@ -144,7 +146,7 @@ module.exports = {
     new HappyPack({
       id: 'happybabel',
       loaders: ['babel-loader?cacheDirectory=true'],
-      // threadPool: happyThreadPool,
+      threadPool: happyThreadPool,
       cache: true,
       verbose: true
     }),
