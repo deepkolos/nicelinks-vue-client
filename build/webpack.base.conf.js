@@ -73,6 +73,7 @@ module.exports = {
         loader: 'eslint-loader',
         enforce: 'pre',
         include: [resolve('src'), resolve('test')],
+        exclude: /node_modules/,
         options: {
           formatter: require('eslint-friendly-formatter')
         }
@@ -81,6 +82,7 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig,
+        include: [resolve('src')],
         exclude: /node_modules\/(?!(autotrack))|vendor\.dll\.js/
       },
       {
@@ -91,21 +93,25 @@ module.exports = {
       },
       {
         test: /\.svg$/,
+        include: [resolve('src')],
         loader: 'happypack/loader?id=happysvg',
         include: /assets\/icons/
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
+        include: [resolve('src')],
         exclude: /assets\/icons/,
         query: {
-          limit: 10000,
+          limit: 8192,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
         }
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
+        include: [resolve('src')],
+        exclude: /node_modules/,
         query: {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
