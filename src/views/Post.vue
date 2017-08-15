@@ -22,6 +22,7 @@ export default {
   name: 'post',
   data () {
     return {
+      isLoading: false,
       niceLinksArr: []
     }
   },

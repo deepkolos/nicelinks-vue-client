@@ -87,10 +87,10 @@ export default {
       this.activeName = currentPath
     },
 
-    handleClick (tab) {
-      this.$router.push('/' + tab.name)
+    handleClick (item) {
+      this.$router.push(`/${item.name}`)
       this.$bus.emit('fetch-search', {
-        'classify': tab.value
+        'classify': item.value
       })
     },
 
@@ -105,7 +105,7 @@ export default {
 
     onLogoClick () {
       this.$router.push('/')
-      this.$bus.emit('switch-nav')
+      this.$bus.emit('fetch-search')
     },
 
     onToggleMenuClick () {

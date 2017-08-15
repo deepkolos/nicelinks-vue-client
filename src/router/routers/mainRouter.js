@@ -8,7 +8,7 @@ function setTitleLang (zhStr, enStr) {
 import Frame from 'partials/Frame'
 
 export default {
-  path: '/',
+  path: '',
   component: Frame,
   children: [{
     path: '/',

@@ -17,8 +17,8 @@ let commonConf = [{
   },
   component: NotFound
 }, {
-  path: '/',
-  redirect: 'index'
+  path: 'index',
+  redirect: '/'
 }]
 
 export default routesMap.concat(commonConf)
