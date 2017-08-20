@@ -29,16 +29,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-#visit-count {
-  .visit-count-a{
-    display: block;
-    width: 70%;
-    margin: auto;
-    .visit-count-img{
-      width: 100%;
-    }
-  }
-}
-</style>

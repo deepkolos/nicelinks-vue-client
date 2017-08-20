@@ -2,21 +2,24 @@
   <aside class="aside-list">
     <ads-position></ads-position>
     <el-collapse v-model="activeNames" @change="handleChange">
-      <el-collapse-item :title="$t('visitCount')" name="visitCount">
-        <visit-count v-if="activeNames.includes('visitCount')"></visit-count>
+      <el-collapse-item :title="$t('friendshipLinks')" name="friendshipLinks">
+        <friendship-links></friendship-links>
       </el-collapse-item>
     </el-collapse>
+    <visit-count v-if="isShowVisitCount"></visit-count>
   </aside>
 </template>
 
 <script>
 import AdsPosition from 'components/AdsPosition'
 import VisitCount from 'components/VisitCount'
+import FriendshipLinks from 'components/FriendshipLinks'
 
 export default {
   name: 'AsideList',
   data () {
     return {
+      isShowVisitCount: false,
       activeNames: []
     }
   },
@@ -26,10 +29,14 @@ export default {
 
   components: {
     AdsPosition,
-    VisitCount
+    VisitCount,
+    FriendshipLinks
   },
 
   mounted () {
+    setTimeout(() => {
+      this.isShowVisitCount = true
+    }, 1314)
   },
 
   methods: {
@@ -47,6 +54,13 @@ export default {
   max-width: 360px;
   width: 32%;
   float: right;
+  .aside-list-li{
+    list-style-type: bengali;
+  }
+  .aside-list-a{
+    color: $aside-list-a-color;
+    font-size: $font-medium;
+  }
   .el-collapse-item__header{
     text-align: left;
     font-size: $font-medium;

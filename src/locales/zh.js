@@ -38,5 +38,6 @@ export default {
   saveSeting: '保存设置',
 
   adPosition: '广告位',
-  visitCount: '网站统计'
+  visitCount: '网站统计',
+  friendshipLinks: '友情链接'
 }

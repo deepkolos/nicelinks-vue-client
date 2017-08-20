@@ -38,5 +38,6 @@ export default {
   saveSeting: 'Save Seting',
 
   adPosition: 'Advertisement Space',
-  visitCount: 'Website Statistics'
+  visitCount: 'Website Statistics',
+  friendshipLinks: 'Friendship Links'
 }
