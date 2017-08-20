@@ -41,8 +41,10 @@ export default {
   },
 
   mounted () {
-    let postId = this.$route.params.id
-    this.$apis.getNiceLinks({_id: postId}).then(result => {
+    let params = {}
+    params._id = this.$route.params.id
+    params.userId = this.userInfo && this.userInfo._id || ''
+    this.$apis.getNiceLinks(params).then(result => {
       this.niceLinksArr = result
     }).catch((error) => {
       this.isLoading = false
