@@ -8,7 +8,6 @@ var svgoConfig = require('../config/svgo-config.json')
 var chalk = require('chalk')
 var ProgressBarPlugin = require('progress-bar-webpack-plugin')
 var HappyPack = require('happypack')
-// var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var os = require('os')
 var happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 
@@ -21,10 +20,6 @@ function createHappyPlugin (id, loaders) {
     id: id,
     loaders: loaders,
     threadPool: happyThreadPool,
-
-    // disable happy caching with HAPPY_CACHE=0
-    cache: process.env.HAPPY_CACHE !== '0',
-
     // make happy more verbose with HAPPY_VERBOSE=1
     verbose: process.env.HAPPY_VERBOSE === '1'
   })
@@ -89,12 +84,12 @@ module.exports = {
         test: /\.js[x]?$/,
         include: [resolve('src')],
         exclude: /node_modules/,
-        loader: 'happypack/loader?id=happybabel'
+        loader: 'happypack/loader?id=happy-babel-js'
       },
       {
         test: /\.svg$/,
         include: [resolve('src')],
-        loader: 'happypack/loader?id=happysvg',
+        loader: 'happypack/loader?id=happy-svg',
         include: /assets\/icons/
       },
       {
@@ -117,12 +112,6 @@ module.exports = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
-      // {
-      //   test: /\.scss$/,
-      //   include: [resolve('src/assets')],
-      //   exclude: /node_modules/,
-      //   loader: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'happypack/loader?id=happysass'})
-      // }
     ]
   },
   // externals中：key 是 require 的包名，value 是全局的变量。
@@ -149,14 +138,9 @@ module.exports = {
         ]
       }
     }),
-    new HappyPack({
-      id: 'happybabel',
-      loaders: ['babel-loader?cacheDirectory=true'],
-      threadPool: happyThreadPool,
-      cache: true,
-      verbose: true
-    }),
-    createHappyPlugin('happysvg', ['svg-sprite-loader']),
+    createHappyPlugin('happy-babel-js', ['babel-loader?cacheDirectory=true']),
+    createHappyPlugin('happy-babel-vue', ['babel-loader?cacheDirectory=true']),
+    createHappyPlugin('happy-svg', ['svg-sprite-loader']),
     // createHappyPlugin('happysass', ['css-loader', 'sass-loader']),
     new HappyPack({
       loaders: [{
@@ -164,7 +148,7 @@ module.exports = {
         query: {
           loaders: {
             scss: 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
-            js: 'happypack/loader?id=happybabel'
+            js: 'happypack/loader?id=happy-babel-vue'
           }
         }
       }]
