@@ -70,8 +70,9 @@ export default{
         email: this.fillForm.email
       }
       $apis.requestResetPwd(params).then(result => {
+        console.log(result)
         this.tipMessageObj = {
-          message: result.message,
+          message: result,
           type: 'success'
         }
       }).catch(error => {
