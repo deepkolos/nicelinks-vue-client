@@ -5,19 +5,30 @@ $dark-blue: #0c82df;    // header hover
 
 $color-enter-link: #bb1c33;
 
-$grey: #f7f8f9;    // body bg
 $bg-grey: #fafcff;    // module-header bg
 $input-grey: #f2f4f7;    // module-header bg
 $text-grey: #707780;
 $border-grey: #d7dce5;
 $border-black: #7a8ba9;
 
+$footer-grey: #999999;
+$footer-grey-bg: #eaeaea;
+$footer-link: #888888;
+$footer-link-hover: #263238;
+
+$grey: #f7f8f9;    // body bg
 $black: #333;    // font color
 $red: #fa0101;
 
 $entry-list-bg: #fff;
+$entry-btn-grey: #e6e6e6;
+$entry-btn-hover: #607d8b;
+
+$aside-list-a-color: #48576a;
+
 $link-title: #2e3135;
 $link-title-hover: #000;
+$link-desc: #999999;
 
 $moudle-border-color: #d1d5da;
 $item-border-color: rgba(178,186,194,.5);
@@ -28,6 +39,9 @@ $meta-classify-color: #d500f9;
 // size
 $font-large: 18px;
 $font-medium: 16px;
-$font-small: 12px;
+$font-small: 14px;
 
 $header-height: 80px;
+$header-mobile-height: 60px;
+
+$footer-height: 160px;

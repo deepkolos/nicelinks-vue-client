@@ -8,7 +8,8 @@
       <div class="no-result-tip" v-html="$t('noResultTip')"></div>
     </el-card>
   </div>
-  <div class="moudle" v-for="(item, index) in pdata" v-if="pdata.length > 0">
+  <div class="moudle" v-for="(item, index) in pdata" v-if="pdata.length > 0"
+    @click="onMoudleClick(item)">
     <div class="content">
       <div class="meta">
         <span class="item classify"
@@ -19,19 +20,20 @@
         <span >{{ item.created | dateOffset }}</span>
         <span class="tag"
           v-for="item in queryTagsArr(item.classify, item.tags)"
-          :key="item.value" @click="onTagClick(item.value)">
+          :key="item.value" @click.stop="onTagClick(item.value)">
           {{ item.key }}
         </span>
       </div>
       <h3 class="title">
-        <a  class="title-link" :href="item.urlPath" target="_blank">{{ item.title }}</a>
+        <a class="title-link" :href="item.urlPath" target="_blank">{{ item.title }}</a>
       </h3>
+      <slot></slot>
       <div class="action-list">
-        <div class="action-item" @click="onLikeClick(item)">
+        <div class="action-item" @click.stop="onLikeClick(item)">
           <icon class="icons" :name="item.isLikes ? 'likes-down' : 'likes'"></icon>
           <span class="item-num">{{ item.likes }}</span>
         </div>
-        <div class="action-item" @click="onDislikeClick(item)">
+        <div class="action-item" @click.stop="onDislikeClick(item)">
           <icon class="icons" :name="item.isDislikes ? 'dislike-down' : 'dislike'"></icon>
           <span class="item-num">{{ item.dislikes }}</span>
         </div>
@@ -98,6 +100,11 @@ export default {
         })
       })
       return resultArr
+    },
+
+    onMoudleClick (item) {
+      let linkId = item._id
+      this.$router.push(`/post/${linkId}`)
     },
 
     onClassifyClick (classify) {

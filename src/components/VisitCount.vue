@@ -1,12 +1,11 @@
 <template>
   <div id="visit-count">
-    <h3 class="aside-widget-title">网站统计</h3>
+    <h3 class="aside-widget-title">{{ $t('visitCount') }}</h3>
     <div id="clustrmaps-count"></div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'VisitCount',
   data () {
@@ -30,16 +29,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-#visit-count {
-  .visit-count-a{
-    display: block;
-    width: 70%;
-    margin: auto;
-    .visit-count-img{
-      width: 100%;
-    }
-  }
-}
-</style>

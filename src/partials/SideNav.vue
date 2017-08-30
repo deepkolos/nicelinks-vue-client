@@ -5,13 +5,14 @@
     default-active="1" class="el-menu-vertical-demo"
     @open="handleOpen" @close="handleClose" theme="light">
     <el-submenu index="1">
-      <template slot="title">Nice Links Nav</template>
+      <template slot="title">{{ $t('niceLinksStr') }}</template>
       <el-menu-item v-for="item in navList" :key="item.value" index="1-1">
-        <span @click="handleClick(item.value)"> {{ item.key }} </span>
+        <span @click="handleClick(item)"> {{ item.key }} </span>
       </el-menu-item>
     </el-submenu>
-    <el-menu-item index="2" @click="activateInjectDlg">{{ $t('injectLinks') }}</el-menu-item>
-    <el-menu-item index="3">导航三</el-menu-item>
+    <el-menu-item index="2" @click="activateInjectDlg">
+      {{ $t('injectLinks') }}
+    </el-menu-item>
   </el-menu>
 </div>
 </template>
@@ -37,7 +38,10 @@ export default {
     },
 
     handleClick (item) {
-      this.$bus.emit('switch-nav', item)
+      this.$router.push(`/${item.name}`)
+      this.$bus.emit('fetch-search', {
+        'classify': item.value
+      })
       this.triggerSideNav()
     },
 

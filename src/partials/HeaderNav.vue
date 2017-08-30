@@ -1,5 +1,5 @@
- <template>
-<div class="">
+<template>
+<div id="header-nav">
   <header class="header">
     <nav class="nav">
       <div class="header-logo">
@@ -87,8 +87,11 @@ export default {
       this.activeName = currentPath
     },
 
-    handleClick (tab) {
-      this.$router.push('/' + tab.name)
+    handleClick (item) {
+      this.$router.push(`/${item.name}`)
+      this.$bus.emit('fetch-search', {
+        'classify': item.value
+      })
     },
 
     handleCommand (command) {
@@ -102,7 +105,7 @@ export default {
 
     onLogoClick () {
       this.$router.push('/')
-      this.$bus.emit('switch-nav')
+      this.$bus.emit('fetch-search')
     },
 
     onToggleMenuClick () {
@@ -158,6 +161,7 @@ export default {
   .nav{
     height: 100%;
     padding: 0 15px;
+    box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.1), 0 1px rgba(0,0,0,0.1);
     .header-logo{
       display: inline-block;
       float: left;

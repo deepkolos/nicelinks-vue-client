@@ -10,6 +10,7 @@ export default {
   cancel: '取 消',
   confirm: '确 定',
   warmReminder: '温馨提示',
+  niceLinksStr: '倾城之链',
 
   injectLinks: '注入新链接',
   linkAddressStr: '链接地址',
@@ -21,6 +22,7 @@ export default {
   createdDateStr: '创建日期',
   beLikedStr: '喜欢程度',
   beDisikedStr: '厌恶程度',
+  loadMoreStr: '加载更多',
 
   validateFailure: '验证失败',
   noResultTip: '抱歉，暂未有相关数据，请移步 <a class="no-result-tip-a" href="/">Nice Links</a> 试试。',
@@ -33,5 +35,12 @@ export default {
   setNickname: '账号昵称',
   personalWebsite: '个人网站',
   profile: '个人简介',
-  saveSeting: '保存设置'
+  saveSeting: '保存设置',
+
+  adPosition: '广告位',
+  visitCount: '网站统计',
+  friendshipLinks: '友情链接',
+
+  enterPwdTip: '请输入密码(至少包含一个字母和数字，6至18位)',
+  enterLegalPwdTip: '请输入合法密码'
 }

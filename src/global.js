@@ -1,23 +1,22 @@
 import Vue from 'vue'
+import ElementUI from 'element-ui'
 import Filters from './filters'
 import VueI18n from 'vue-i18n'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-default/index.css'
 import locales from './locales'
+
 import Cookies from 'js-cookie'
 import VueBus from 'vue-bus'
-import _ from 'lodash'
-import { $apis, $util, $document, $auth } from 'helper'
+import { $apis, $util, $document, $auth, $lodash } from 'helper'
 
-Vue.use(VueI18n)
 Vue.use(ElementUI)
+Vue.use(VueI18n)
 Vue.use(VueBus)
 
 Vue.prototype.$apis = $apis
 Vue.prototype.$util = $util
 Vue.prototype.$auth = $auth
 Vue.prototype.$document = $document
-Vue.prototype.$_ = _
+Vue.prototype.$_ = $lodash
 
 /* inject i18n */
 const browserLanguage = (window.navigator.language || window.navigator.browserLanguage).split('-')[0]

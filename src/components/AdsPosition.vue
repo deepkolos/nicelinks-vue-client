@@ -1,6 +1,6 @@
 <template>
   <div id="jade-gg-position">
-    <h3 class="aside-widget-title">广而告之位</h3>
+    <h3 class="aside-widget-title">{{ $t('adPosition') }}</h3>
     <el-carousel trigger="click" class="jade-gg-body" height="256px">
       <el-carousel-item v-for="(item, index) in adsList" :key="index">
         <a :href="item.path" target=_blank>

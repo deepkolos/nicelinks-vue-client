@@ -11,6 +11,7 @@ export default {
   cancel: 'Cancel',
   confirm: 'Confirm',
   warmReminder: 'Warm Reminder',
+  niceLinksStr: 'Nice Links',
 
   injectLinks: 'Inject New Link',
   linkAddressStr: 'Address Link',
@@ -22,6 +23,7 @@ export default {
   createdDateStr: 'Created Date',
   beLikedStr: 'Like Degree',
   beDisikedStr: 'Dislike Degree',
+  loadMoreStr: 'Load More',
 
   validateFailure: 'Verification Failed',
   noResultTip: 'Sorry, no data available, try <a class="no-result-tip-a" href="/"> Nice link </a>.',
@@ -33,5 +35,12 @@ export default {
   setUsername: 'Set Username',
   setNickname: 'Set Nickname',
   personalWebsite: 'Personal Website',
-  saveSeting: 'Save Seting'
+  saveSeting: 'Save Seting',
+
+  adPosition: 'Advertisement Space',
+  visitCount: 'Website Statistics',
+  friendshipLinks: 'Friendship Links',
+
+  enterPwdTip: 'Enter Password(Contains at least one letter and number, 6-18)',
+  enterLegalPwdTip: 'Enter A Valid Password'
 }

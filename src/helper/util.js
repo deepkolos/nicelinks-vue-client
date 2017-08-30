@@ -62,6 +62,16 @@ export default {
     }
   },
 
+  getUrlParam (name) {
+    var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+    var r = window.location.search.substr(1).match(reg)
+    if (r != null) {
+      return unescape(r[2])
+    } else {
+      return null
+    }
+  },
+
   query (search) {
     let str = search || window.location.search
     let objURL = {}
@@ -101,6 +111,14 @@ export default {
   isLegalPassword (str) {
     let pattern = new RegExp('^(?=.*[0-9])(?=.*[A-Za-z])[a-zA-Z0-9!@#$%^&*]{6,18}$', 'g')
     return pattern.test(str)
+  },
+
+  setCurrentDate (date) {
+    Vue.config.currentDate = date
+  },
+
+  getCurrentDate () {
+    return Vue.config.currentDate || new Date()
   },
 
   /* -----------------------------localStorage------------------------------------ */

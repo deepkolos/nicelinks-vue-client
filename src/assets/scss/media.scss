@@ -22,7 +22,11 @@
     background-image: -webkit-radial-gradient(center, circle farthest-corner, #fff 0%, #ddd 100%);
     background-image: radial-gradient(circle farthest-corner at center, #fff 0%, #ddd 100%)
   }
+  .wrapper{
+    padding-top: $header-mobile-height;
+  }
   #app .header{
+    height: $header-mobile-height;
     .nav{
       padding: 0;
       .header-logo{
@@ -32,7 +36,7 @@
         left: 50%;
         right: 50%;
         transform: translate(-50%);
-        margin: 18px 0px;
+        margin: 9px 0px;
       }
       .header-logo-a{
         display: inline-block;
@@ -40,6 +44,14 @@
       }
       .menu{
         display: block;
+        padding: 20px 15px;
+        width: $header-mobile-height;
+        height: $header-mobile-height;
+      }
+      .not-loggedin, .el-dropdown-link{
+        display: block;
+        line-height: $header-mobile-height;
+        height: $header-mobile-height;
       }
       .operate-link{
         display: none;
@@ -49,6 +61,11 @@
       }
     }
   }
+
+  #app .side-nav{
+    top: $header-mobile-height;
+  }
+
   #app .menu-expand{
     .menu{
     }
@@ -79,6 +96,9 @@
         float: none;
         margin: auto;
         border-bottom: 1px solid $moudle-border-color;
+      }
+      .page-responsive{
+        overflow: hidden;
       }
     }
   }

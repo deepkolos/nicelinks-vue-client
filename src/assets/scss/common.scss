@@ -45,7 +45,9 @@ label {
 }
 a{
   text-decoration: none;
-  color: #ffffff;
+}
+a:hover, a:visited, a:link{
+  text-decoration: none;
 }
 
 .flex-box{

@@ -1,5 +1,5 @@
 <template>
-  <div id="inject-links">
+  <div id="inject-links-dlg">
     <el-dialog stripe :title="$t('injectLinks')"
       v-model="isShowDlgFlag" size="small" v-loading.body="isLoading">
       <div class="form form-horizontal">
@@ -98,7 +98,6 @@
 
 <script>
 import $config from 'config'
-import _ from 'lodash'
 
 export default {
   data () {
@@ -114,6 +113,8 @@ export default {
         tagsArr: [],
         tags: ''
       },
+      themeList: [],
+      tagsList: [],
       classifyList: $config.classify,
       rules: {
         urlPath: [
@@ -140,12 +141,6 @@ export default {
   },
 
   computed: {
-    themeList () {
-      return $config.theme[this.fillForm.classify]
-    },
-    tagsList () {
-      return $config.tags[this.fillForm.classify]
-    }
   },
 
   watch: {
@@ -154,6 +149,10 @@ export default {
     },
     isShowDlgFlag (val) {
       this.$emit('input', val)
+    },
+    'fillForm.classify': function (val) {
+      this.themeList = $config.theme[this.fillForm.classify] || []
+      this.tagsList = $config.tags[this.fillForm.classify] || []
     }
   },
 
@@ -175,7 +174,7 @@ export default {
           this.isLoading = true
           this.fillForm.tags = this.fillForm.tagsArr.join(';')
 
-          let params = _.clone(this.fillForm, true)
+          let params = this.$_.clone(this.fillForm, true)
           params.userId = this.userInfo && this.userInfo._id
           params.createdBy = this.userInfo && this.userInfo.username
           delete params.tagsArr

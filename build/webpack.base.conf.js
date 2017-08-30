@@ -8,8 +8,8 @@ var svgoConfig = require('../config/svgo-config.json')
 var chalk = require('chalk')
 var ProgressBarPlugin = require('progress-bar-webpack-plugin')
 var HappyPack = require('happypack')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
-// var happyThreadPool = HappyPack.ThreadPool({ size: 3 })
+var os = require('os')
+var happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length })
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -19,11 +19,7 @@ function createHappyPlugin (id, loaders) {
   return new HappyPack({
     id: id,
     loaders: loaders,
-    // threadPool: happyThreadPool,
-
-    // disable happy caching with HAPPY_CACHE=0
-    cache: process.env.HAPPY_CACHE !== '0',
-
+    threadPool: happyThreadPool,
     // make happy more verbose with HAPPY_VERBOSE=1
     verbose: process.env.HAPPY_VERBOSE === '1'
   })
@@ -64,13 +60,15 @@ module.exports = {
       {
         test: /\.svg$/,
         enforce: 'pre',
-        loader: 'svgo-loader?' + JSON.stringify(svgoConfig)
+        loader: 'svgo-loader?' + JSON.stringify(svgoConfig),
+        include: /assets\/icons/
       },
       {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
         enforce: 'pre',
         include: [resolve('src'), resolve('test')],
+        exclude: /node_modules/,
         options: {
           formatter: require('eslint-friendly-formatter')
         }
@@ -79,43 +77,49 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig,
-        exclude: /node_modules\/(?!(autotrack|dom-utils))|vendor\.dll\.js/
+        include: [resolve('src')],
+        exclude: /node_modules\/(?!(autotrack))|vendor\.dll\.js/
       },
       {
         test: /\.js[x]?$/,
         include: [resolve('src')],
         exclude: /node_modules/,
-        loader: 'happypack/loader?id=happybabel'
+        loader: 'happypack/loader?id=happy-babel-js'
       },
       {
         test: /\.svg$/,
-        loader: 'happypack/loader?id=happysvg',
+        include: [resolve('src')],
+        loader: 'happypack/loader?id=happy-svg',
         include: /assets\/icons/
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
+        include: [resolve('src')],
         exclude: /assets\/icons/,
         query: {
-          limit: 10000,
+          limit: 8192,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
         }
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
+        include: [resolve('src')],
+        exclude: /node_modules/,
         query: {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
-      // {
-      //   test: /\.scss$/,
-      //   include: [resolve('src/assets')],
-      //   exclude: /node_modules/,
-      //   loader: ExtractTextPlugin.extract({fallback: 'style-loader', use: 'happypack/loader?id=happysass'})
-      // }
     ]
+  },
+  // externals中：key 是 require 的包名，value 是全局的变量。
+  externals: {
+    // 'element-ui': 'ElementUI',
+    // 'vue': 'Vue',
+    // 'lodash': '_',
+    'babel-polyfill': 'window'
   },
   plugins: [
     new ProgressBarPlugin({
@@ -134,14 +138,9 @@ module.exports = {
         ]
       }
     }),
-    new HappyPack({
-      id: 'happybabel',
-      loaders: ['babel-loader?cacheDirectory=true'],
-      // threadPool: happyThreadPool,
-      cache: true,
-      verbose: true
-    }),
-    createHappyPlugin('happysvg', ['svg-sprite-loader']),
+    createHappyPlugin('happy-babel-js', ['babel-loader?cacheDirectory=true']),
+    createHappyPlugin('happy-babel-vue', ['babel-loader?cacheDirectory=true']),
+    createHappyPlugin('happy-svg', ['svg-sprite-loader']),
     // createHappyPlugin('happysass', ['css-loader', 'sass-loader']),
     new HappyPack({
       loaders: [{
@@ -149,7 +148,7 @@ module.exports = {
         query: {
           loaders: {
             scss: 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
-            js: 'happypack/loader?id=happybabel'
+            js: 'happypack/loader?id=happy-babel-vue'
           }
         }
       }]

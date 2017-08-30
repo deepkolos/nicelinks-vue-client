@@ -5,6 +5,7 @@
     <main @click="hideMenu" class="main">
       <!-- <transition name="fade"></transition> -->
       <router-view  :key="$route.path"></router-view>
+      <footer-nav></footer-nav>
     </main>
   </div>
 </template>
@@ -12,6 +13,7 @@
 <script>
 import HeaderNav from 'partials/HeaderNav'
 import SideNav from 'partials/SideNav'
+import FooterNav from 'partials/FooterNav'
 
 export default {
   name: 'homepage',
@@ -25,7 +27,8 @@ export default {
 
   components: {
     HeaderNav,
-    SideNav
+    SideNav,
+    FooterNav
   },
 
   created () {
@@ -49,6 +52,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-</style>
