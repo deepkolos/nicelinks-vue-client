@@ -39,5 +39,8 @@ export default {
 
   adPosition: '广告位',
   visitCount: '网站统计',
-  friendshipLinks: '友情链接'
+  friendshipLinks: '友情链接',
+
+  enterPwdTip: '请输入密码(至少包含一个字母和数字，6至18位)',
+  enterLegalPwdTip: '请输入合法密码'
 }

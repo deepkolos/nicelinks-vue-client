@@ -39,5 +39,8 @@ export default {
 
   adPosition: 'Advertisement Space',
   visitCount: 'Website Statistics',
-  friendshipLinks: 'Friendship Links'
+  friendshipLinks: 'Friendship Links',
+
+  enterPwdTip: 'Enter Password(Contains at least one letter and number, 6-18)',
+  enterLegalPwdTip: 'Enter A Valid Password'
 }

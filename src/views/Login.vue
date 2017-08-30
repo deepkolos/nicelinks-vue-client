@@ -213,8 +213,6 @@
         enterLegalUsernameTip: 'Please Enter UserName(Only letters and numbers，3-16)',
         enterEmailTip: 'Please Enter Email',
         enterLegalEmailTip: 'Please Enter A Valid Email Box',
-        enterPwdTip: 'Enter Password(Contains at least one letter and number, 6-18)',
-        enterLegalPwdTip: 'Enter A Valid Password',
         signupBottomTip: `Don't have an account ?`,
         signinBottomTip: `Already have an account?`
       },
@@ -223,8 +221,6 @@
         enterLegalUsernameTip: '请输入用户名(仅限字母和数字，3至16位)',
         enterEmailTip: '请输入邮箱',
         enterLegalEmailTip: '请输入有效邮箱',
-        enterPwdTip: '请输入密码(至少包含一个字母和数字，6至18位)',
-        enterLegalPwdTip: '请输入合法密码',
         signupBottomTip: `你已拥有一个账号？`,
         signinBottomTip: `还未拥有一个账号？`
       }

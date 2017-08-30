@@ -17,12 +17,24 @@
                   :type="tipMessageObj.type">
                 </el-alert>
               </div>
-              <div class="form-group">
-                <label class="col-sm-3 control-label">{{$t('registeredMailbox')}}:</label>
-                <div class="col-sm-9">
-                  <el-input placeholder="" v-model.trim="fillForm.email"></el-input>
+              <el-form :model="fillForm" :rules="rules" ref="validateForm">
+                <div class="form-group" v-if="isShowFillPwd">
+                  <label class="col-sm-3 control-label">{{$t('resetNewPwd')}}:</label>
+                  <div class="col-sm-9">
+                    <el-form-item prop="password">
+                      <el-input placeholder="" type="password" v-model.trim="fillForm.password"></el-input>
+                    </el-form-item>
+                  </div>
                 </div>
-              </div>
+                <div class="form-group" v-else>
+                  <label class="col-sm-3 control-label">{{$t('registeredMailbox')}}:</label>
+                  <div class="col-sm-9">
+                    <el-form-item prop="email">
+                      <el-input placeholder="" v-model.trim="fillForm.email"></el-input>
+                    </el-form-item>
+                  </div>
+                </div>
+              </el-form>
               <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-9">
                   <el-button type="primary" @click='onResetClick'>{{ $t('resetPwd' )}}</el-button>
@@ -38,8 +50,6 @@
 </template>
 
 <script>
-import { $apis } from 'helper'
-
 export default{
   name: 'setting',
 
@@ -49,6 +59,7 @@ export default{
   data () {
     return {
       isLoading: false,
+      isShowFillPwd: false,
       fillForm: {
         email: '',
         password: ''
@@ -60,32 +71,70 @@ export default{
       operateFun: {
         '/forgot-pwd': 'requestResetPwd',
         '/reset-pwd': 'launchResetPwd'
+      },
+      rules: {
+        email: [
+          {required: true, validator: this.validateEmail, trigger: 'change,blur'}
+        ],
+        password: [
+          {required: true, validator: this.validatePassword, trigger: 'change,blur'}
+        ]
       }
     }
   },
 
+  mounted () {
+    if (this.$util.getUrlParam('resetPasswordToken')) {
+      this.isShowFillPwd = true
+    }
+  },
+
   methods: {
-    requestResetPwd () {
-      let params = {
-        email: this.fillForm.email
-      }
-      $apis.requestResetPwd(params).then(result => {
-        console.log(result)
-        this.tipMessageObj = {
-          message: result,
-          type: 'success'
-        }
-      }).catch(error => {
-        this.isLoading = false
-        this.tipMessageObj = {
-          message: error,
-          type: 'error'
+    launchRequest (params) {
+      this.$refs['validateForm'].validate((valid) => {
+        if (valid) {
+          this.isLoading = false
+          this.$apis.requestResetPwd(params).then(result => {
+            console.log(result)
+            this.tipMessageObj = {
+              message: result,
+              type: 'success'
+            }
+          }).catch(error => {
+            this.isLoading = false
+            this.tipMessageObj = {
+              message: error,
+              type: 'error'
+            }
+          })
         }
       })
     },
 
+    validatePassword (rule, value, callback) {
+      if (!value || value.length <= 0) {
+        callback(new Error(this.$t('enterPwdTip')))
+      } else if (!this.$util.isLegalPassword(value)) {
+        callback(new Error(this.$t('enterLegalPwdTip')))
+      } else {
+        callback()
+      }
+    },
+
+    requestResetPwd () {
+      let params = {
+        email: this.fillForm.email
+      }
+      this.launchRequest(params)
+    },
+
     launchResetPwd () {
-      // $util.encryptPwd(this.account.password)
+      let params = {
+        resetPasswordToken: this.$util.getUrlParam('resetPasswordToken'),
+        password: this.$util.encryptPwd(this.fillForm.password),
+        email: this.$util.getUrlParam('email')
+      }
+      this.launchRequest(params)
     },
 
     onResetClick () {
@@ -96,11 +145,13 @@ export default{
   locales: {
     zh: {
       resetPwd: '重设密码',
-      registeredMailbox: '注册邮箱'
+      registeredMailbox: '注册邮箱',
+      resetNewPwd: '设新密码'
     },
     en: {
       resetPwd: 'Reset Password  ',
-      registeredMailbox: 'Registered Mailbox'
+      registeredMailbox: 'Registered Mailbox',
+      resetNewPwd: 'Reset New Password'
     }
   }
 }
