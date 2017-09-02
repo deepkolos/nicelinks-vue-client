@@ -13,10 +13,12 @@
     <div class="content">
       <div class="meta">
         <span class="item classify"
-          @click="onClassifyClick(item.classify)">
-          {{ classifyList[item.classify]['key'] }}
+          @click.stop="onThemeClick(item.classify)">
+          {{ fillThemeName(item.classify, item.theme) }}
         </span>
-        <span class="item">{{ item.createdBy || '' }}</span>
+        <span class="item" @click.stop="onUserClick(item.createdBy)">
+          {{ item.createdBy || '' }}
+        </span>
         <span >{{ item.created | dateOffset }}</span>
         <span class="tag"
           v-for="item in queryTagsArr(item.classify, item.tags)"
@@ -51,6 +53,7 @@ export default {
   data () {
     return {
       classifyList: $config.classify,
+      themeList: $config.theme,
       tagsList: $config.tags
     }
   },
@@ -102,18 +105,34 @@ export default {
       return resultArr
     },
 
+    fillThemeName (classify, theme) {
+      let result = ''
+      this.themeList[classify].map(item => {
+        if (item.value === theme) {
+          result = item.key
+        }
+      })
+      return result
+    },
+
     onMoudleClick (item) {
       let linkId = item._id
       this.$router.push(`/post/${linkId}`)
     },
 
-    onClassifyClick (classify) {
+    onThemeClick (classify) {
       this.$bus.emit('fetch-search', {
         'classify': classify
       })
     },
 
+    onUserClick (username) {
+      let userName = this.userInfo.username || this.userInfo._id
+      this.$router.push(`/member/${userName}`)
+    },
+
     onTagClick (tag) {
+      this.$router.push(`/tags/${tag}`)
     },
 
     onLikeClick (row) {

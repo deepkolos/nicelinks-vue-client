@@ -100,6 +100,7 @@ export default {
 
     // -------------------------onClickEvent-------------------------Start
     onActivateInjectDlg () {
+      console.log('onActivateInjectDlg')
       this.$bus.emit('activate-inject-dlg')
     },
 

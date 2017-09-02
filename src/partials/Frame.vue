@@ -7,6 +7,7 @@
       <router-view  :key="$route.path"></router-view>
       <footer-nav></footer-nav>
     </main>
+    <inject-dialog v-model="isShowDlgFlag"></inject-dialog>
   </div>
 </template>
 
@@ -14,6 +15,7 @@
 import HeaderNav from 'partials/HeaderNav'
 import SideNav from 'partials/SideNav'
 import FooterNav from 'partials/FooterNav'
+import InjectDialog from 'components/InjectDialog'
 
 export default {
   name: 'homepage',
@@ -21,14 +23,16 @@ export default {
     return {
       title: 'Nice Links',
       isMobile: window.innerWidth <= 960,
-      isShowSideNav: false
+      isShowSideNav: false,
+      isShowDlgFlag: false
     }
   },
 
   components: {
     HeaderNav,
     SideNav,
-    FooterNav
+    FooterNav,
+    InjectDialog
   },
 
   created () {
@@ -36,6 +40,15 @@ export default {
       let app = document.getElementById('app')
       app.className = !app.className ? 'menu-expand' : ''
       this.isShowSideNav = !this.isShowSideNav
+    })
+
+    this.$bus.on('activate-inject-dlg', () => {
+      console.log(this.$isLogin())
+      if (this.$isLogin()) {
+        this.isShowDlgFlag = true
+      } else {
+        this.$router.push('/login')
+      }
     })
 
     if (!this.$auth.checkSession()) {

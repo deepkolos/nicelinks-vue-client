@@ -17,12 +17,15 @@ export default {
   },
 
   mounted () {
-    let clustrmapsCount = document.getElementById('clustrmaps-count')
-    let clustrmapsScript = document.createElement('script')
-    clustrmapsScript.type = 'text/javascript'
-    clustrmapsScript.id = 'clustrmaps'
-    clustrmapsScript.src = '//cdn.clustrmaps.com/map_v2.js?d=_BvmVKKc1sJ7eaB66Dj16gQPcw4NyUxkIpfeDRnZoRA'
-    clustrmapsCount.appendChild(clustrmapsScript)
+    if (location.host.includes('localhost') || location.host.includes('127.0.0.1')) {
+    } else {
+      let clustrmapsCount = document.getElementById('clustrmaps-count')
+      let clustrmapsScript = document.createElement('script')
+      clustrmapsScript.type = 'text/javascript'
+      clustrmapsScript.id = 'clustrmaps'
+      clustrmapsScript.src = '//cdn.clustrmaps.com/map_v2.js?d=_BvmVKKc1sJ7eaB66Dj16gQPcw4NyUxkIpfeDRnZoRA'
+      clustrmapsCount.appendChild(clustrmapsScript)
+    }
   },
 
   methods: {

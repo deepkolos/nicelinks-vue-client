@@ -54,5 +54,12 @@ export default {
       title: setTitleLang('倾城之链', 'Nice Links')
     },
     component: resolve => require(['views/Post'], resolve)
+  }, {
+    path: 'tags/:tags',
+    meta: {
+      needAuth: false,
+      title: setTitleLang('倾城标签', 'Tags')
+    },
+    component: resolve => require(['views/Tags'], resolve)
   }]
 }

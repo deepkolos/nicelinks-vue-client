@@ -1,8 +1,7 @@
 export default [
   // 0: 技术客栈
   [
-    {key: '程序员', value: 'Programmer'},
-    {key: '算法', value: 'Algorithm'},
+    {key: '程序', value: 'Program'},
     {key: '设计', value: 'Design'},
     {key: '安全', value: 'Security'},
     {key: '产品', value: 'Product'},

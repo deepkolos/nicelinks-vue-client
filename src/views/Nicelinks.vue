@@ -23,23 +23,19 @@
         <br>
       </div>
     </div>
-    <inject-dialog v-model="isShowDlgFlag"></inject-dialog>
   </div>
 </template>
 
 <script>
 import { $apis } from 'helper'
 import $config from 'config'
-
 import LinksList from 'components/LinksList'
-import InjectDialog from 'components/InjectDialog'
 
 export default {
   name: 'nicelinks',
   data () {
     return {
       isLoading: false,
-      isShowDlgFlag: false,
       isShowLoadMore: true,
       activeName: 'new',
       niceLinksArr: [],
@@ -74,7 +70,6 @@ export default {
   },
 
   components: {
-    InjectDialog,
     LinksList
   },
 
@@ -96,13 +91,6 @@ export default {
   created () {
     this.$bus.on('inject-success', this.fetchSearch)
     this.$bus.on('fetch-search', this.fetchSearch)
-    this.$bus.on('activate-inject-dlg', () => {
-      if (this.$isLogin()) {
-        this.isShowDlgFlag = true
-      } else {
-        this.$router.push('/login')
-      }
-    })
   },
 
   mounted () {

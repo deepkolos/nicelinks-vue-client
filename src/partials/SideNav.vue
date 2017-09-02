@@ -10,7 +10,7 @@
         <span @click="handleClick(item)"> {{ item.key }} </span>
       </el-menu-item>
     </el-submenu>
-    <el-menu-item index="2" @click="activateInjectDlg">
+    <el-menu-item index="2" @click="onActivateInjectDlg">
       {{ $t('injectLinks') }}
     </el-menu-item>
   </el-menu>
@@ -32,7 +32,8 @@ export default {
   },
 
   methods: {
-    activateInjectDlg () {
+    onActivateInjectDlg () {
+      console.log('onActivateInjectDlg 1')
       this.$bus.emit('activate-inject-dlg')
       this.triggerSideNav()
     },
