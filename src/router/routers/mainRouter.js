@@ -58,8 +58,15 @@ export default {
     path: 'tags/:tags',
     meta: {
       needAuth: false,
-      title: setTitleLang('倾城标签', 'Tags')
+      title: setTitleLang('倾城标签', 'Nice Tags')
     },
     component: resolve => require(['views/Tags'], resolve)
+  }, {
+    path: 'theme/:theme',
+    meta: {
+      needAuth: false,
+      title: setTitleLang('倾城主题', 'Nice Themes')
+    },
+    component: resolve => require(['views/Theme'], resolve)
   }]
 }

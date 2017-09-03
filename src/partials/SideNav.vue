@@ -33,7 +33,6 @@ export default {
 
   methods: {
     onActivateInjectDlg () {
-      console.log('onActivateInjectDlg 1')
       this.$bus.emit('activate-inject-dlg')
       this.triggerSideNav()
     },

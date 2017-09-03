@@ -62,9 +62,9 @@
           <div class="form-group">
             <label class="col-sm-3 control-label"> {{ this.$t('linkTagsStr') }} <em>*</em>：</label>
             <div class="col-sm-8">
-              <el-form-item prop="tagsArr">
+              <el-form-item prop="tags">
                 <el-select class="wrap-block"
-                  v-model="fillForm.tagsArr" allow-create multiple filterable
+                  v-model="fillForm.tags" allow-create multiple filterable
                   :multiple-limit="3"
                   :placeholder="this.$t('pleaseSelect') + this.$t('linkTagsStr')">
                   <el-option
@@ -110,8 +110,7 @@ export default {
         desc: '',
         classify: '',
         theme: '',
-        tagsArr: [],
-        tags: ''
+        tags: []
       },
       themeList: [],
       tagsList: [],
@@ -172,12 +171,10 @@ export default {
       this.$refs.fillForm.validate((valid) => {
         if (valid) {
           this.isLoading = true
-          this.fillForm.tags = this.fillForm.tagsArr.join(';')
 
           let params = this.$_.clone(this.fillForm, true)
           params.userId = this.userInfo && this.userInfo._id
           params.createdBy = this.userInfo && this.userInfo.username
-          delete params.tagsArr
 
           this.$apis.addNiceLinks(params).then(result => {
             this.isLoading = false

@@ -1,5 +1,5 @@
 <template>
-  <div id="tags-page" class="wrapper">
+  <div id="theme-page" class="wrapper">
     <div class="panel-default" v-loading.body="isLoading">
       <div class="panel-body">
         <div class="main-container">
@@ -17,7 +17,7 @@
 import LinksList from 'components/LinksList'
 
 export default {
-  name: 'tags',
+  name: 'theme',
 
   data () {
     return {
@@ -41,9 +41,9 @@ export default {
 
   mounted () {
     let params = {}
-    params.tags = decodeURIComponent(this.$route.params.tags)
+    params.theme = decodeURIComponent(this.$route.params.theme)
     params.userId = this.userInfo && this.userInfo._id || ''
-    this.$apis.getLinksByTag(params).then(result => {
+    this.$apis.getNiceLinks(params).then(result => {
       this.niceLinksArr = result
     }).catch((error) => {
       this.isLoading = false
@@ -61,7 +61,7 @@ export default {
 <style lang="scss">
 @import "./../assets/scss/variables.scss";
 
-#tags-page{
+#theme-page{
   .link-desc{
     color: $link-desc;
     border-left: 2px solid #000;

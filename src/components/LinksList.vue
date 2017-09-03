@@ -13,7 +13,7 @@
     <div class="content">
       <div class="meta">
         <span class="item classify"
-          @click.stop="onThemeClick(item.classify)">
+          @click.stop="onThemeClick(item.theme)">
           {{ fillThemeName(item.classify, item.theme) }}
         </span>
         <span class="item" @click.stop="onUserClick(item.createdBy)">
@@ -21,9 +21,8 @@
         </span>
         <span >{{ item.created | dateOffset }}</span>
         <span class="tag"
-          v-for="item in queryTagsArr(item.classify, item.tags)"
-          :key="item.value" @click.stop="onTagClick(item.value)">
-          {{ item.key }}
+          v-for="(item, index) in item.tags" :key="index"
+          @click.stop="onTagClick(item)"> {{ item }}
         </span>
       </div>
       <h3 class="title">
@@ -90,10 +89,9 @@ export default {
 
     queryTagsArr (classify, tags) {
       let checkTagsArr = this.tagsList[classify]
-      let tagsArr = tags.split(';')
       let resultArr = []
       checkTagsArr.map(obj => {
-        tagsArr.map(item => {
+        tags.map(item => {
           if (item === obj.value) {
             resultArr.push({
               'key': obj.key,
@@ -120,10 +118,8 @@ export default {
       this.$router.push(`/post/${linkId}`)
     },
 
-    onThemeClick (classify) {
-      this.$bus.emit('fetch-search', {
-        'classify': classify
-      })
+    onThemeClick (theme) {
+      this.$router.push(`/theme/${theme}`)
     },
 
     onUserClick (username) {
