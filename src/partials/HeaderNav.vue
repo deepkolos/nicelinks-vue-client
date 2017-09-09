@@ -21,12 +21,25 @@
       </div>
 
       <div class="inject-btn">
-        <el-button
-          type="primary"
-          icon="plus"
-          size="small"
+        <el-button type="text" icon="plus"
           @click="onActivateInjectDlg">{{ $t('injectLinks') }}
         </el-button>
+      </div>
+
+      <div class="find-more">
+        <el-dropdown @command="handleCommand">
+          <span class="el-dropdown-link">
+            更多发现<i class="el-icon-caret-bottom el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item command="ThemeCollection">
+              {{ $t('themeCollection') }}
+            </el-dropdown-item>
+            <el-dropdown-item command="TagsCollection">
+              {{ $t('tagsCollection') }}
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
       </div>
 
       <div class="account-dropdown" v-if="$isLogin()">
@@ -37,16 +50,22 @@
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="MainPage"><icon class="icons" name="main-page"></icon>我的主页</el-dropdown-item>
-            <el-dropdown-item command="Setting" divided><icon class="icons" name="setting"></icon>设置</el-dropdown-item>
-            <el-dropdown-item command="Logout" divided><icon class="icons" name="logout"></icon>登出</el-dropdown-item>
+            <el-dropdown-item command="MainPage">
+              <icon class="icons" name="main-page"></icon>{{ $t('homepage') }}
+            </el-dropdown-item>
+            <el-dropdown-item command="Setting" divided>
+              <icon class="icons" name="setting"></icon>{{ $t('accountSetting') }}
+            </el-dropdown-item>
+            <el-dropdown-item command="Logout" divided>
+              <icon class="icons" name="logout"></icon>{{ $t('signOut') }}
+            </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
       <div v-else class="not-loggedin">
-        <el-button type="text" @click="onGotoLoginClick">登录</el-button>
+        <el-button type="text" @click="onGotoLoginClick">{{ $t('signIn') }}</el-button>
         <span>/</span>
-        <el-button type="text" @click="onGotoSignUpClick">注册</el-button>
+        <el-button type="text" @click="onGotoSignUpClick">{{ $t('signUp') }}</el-button>
       </div>
     </nav>
   </header>
@@ -101,6 +120,14 @@ export default {
     // -------------------------onClickEvent-------------------------Start
     onActivateInjectDlg () {
       this.$bus.emit('activate-inject-dlg')
+    },
+
+    onThemeCollectionClick () {
+      this.$router.push('/theme/collections')
+    },
+
+    onTagsCollectionClick () {
+      this.$router.push('/tags/collections')
     },
 
     onLogoClick () {
@@ -180,7 +207,8 @@ export default {
       margin-right: 20px;
       float: left;
     }
-    .inject-btn{
+    .inject-btn, .find-more{
+      margin: 0 16px;
       display: inline-block;
       float: left;
     }

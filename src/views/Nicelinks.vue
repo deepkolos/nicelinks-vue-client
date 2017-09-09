@@ -29,7 +29,6 @@
 <script>
 import { $apis } from 'helper'
 import $config from 'config'
-import LinksList from 'components/LinksList'
 
 export default {
   name: 'nicelinks',
@@ -70,7 +69,6 @@ export default {
   },
 
   components: {
-    LinksList
   },
 
   watch: {
@@ -146,6 +144,7 @@ export default {
   }
   .el-button{
     background-color: $entry-btn-grey;
+    transition: 1s background-color ease-in;
     border-radius: 20px;
     border: none;
     width: 80%;

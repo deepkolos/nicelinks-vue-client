@@ -174,6 +174,7 @@ export default {
 
           let params = this.$_.clone(this.fillForm, true)
           params.userId = this.userInfo && this.userInfo._id
+          params.role = this.userInfo && this.userInfo.role
           params.createdBy = this.userInfo && this.userInfo.username
 
           this.$apis.addNiceLinks(params).then(result => {

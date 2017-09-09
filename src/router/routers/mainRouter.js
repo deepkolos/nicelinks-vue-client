@@ -62,11 +62,25 @@ export default {
     },
     component: resolve => require(['views/Tags'], resolve)
   }, {
+    path: 'tags/collections',
+    meta: {
+      needAuth: false,
+      title: setTitleLang('倾城主题', 'Nice Themes')
+    },
+    component: resolve => require(['views/TagsCollections'], resolve)
+  }, {
     path: 'theme/:theme',
     meta: {
       needAuth: false,
       title: setTitleLang('倾城主题', 'Nice Themes')
     },
     component: resolve => require(['views/Theme'], resolve)
+  }, {
+    path: 'theme/collections',
+    meta: {
+      needAuth: false,
+      title: setTitleLang('倾城主题', 'Nice Themes')
+    },
+    component: resolve => require(['views/ThemeCollections'], resolve)
   }]
 }

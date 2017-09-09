@@ -14,10 +14,8 @@
 </template>
 
 <script>
-import LinksList from 'components/LinksList'
-
 export default {
-  name: 'tags',
+  name: 'Tags',
 
   data () {
     return {
@@ -33,7 +31,6 @@ export default {
   },
 
   components: {
-    LinksList
   },
 
   created () {

@@ -14,8 +14,6 @@
 </template>
 
 <script>
-import LinksList from 'components/LinksList'
-
 export default {
   name: 'theme',
 
@@ -33,7 +31,6 @@ export default {
   },
 
   components: {
-    LinksList
   },
 
   created () {

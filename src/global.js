@@ -32,6 +32,9 @@ Vue.component('icon', Icon)
 import AsideList from 'components/AsideList'
 Vue.component('aside-list', AsideList)
 
+import LinksList from 'components/LinksList'
+Vue.component('links-list', LinksList)
+
 /* Public Filter */
 for (let key in Filters) {
   Vue.filter(key, Filters[key])

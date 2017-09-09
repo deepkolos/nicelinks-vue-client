@@ -14,6 +14,10 @@ export default {
   niceLinksStr: 'Nice Links',
 
   injectLinks: 'Inject New Link',
+  findMore: 'Find More',
+  themeCollection: 'Theme Collections',
+  tagsCollection: 'Tags Collections',
+
   linkAddressStr: 'Address Link',
   linkNameStr: 'Link Name',
   linkDescStr: 'Links Desc',

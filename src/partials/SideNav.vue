@@ -77,5 +77,10 @@ export default {
       background: transparent;
       width: 0px;
     }
+    .el-submenu{
+      .el-submenu__title{
+        padding-left: 0px !important;
+      }
+    }
   }
 </style>

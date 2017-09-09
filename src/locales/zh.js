@@ -13,6 +13,10 @@ export default {
   niceLinksStr: '倾城之链',
 
   injectLinks: '注入新链接',
+  findMore: '发现更多',
+  themeCollection: '主题集',
+  tagsCollection: '标签集',
+
   linkAddressStr: '链接地址',
   linkNameStr: '链接名称',
   linkDescStr: '链接描述',
