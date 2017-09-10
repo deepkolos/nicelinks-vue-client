@@ -20,6 +20,9 @@
     <el-menu-item index="4" @click="onTagsClick">
       <i class="el-icon-message"></i>{{ $t('tagsCollection') }}
     </el-menu-item>
+    <el-menu-item index="5" v-if="isAdminFlag" @click="onManageClick">
+      <i class="el-icon-setting"></i>{{ $t('tagsCollection') }}
+    </el-menu-item>
   </el-menu>
 </div>
 </template>
@@ -38,6 +41,17 @@ export default {
   components: {
   },
 
+  computed: {
+    isAdminFlag () {
+      if (this.userInfo) {
+        return this.userInfo && this.userInfo.role === 'Admin'
+      }
+    }
+  },
+
+  mounted () {
+  },
+
   methods: {
     onActivateInjectDlg () {
       this.$bus.emit('activate-inject-dlg')
@@ -51,6 +65,11 @@ export default {
 
     onTagsClick () {
       this.$router.push('/collections/tags')
+      this.triggerSideNav()
+    },
+
+    onManageClick () {
+      this.$router.push('/manage')
       this.triggerSideNav()
     },
 

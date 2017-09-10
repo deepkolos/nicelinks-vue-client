@@ -5,11 +5,13 @@ export default {
   signOut: 'Sign Out',
   forgetPwd: 'Forgot Your Password?',
 
-  // Common Part
+  yes: 'Yes',
+  no: 'No',
   pleaseEnter: 'Please Enter',
   pleaseSelect: 'Please Select',
   cancel: 'Cancel',
   confirm: 'Confirm',
+  update: 'Update',
   warmReminder: 'Warm Reminder',
   niceLinksStr: 'Nice Links',
 
@@ -17,6 +19,8 @@ export default {
   findMore: 'Find More',
   themeCollection: 'Theme Collections',
   tagsCollection: 'Tags Collections',
+  management: 'Management',
+  isAcive: 'Is Acive',
 
   linkAddressStr: 'Address Link',
   linkNameStr: 'Link Name',

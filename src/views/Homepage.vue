@@ -27,13 +27,10 @@
 </template>
 
 <script>
-import LinksList from 'components/LinksList'
-
 export default{
   name: 'HomePage',
 
   components: {
-    LinksList
   },
 
   data () {

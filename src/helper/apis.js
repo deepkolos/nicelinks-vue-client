@@ -13,12 +13,24 @@ export default {
     return $ajax.get(requestUrl('getLinksByTag'), data)
   },
 
+  getAllLinks (data) {
+    return $ajax.get(requestUrl('getAllLinks'), data)
+  },
+
   getAllTags () {
     return $ajax.get(requestUrl('getAllTags'))
   },
 
   addNiceLinks (data) {
     return $ajax.post(requestUrl('addNiceLinks'), data)
+  },
+
+  updateNiceLinks (data) {
+    return $ajax.post(requestUrl('updateNiceLinks'), data)
+  },
+
+  deleteNiceLinks (data) {
+    return $ajax.post(requestUrl('deleteNiceLinks'), data)
   },
 
   dispatchAction (data) {

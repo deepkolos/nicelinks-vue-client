@@ -38,6 +38,9 @@
             <el-dropdown-item command="TagsCollection">
               {{ $t('tagsCollection') }}
             </el-dropdown-item>
+            <el-dropdown-item v-if="isAdminFlag" command="Manage">
+              {{ $t('management') }}
+            </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -93,6 +96,11 @@ export default {
       if (this.userInfo && !this.isMobile) {
         return this.userInfo.username || this.userInfo.email
       }
+    },
+    isAdminFlag () {
+      if (this.userInfo) {
+        return this.userInfo && this.userInfo.role === 'Admin'
+      }
     }
   },
 
@@ -128,6 +136,10 @@ export default {
 
     onTagsCollectionClick () {
       this.$router.push('/collections/tags')
+    },
+
+    onManageClick () {
+      this.$router.push('/manage')
     },
 
     onLogoClick () {

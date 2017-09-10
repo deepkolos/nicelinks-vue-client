@@ -27,7 +27,6 @@
 </template>
 
 <script>
-import { $apis } from 'helper'
 import $config from 'config'
 
 export default {
@@ -39,7 +38,7 @@ export default {
       activeName: 'new',
       niceLinksArr: [],
       tableControl: {
-        classify: 0,
+        classify: -1,
         pageCount: 1,
         pageSize: 15,
         sortType: -1,
@@ -96,7 +95,12 @@ export default {
     let currentItem = $config.classify.find(item => {
       return currentPath === item.name
     })
-    this.tableControl.classify = currentItem && currentItem['value'] || '0'
+
+    if (currentItem && currentItem['value']) {
+      this.tableControl.classify = currentItem && currentItem['value']
+    } else {
+      delete this.tableControl.classify
+    }
     this.fetchSearch()
   },
 
@@ -109,7 +113,7 @@ export default {
 
     fetchSearch (params = {}, isLoadMore) {
       this.isLoading = true
-      $apis.getNiceLinks(this.drawReuestParams(params)).then(result => {
+      this.$apis.getNiceLinks(this.drawReuestParams(params)).then(result => {
         this.isLoading = false
         if (!result || result.length <= 0) {
           this.isShowLoadMore = false

@@ -5,10 +5,13 @@ export default {
   signOut: '登出',
   forgetPwd: '忘记了密码？',
 
+  yes: '是',
+  no: '否',
   pleaseEnter: '请输入',
   pleaseSelect: '请选择',
   cancel: '取 消',
   confirm: '确 定',
+  update: '更 新',
   warmReminder: '温馨提示',
   niceLinksStr: '倾城之链',
 
@@ -16,6 +19,8 @@ export default {
   findMore: '发现更多',
   themeCollection: '倾城主题集',
   tagsCollection: '倾城标签集',
+  management: '后台管理',
+  isAcive: '是否激活',
 
   linkAddressStr: '链接地址',
   linkNameStr: '链接名称',
