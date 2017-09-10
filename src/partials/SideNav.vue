@@ -1,17 +1,24 @@
 <template>
 <div class="side-nav">
-  <el-menu
-    :default-openeds="['1']"
-    default-active="1" class="el-menu-vertical-demo"
+  <el-menu :default-openeds="['1']" default-active="1" class="el-menu-vertical-demo"
     @open="handleOpen" @close="handleClose" theme="light">
     <el-submenu index="1">
-      <template slot="title">{{ $t('niceLinksStr') }}</template>
-      <el-menu-item v-for="item in navList" :key="item.value" index="1-1">
-        <span @click="handleClick(item)"> {{ item.key }} </span>
+      <template slot="title">
+        <i class="el-icon-menu"></i>{{ $t('niceLinksStr') }}
+      </template>
+      <el-menu-item v-for="(item, index) in navList"
+        :key="item.value" @click="handleClick(item)" :index="item.name">
+        {{ item.key }}
       </el-menu-item>
     </el-submenu>
     <el-menu-item index="2" @click="onActivateInjectDlg">
-      {{ $t('injectLinks') }}
+      <i class="el-icon-plus"></i>{{ $t('injectLinks') }}
+    </el-menu-item>
+    <el-menu-item index="3" @click="onThemeClick">
+      <i class="el-icon-message"></i>{{ $t('themeCollection') }}
+    </el-menu-item>
+    <el-menu-item index="4" @click="onTagsClick">
+      <i class="el-icon-message"></i>{{ $t('tagsCollection') }}
     </el-menu-item>
   </el-menu>
 </div>
@@ -34,6 +41,16 @@ export default {
   methods: {
     onActivateInjectDlg () {
       this.$bus.emit('activate-inject-dlg')
+      this.triggerSideNav()
+    },
+
+    onThemeClick () {
+      this.$router.push('/collections/theme')
+      this.triggerSideNav()
+    },
+
+    onTagsClick () {
+      this.$router.push('/collections/tags')
       this.triggerSideNav()
     },
 
@@ -61,6 +78,7 @@ export default {
 <style media="screen" lang="scss">
 @import "./../assets/scss/variables.scss";
   .side-nav{
+    text-align: left;
     height: 100%;
     min-height: 100%;
     position: fixed;
@@ -76,11 +94,6 @@ export default {
     &:hover::-webkit-scrollbar {
       background: transparent;
       width: 0px;
-    }
-    .el-submenu{
-      .el-submenu__title{
-        padding-left: 0px !important;
-      }
     }
   }
 </style>

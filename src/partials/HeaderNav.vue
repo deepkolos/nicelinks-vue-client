@@ -123,11 +123,11 @@ export default {
     },
 
     onThemeCollectionClick () {
-      this.$router.push('/theme/collections')
+      this.$router.push('/collections/theme')
     },
 
     onTagsCollectionClick () {
-      this.$router.push('/tags/collections')
+      this.$router.push('/collections/tags')
     },
 
     onLogoClick () {

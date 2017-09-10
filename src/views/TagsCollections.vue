@@ -1,10 +1,13 @@
 <template>
-  <div id="tags-page" class="wrapper">
+  <div id="tags-coll-page" class="wrapper">
     <div class="panel-default" v-loading.body="isLoading">
       <div class="panel-body">
         <div class="main-container">
           <div class="entry-list">
-            <links-list :pdata="niceLinksArr"></links-list>
+          <h3 class="classify-title">{{ $t('tagsCollection') }}</h3>
+            <el-button v-for="(item, index) in tagsList" :key="item"
+              type="text" @click="onItemClick(item)">{{ item }}
+            </el-button>
           </div>
           <aside-list></aside-list>
         </div>
@@ -14,29 +17,37 @@
 </template>
 
 <script>
+import $config from 'config'
+
 export default {
   name: 'TagsCollections',
 
   data () {
     return {
       isLoading: false,
-      niceLinksArr: []
+      tagsList: $config.tags
     }
   },
 
   watch: {
-    $router (val) {
-      console.log(val)
-    }
   },
 
   created () {
+    this.$apis.getAllTags().then(result => {
+      this.tagsList = result.sort()
+    }).catch((error) => {
+      this.isLoading = false
+      this.$message.error(`${error}`)
+    })
   },
 
   mounted () {
   },
 
   methods: {
+    onItemClick (tag) {
+      this.$router.push(`/tags/${tag}`)
+    }
   }
 }
 </script>
@@ -44,12 +55,12 @@ export default {
 <style lang="scss">
 @import "./../assets/scss/variables.scss";
 
-#tags-page{
-  .link-desc{
-    color: $link-desc;
-    border-left: 2px solid #000;
-    margin: 15px auto;
-    padding-left: 10px;
+#tags-coll-page{
+  .entry-list{
+    padding: 15px;
+    .classify-title{
+      margin: 15px auto;
+    }
   }
 }
 </style>

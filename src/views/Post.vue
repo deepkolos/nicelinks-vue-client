@@ -17,7 +17,8 @@
 
 <script>
 export default {
-  name: 'post',
+  name: 'Post',
+
   data () {
     return {
       isLoading: false,

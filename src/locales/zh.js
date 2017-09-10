@@ -14,8 +14,8 @@ export default {
 
   injectLinks: '注入新链接',
   findMore: '发现更多',
-  themeCollection: '主题集',
-  tagsCollection: '标签集',
+  themeCollection: '倾城主题集',
+  tagsCollection: '倾城标签集',
 
   linkAddressStr: '链接地址',
   linkNameStr: '链接名称',

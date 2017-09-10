@@ -23,7 +23,7 @@
         <span class="tag"
           v-for="(item, index) in item.tags" :key="index"
           @click.stop="onTagClick(item)"> {{ item }}
-        </span>
+        </span>tag
       </div>
       <h3 class="title">
         <a class="title-link" :href="item.urlPath" target="_blank">{{ item.title }}</a>
@@ -122,13 +122,13 @@ export default {
       this.$router.push(`/theme/${theme}`)
     },
 
+    onTagClick (tag) {
+      this.$router.push(`/tags/${tag}`)
+    },
+
     onUserClick (username) {
       let userName = this.userInfo.username || this.userInfo._id
       this.$router.push(`/member/${userName}`)
-    },
-
-    onTagClick (tag) {
-      this.$router.push(`/tags/${tag}`)
     },
 
     onLikeClick (row) {

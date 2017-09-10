@@ -1,10 +1,16 @@
 <template>
-  <div id="tags-page" class="wrapper">
+  <div id="theme-coll-page" class="wrapper">
     <div class="panel-default" v-loading.body="isLoading">
       <div class="panel-body">
         <div class="main-container">
           <div class="entry-list">
-            <links-list :pdata="niceLinksArr"></links-list>
+            <div v-for="(obj, index) in themeList" :key="index">
+              <h3 class="classify-title">{{ classifyList[index]['key'] }}</h3>
+              <el-button v-for="item in obj" :key="item.value"
+                type="text" @click="onItemClick(item)">
+                {{ item.key }}
+              </el-button>
+            </div>
           </div>
           <aside-list></aside-list>
         </div>
@@ -14,13 +20,16 @@
 </template>
 
 <script>
+import $config from 'config'
+
 export default {
   name: 'TagsCollections',
 
   data () {
     return {
       isLoading: false,
-      niceLinksArr: []
+      classifyList: $config.classify,
+      themeList: $config.theme
     }
   },
 
@@ -37,6 +46,9 @@ export default {
   },
 
   methods: {
+    onItemClick (item) {
+      this.$router.push(`/tags/${item.value}`)
+    }
   }
 }
 </script>
@@ -44,12 +56,12 @@ export default {
 <style lang="scss">
 @import "./../assets/scss/variables.scss";
 
-#tags-page{
-  .link-desc{
-    color: $link-desc;
-    border-left: 2px solid #000;
-    margin: 15px auto;
-    padding-left: 10px;
+#theme-coll-page{
+  .entry-list{
+    padding: 15px;
+    .classify-title{
+      margin: 15px auto;
+    }
   }
 }
 </style>

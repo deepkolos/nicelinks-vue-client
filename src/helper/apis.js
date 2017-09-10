@@ -13,6 +13,10 @@ export default {
     return $ajax.get(requestUrl('getLinksByTag'), data)
   },
 
+  getAllTags () {
+    return $ajax.get(requestUrl('getAllTags'))
+  },
+
   addNiceLinks (data) {
     return $ajax.post(requestUrl('addNiceLinks'), data)
   },
