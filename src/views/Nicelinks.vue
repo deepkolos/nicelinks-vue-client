@@ -46,15 +46,15 @@ export default {
       },
       operateTabList: [
         {
-          label: '最新分享',
-          name: 'new',
-          sortTarget: 'created',
-          sortType: -1
-        },
-        {
           label: '热门分享',
           name: 'hot',
           sortTarget: 'likes',
+          sortType: -1
+        },
+        {
+          label: '最新分享',
+          name: 'new',
+          sortTarget: 'created',
           sortType: -1
         },
         {
