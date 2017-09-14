@@ -14,6 +14,7 @@
         <el-form-item prop="username" v-if="isSignUpPage">
           <el-input v-model.trim.lazy="account.username"
             :icon="checkLoading ? 'loading' : ''"  :autofocus='true'
+            @blur="onBlurUsername"
             @keydown.enter.native="onLoginClick">
             <template slot="prepend"><icon class="icons" name="login-user"></icon></template>
           </el-input>
@@ -59,7 +60,7 @@
           username: '',
           password: ''
         },
-        _debounceSearch: null,
+        isLegalUsername: false,
         rules: {
           username: [
             {required: true, validator: this.validateUsername, trigger: 'change,blur'}
@@ -75,7 +76,6 @@
     },
 
     created () {
-      this._debounceSearch = this.$_.debounce(this.queryUsername, 300)
     },
 
     mounted () {
@@ -99,29 +99,33 @@
         }
       },
 
+      setMessageTip (msg, type = 'error') {
+        this.tipMessageObj = {
+          message: msg,
+          type: type
+        }
+      },
+
       queryUsername () {
         this.checkLoading = true
-        return this.$apis.checkIsExisted({username: this.account.username}).then(result => {
+        let param = {username: this.account.username}
+        this.$apis.checkIsExisted(param).then(result => {
+          this.isLegalUsername = true
           this.checkLoading = false
-          return true
+          this.setMessageTip(null)
         }).catch(error => {
           this.checkLoading = false
-          this.tipMessageObj = {
-            message: error,
-            type: 'error'
-          }
-          return false
+          this.isLegalUsername = false
+          this.setMessageTip(error)
         })
       },
 
       /* **************************Validate Related************************** */
       validateUsername (rule, value, callback) {
         if (!value || value.length <= 0) {
-          callback(new Error(this.$t('enterUsernameTip')))
+          return callback(new Error(this.$t('enterUsernameTip')))
         } else if (!this.$util.isLegalUsername(value)) {
-          callback(new Error(this.$t('enterLegalUsernameTip')))
-        } else if (!this._debounceSearch()) {
-          callback(new Error(this.$t('enterUsernameTip')))
+          return callback(new Error(this.$t('enterLegalUsernameTip')))
         } else {
           callback()
         }
@@ -154,9 +158,9 @@
 
       // ----------------------------onClickEvent-----------------------------
       onLoginClick () {
+        this.isLoading = true
         this.$refs['validateForm'].validate((valid) => {
           if (valid) {
-            this.isLoading = false
             this.$apis.login(this.composeParams()).then(result => {
               // save user-id into vuex-state(& localStorage)
               this.$store.commit('$vuexSetUserInfo', result)
@@ -165,12 +169,10 @@
               this.$router.push('/')
             }).catch(error => {
               this.isLoading = false
-              this.tipMessageObj = {
-                message: error,
-                type: 'error'
-              }
+              this.setMessageTip(error)
             })
           } else {
+            this.isLoading = false
             return false
           }
         })
@@ -181,16 +183,10 @@
           if (valid) {
             this.isLoading = false
             this.$apis.signup(this.composeParams()).then(result => {
-              this.tipMessageObj = {
-                message: result,
-                type: 'success'
-              }
+              this.setMessageTip(result, 'success')
             }).catch((error) => {
               this.isLoading = false
-              this.tipMessageObj = {
-                message: error,
-                type: 'error'
-              }
+              this.setMessageTip(error)
             })
           } else {
             return false
@@ -204,6 +200,10 @@
 
       onBottomClick () {
         this.$router.push(this.isSignUpPage ? '/login' : '/register')
+      },
+
+      onBlurUsername () {
+        if (this.isSignUpPage) { this.queryUsername() }
       }
     },
 
