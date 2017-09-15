@@ -35,7 +35,7 @@ export default {
     return {
       isLoading: false,
       isShowLoadMore: true,
-      activeName: 'new',
+      activeName: 'hot',
       niceLinksArr: [],
       tableControl: {
         classify: -1,

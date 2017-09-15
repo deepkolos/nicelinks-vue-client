@@ -5,6 +5,9 @@
       <el-collapse-item :title="$t('friendshipLinks')" name="friendshipLinks">
         <friendship-links></friendship-links>
       </el-collapse-item>
+      <el-collapse-item :title="$t('rewardme')" name="rewardme">
+        <reward-me></reward-me>
+      </el-collapse-item>
     </el-collapse>
     <visit-count v-if="isShowVisitCount"></visit-count>
   </aside>
@@ -14,6 +17,7 @@
 import AdsPosition from 'components/AdsPosition'
 import VisitCount from 'components/VisitCount'
 import FriendshipLinks from 'components/FriendshipLinks'
+import RewardMe from 'components/RewardMe'
 
 export default {
   name: 'AsideList',
@@ -30,7 +34,8 @@ export default {
   components: {
     AdsPosition,
     VisitCount,
-    FriendshipLinks
+    FriendshipLinks,
+    RewardMe
   },
 
   mounted () {

@@ -47,7 +47,7 @@ export default {
 
   methods: {
     onItemClick (item) {
-      this.$router.push(`/tags/${item.value}`)
+      this.$router.push(`/theme/${item.value}`)
     }
   }
 }
