@@ -121,6 +121,14 @@ export default {
     return Vue.config.currentDate || new Date()
   },
 
+  getCurrentDateHMS (delimiter = '-') {
+    let currentDate = new Date(Vue.config.currentDate) || new Date()
+    let currentH = currentDate.getHours()
+    let currentM = currentDate.getMinutes()
+    let currentS = currentDate.getSeconds()
+    return [currentH, currentM, currentS].join(delimiter)
+  },
+
   /* -----------------------------localStorage------------------------------------ */
   /*
    * set localStorage

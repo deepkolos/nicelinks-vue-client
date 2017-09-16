@@ -147,7 +147,12 @@ export default{
       this.$apis.getProfile({_id: this.userInfo._id}).then(result => {
         Object.assign(this.fillForm, result)
         let currentDateStr = (new Date(this.$util.getCurrentDate())).Format('yyyy-MM-dd')
-        this.headers.imgname = currentDateStr + this.userInfo._id
+        let currentTimeHMS = this.$util.getCurrentDateHMS()
+        if (result.profile.avatar) {
+          this.imgDataUrl = `/api/avatar/${result.profile.avatar}`
+        }
+
+        this.headers.imgname = [currentDateStr, currentTimeHMS, this.userInfo._id].join('-')
         this.headers.username = this.userInfo.username || ''
       }).catch(error => {
         console.log(error)

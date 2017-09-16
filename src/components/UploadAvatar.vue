@@ -750,7 +750,7 @@ export default {
         client.open('POST', '/api/updateAvatar', true)
         client.onreadystatechange = function (result) {
           if (this.status === 200 || this.status === 201) {
-            resolve(JSON.parse(this.responseText))
+            resolve(headers.imgname)
           } else {
             reject(this.status)
           }
@@ -772,11 +772,11 @@ export default {
           if (that.value) {
             that.loading = 2
             that.reset()
-            this.this.$message({
+            this.$message({
               type: 'success',
-              message: result.message
+              message: `成功更新头像`
             })
-            that.$emit('crop-upload-success', result.path, field, ki)
+            that.$emit('crop-upload-success', result, field, ki)
           }
         }, (sts) => {
           if (that.value) {
