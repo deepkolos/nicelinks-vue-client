@@ -10,7 +10,8 @@
               <el-form-item prop="urlPath">
                 <el-input
                   v-model="fillForm.urlPath"
-                  :placeholder="this.$t('pleaseEnter') + this.$t('linkAddressStr')"></el-input>
+                  :placeholder="this.$t('pleaseEnter') + this.$t('linkAddressStr')">
+                </el-input>
               </el-form-item>
             </div>
           </div>

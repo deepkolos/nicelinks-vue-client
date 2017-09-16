@@ -45,6 +45,7 @@ export default {
   personalWebsite: '个人网站',
   profile: '个人简介',
   saveSeting: '保存设置',
+  updateAvatar: '更新头像',
 
   adPosition: '广告位',
   visitCount: '网站统计',

@@ -45,6 +45,16 @@
                         placeholder="" v-model="fillForm.profile.description"></el-input>
                     </div>
                   </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">{{$t('updateAvatar')}}:</label>
+                    <div class="col-sm-9">
+                      <img :src="imgDataUrl">
+                      <el-button
+                        :loading="isLoading" type="text" @click='onUpdateAvatarClick'>
+                        {{$t('updateAvatar')}}
+                      </el-button>
+                    </div>
+                  </div>
                 </el-form>
               </div>
 
@@ -64,14 +74,30 @@
         </div>
       </div>
     </div>
+    <upload-avatar
+        field="image"
+        @crop-success="onCropSuccess"
+        @crop-upload-success="onCropUploadSuccess"
+        @crop-upload-fail="onCropUploadFail"
+        v-model="isShowUploadAvatar"
+        :width="100"
+        :height="100"
+        url="/api/uploadAvatar"
+        :params="params"
+        :headers="headers"
+        img-format="png">
+    </upload-avatar>
   </div>
 </template>
 
 <script>
+import UploadAvatar from 'components/UploadAvatar'
+
 export default{
   name: 'Setting',
 
   components: {
+    UploadAvatar
   },
 
   data () {
@@ -98,7 +124,17 @@ export default{
         'profile.website': [
           { required: false, validator: this.$verifyUrl, trigger: 'change,blur' }
         ]
-      }
+      },
+      isShowUploadAvatar: false,
+      params: {
+        token: '131421',
+        name: 'avatar'
+      },
+      headers: {
+        imgname: '',
+        username: ''
+      },
+      imgDataUrl: 'http://image.nicelinks.site/default-avatar.jpeg'
     }
   },
 
@@ -110,8 +146,12 @@ export default{
     initFetch () {
       this.$apis.getProfile({_id: this.userInfo._id}).then(result => {
         Object.assign(this.fillForm, result)
+        let currentDateStr = (new Date(this.$util.getCurrentDate())).Format('yyyy-MM-dd')
+        this.headers.imgname = currentDateStr + this.userInfo._id
+        this.headers.username = this.userInfo.username || ''
       }).catch(error => {
-        this.errorAletTip(error, 'error')
+        console.log(error)
+        this.errorAletTip(`Err: ${error}`, 'error')
         this.isLoading = false
       })
     },
@@ -145,6 +185,22 @@ export default{
           return false
         }
       })
+    },
+
+    onUpdateAvatarClick () {
+      this.isShowUploadAvatar = true
+    },
+
+    onCropSuccess (imgPath) {
+      this.imgDataUrl = imgPath
+    },
+
+    onCropUploadFail () {
+      console.log('onCropUploadFail')
+    },
+
+    onCropUploadSuccess (imgPath) {
+      this.imgDataUrl = `/api/avatar/${imgPath}`
     }
   },
 

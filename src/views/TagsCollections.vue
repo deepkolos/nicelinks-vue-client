@@ -17,15 +17,13 @@
 </template>
 
 <script>
-import $config from 'config'
-
 export default {
   name: 'TagsCollections',
 
   data () {
     return {
       isLoading: false,
-      tagsList: $config.tags
+      tagsList: []
     }
   },
 

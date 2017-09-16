@@ -80,5 +80,9 @@ export default {
 
   crawlLinksInfo (data) {
     return $ajax.get(requestUrl('crawlLinksInfo'), data)
+  },
+
+  updateAvatar (data) {
+    return $ajax.post(requestUrl('updateAvatar'), data)
   }
 }

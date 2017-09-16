@@ -44,6 +44,7 @@ export default {
   setNickname: 'Set Nickname',
   personalWebsite: 'Personal Website',
   saveSeting: 'Save Seting',
+  updateAvatar: 'Update Avatar',
 
   adPosition: 'Advertisement Space',
   visitCount: 'Website Statistics',

@@ -4,7 +4,7 @@
     @open="handleOpen" @close="handleClose" theme="light">
     <el-submenu index="1">
       <template slot="title">
-        <i class="el-icon-menu"></i>{{ $t('niceLinksStr') }}
+        <i class="sidenav-icon el-icon-menu"></i>{{ $t('niceLinksStr') }}
       </template>
       <el-menu-item v-for="(item, index) in navList"
         :key="item.value" @click="handleClick(item)" :index="item.name">
@@ -12,16 +12,16 @@
       </el-menu-item>
     </el-submenu>
     <el-menu-item index="2" @click="onActivateInjectDlg">
-      <i class="el-icon-plus"></i>{{ $t('injectLinks') }}
+      <i class="sidenav-icon el-icon-plus"></i>{{ $t('injectLinks') }}
     </el-menu-item>
     <el-menu-item index="3" @click="onThemeClick">
-      <i class="el-icon-message"></i>{{ $t('themeCollection') }}
+      <icon class="sidenav-icon" name="theme"></icon>{{ $t('themeCollection') }}
     </el-menu-item>
     <el-menu-item index="4" @click="onTagsClick">
-      <i class="el-icon-message"></i>{{ $t('tagsCollection') }}
+      <icon class="sidenav-icon" name="tag"></icon>{{ $t('tagsCollection') }}
     </el-menu-item>
     <el-menu-item index="5" v-if="isAdminFlag" @click="onManageClick">
-      <i class="el-icon-setting"></i>{{ $t('tagsCollection') }}
+      <i class="sidenav-icon el-icon-setting"></i>{{ $t('management') }}
     </el-menu-item>
   </el-menu>
 </div>
@@ -113,6 +113,16 @@ export default {
     &:hover::-webkit-scrollbar {
       background: transparent;
       width: 0px;
+    }
+    .el-menu-item{
+      display: flex;
+      align-items: center;
+    }
+    .sidenav-icon{
+      width: 16px;
+      height: 16px;
+      margin-right: 10px;
+      color: #130c0e;
     }
   }
 </style>
