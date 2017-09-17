@@ -45,16 +45,6 @@
                         placeholder="" v-model="fillForm.profile.description"></el-input>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label class="col-sm-3 control-label">{{$t('updateAvatar')}}:</label>
-                    <div class="col-sm-9">
-                      <img :src="imgDataUrl">
-                      <el-button
-                        :loading="isLoading" type="text" @click='onUpdateAvatarClick'>
-                        {{$t('updateAvatar')}}
-                      </el-button>
-                    </div>
-                  </div>
                 </el-form>
               </div>
 
@@ -68,6 +58,21 @@
                 :title="tipMessageObj.message"
                 :type="tipMessageObj.type">
               </el-alert>
+
+              <hr>
+
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <div class="update-avatar-area">
+                    <img class="preview-avatar" :src="imgDataUrl">
+                    <br>
+                    <el-button
+                      :loading="isLoading" type="text" @click='onUpdateAvatarClick'>
+                      {{$t('updateAvatar')}}
+                    </el-button>
+                  </div>
+                </div>
+              </div>
             </el-card>
           </div>
           <aside-list></aside-list>
@@ -217,3 +222,15 @@ export default{
   }
 }
 </script>
+
+<style lang="scss">
+.update-avatar-area{
+  width: 200px;
+  text-align: center;
+  margin: auto;
+  .preview-avatar{
+    border: 1px solid #d1dbe5;
+    border-radius: 50%;
+  }
+}
+</style>

@@ -802,7 +802,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import "../assets/scss/variables.scss";
 @charset "UTF-8";
 @-webkit-keyframes vicp_progress {
   0% {
@@ -1339,4 +1340,38 @@ export default {
     transition: opacity 1.2s ease-out, -webkit-transform 0.6s ease-out;
     transition: opacity 1.2s ease-out, transform 0.6s ease-out;
     transition: opacity 1.2s ease-out, transform 0.6s ease-out, -webkit-transform 0.6s ease-out; }
+
+
+@media screen and (max-width: $mobile-screen) {
+  .main .vue-image-crop-upload{
+    .vicp-wrap{
+      position: absolute;
+      width: 100%;
+      height: 90%;
+      max-height: 500px;
+      .vicp-crop{
+        .vicp-crop-left{
+          float: none;
+          .vicp-img-container{
+            height: 180px;
+            margin: auto;
+          }
+        }
+        .vicp-crop-right{
+          float: none;
+          .vicp-preview{
+            margin: auto;
+            width: 100%;
+            height: 130px;
+            .vicp-preview-item{
+              display: inline-block;
+              float: none;
+              margin: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 </style>

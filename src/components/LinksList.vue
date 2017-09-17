@@ -8,9 +8,8 @@
       <div class="no-result-tip" v-html="$t('noResultTip')"></div>
     </el-card>
   </div>
-  <div class="moudle" v-for="(item, index) in pdata" v-if="pdata.length > 0"
-    @click="onMoudleClick(item)">
-    <div class="content">
+  <div class="moudle" v-for="(item, index) in pdata" v-if="pdata.length > 0">
+    <div class="content" @click.self.prevent="onMoudleClick(item)">
       <div class="meta">
         <span class="item classify"
           @click.stop="onThemeClick(item.theme)">
@@ -23,7 +22,7 @@
         <span class="tag"
           v-for="(item, index) in item.tags" :key="index"
           @click.stop="onTagClick(item)"> {{ item }}
-        </span>tag
+        </span>
       </div>
       <h3 class="title">
         <a class="title-link" :href="item.urlPath" target="_blank">{{ item.title }}</a>

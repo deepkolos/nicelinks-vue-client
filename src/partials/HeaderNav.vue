@@ -27,19 +27,19 @@
       </div>
 
       <div class="find-more">
-        <el-dropdown @command="handleCommand">
+        <el-dropdown @command="handleCommand" trigger="click">
           <span class="el-dropdown-link">
             更多发现<i class="el-icon-caret-bottom el-icon--right"></i>
           </span>
-          <el-dropdown-menu slot="dropdown">
+          <el-dropdown-menu slot="dropdown" class="find-more-dropdown-menu">
             <el-dropdown-item command="ThemeCollection">
-              {{ $t('themeCollection') }}
+              <icon class="vector-icon" name="theme"></icon>{{ $t('themeCollection') }}
             </el-dropdown-item>
             <el-dropdown-item command="TagsCollection">
-              {{ $t('tagsCollection') }}
+              <icon class="vector-icon" name="tag"></icon>{{ $t('tagsCollection') }}
             </el-dropdown-item>
             <el-dropdown-item v-if="isAdminFlag" command="Manage">
-              {{ $t('management') }}
+              <i class="vector-icon el-icon-setting"></i>{{ $t('management') }}
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -216,11 +216,11 @@ export default {
     }
     .operate-link{
       display: inline-block;
-      margin-right: 20px;
+      margin-right: 12px;
       float: left;
     }
     .inject-btn, .find-more{
-      margin: 0 16px;
+      margin: 0 12px;
       display: inline-block;
       float: left;
     }
@@ -251,6 +251,19 @@ export default {
     width: 2rem;
     height: 2rem;
     margin: 0.1rem .5rem 0.1rem 0.1rem;
+  }
+  .vector-icon{
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    color: #130c0e;
+  }
+}
+
+.find-more-dropdown-menu{
+  .el-dropdown-menu__item{
+    display: flex !important;
+    align-items: center !important;
   }
 }
 </style>
