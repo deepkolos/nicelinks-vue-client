@@ -42,7 +42,7 @@ export default {
         pageCount: 1,
         pageSize: 15,
         sortType: -1,
-        sortTarget: 'created'
+        sortTarget: 'likes'
       },
       operateTabList: [
         {

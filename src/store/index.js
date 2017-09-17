@@ -17,7 +17,6 @@ import {STORAGE_KEY} from 'config/constant'
 Vue.use(Vuex)
 
 const state = {
-  isLogin: true,
   userId: '',
   userInfo: null
 }

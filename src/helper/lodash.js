@@ -19,5 +19,6 @@ export default {
   isEmpty: _.isEmpty,
   isFunction: _.isFunction,
   isArray: _.isArray,
-  isDate: _.isDate
+  isDate: _.isDate,
+  flattenDepth: _.flattenDepth
 }

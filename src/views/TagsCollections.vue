@@ -32,7 +32,7 @@ export default {
 
   created () {
     this.$apis.getAllTags().then(result => {
-      this.tagsList = result.sort()
+      this.tagsList = this.$_.flattenDepth(result.sort())
     }).catch((error) => {
       this.isLoading = false
       this.$message.error(`${error}`)
