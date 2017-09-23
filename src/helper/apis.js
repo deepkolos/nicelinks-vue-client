@@ -41,6 +41,14 @@ export default {
     return $ajax.get(requestUrl('getMyPublish'), data)
   },
 
+  getMyLikes (data) {
+    return $ajax.get(requestUrl('getMyLikes'), data)
+  },
+
+  getMyDislikes (data) {
+    return $ajax.get(requestUrl('getMyDislikes'), data)
+  },
+
   /* auth */
   checkIsExisted (data) {
     return $ajax.post(requestUrl('checkIsExisted'), data)

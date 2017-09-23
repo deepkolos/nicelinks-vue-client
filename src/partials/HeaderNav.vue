@@ -48,7 +48,7 @@
       <div class="account-dropdown" v-if="$isLogin()">
         <el-dropdown @command="handleCommand" trigger="click">
           <span class="el-dropdown-link">
-            <img class="avatar" src="https://secure.gravatar.com/avatar/aa70f832a1d99c89afcbfae9070f38d6?default=https%3A%2F%2Fcloud.digitalocean.com%2Favatars%2Fdefault42.png&secure=true" alt="">
+            <img class="avatar" :src="userAvatar" alt="">
             <span>{{ userSign }} </span>
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
@@ -100,6 +100,13 @@ export default {
     isAdminFlag () {
       if (this.userInfo) {
         return this.userInfo && this.userInfo.role === 'Admin'
+      }
+    },
+    userAvatar () {
+      if (this.userInfo) {
+        let defaultAvatar = 'http://image.nicelinks.site/default-avatar.jpeg'
+        let userAvatar = this.userInfo.profile && this.userInfo.profile.avatar
+        return `/api/avatar/${userAvatar}` || defaultAvatar
       }
     }
   },
