@@ -43,7 +43,7 @@ export default {
   }, {
     path: 'member/:id',
     meta: {
-      needAuth: true,
+      needAuth: false,
       title: setTitleLang('我的主页', 'My Homepage')
     },
     component: resolve => require(['views/Homepage'], resolve)

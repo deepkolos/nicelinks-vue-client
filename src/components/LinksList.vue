@@ -126,7 +126,7 @@ export default {
     },
 
     onUserClick (username) {
-      let userName = this.userInfo.username || this.userInfo._id
+      let userName = username || this.userInfo.username
       this.$router.push(`/member/${userName}`)
     },
 
@@ -175,7 +175,7 @@ export default {
         }
       }
       .meta{
-        font-size: 1rem;
+        font-size: 1.314rem;
         color: $meta-item-color;
         .item{
           cursor: pointer;

@@ -13,9 +13,15 @@
               </div>
 
               <el-tabs v-model="activeName" @tab-click="handleClick">
-                <el-tab-pane :label="$t('myPublish')" name="MyPublish"></el-tab-pane>
-                <el-tab-pane :label="$t('myLikes')" name="MyLikes"></el-tab-pane>
-                <el-tab-pane :label="$t('myDislikes')" name="MyDislikes"></el-tab-pane>
+                <el-tab-pane name="MyPublish"
+                  :label="isUserSelf ? $t('myPublish') : $t('hisPublish')">
+                </el-tab-pane>
+                <el-tab-pane name="MyLikes"
+                  :label="isUserSelf ? $t('myLikes') : $t('hisLikes')">
+                </el-tab-pane>
+                <el-tab-pane name="MyDislikes"
+                  :label="isUserSelf ? $t('myDislikes') : $t('hisDislikes')">
+                </el-tab-pane>
               </el-tabs>
               <links-list :pdata="myLinksList"></links-list>
             </el-card>
@@ -55,6 +61,12 @@ export default{
     }
   },
 
+  computed: {
+    isUserSelf () {
+      return this.userInfo && this.userInfo.username === this.$route.params.id
+    }
+  },
+
   created () {
     this.requestApiUpdateList(this.activeName)
   },
@@ -67,8 +79,13 @@ export default{
       }
 
       let currentApi = this.tabApiObj[index]
+      let params = {
+        username: this.$route.params.id,
+        userId: this.userInfo && this.userInfo._id || ''
+      }
+
       this.isLoading = true
-      this.$apis[currentApi]({userId: this.userInfo._id}).then(result => {
+      this.$apis[currentApi](params).then(result => {
         this.myLinksList = this.tabDataObj[index] = result
         this.isLoading = false
       }).catch((error) => {
@@ -86,12 +103,18 @@ export default{
     en: {
       myPublish: 'My Publish',
       myLikes: 'My Likes',
-      myDislikes: 'My Dislikes'
+      myDislikes: 'My Dislikes',
+      hisPublish: 'His Publish',
+      hisLikes: 'His Likes',
+      hisDislikes: 'His Dislikes'
     },
     zh: {
       myPublish: '我的发布',
       myLikes: '我的点赞',
-      myDislikes: '我的狂踩'
+      myDislikes: '我的狂踩',
+      hisPublish: '他的发布',
+      hisLikes: '他的点赞',
+      hisDislikes: '他的狂踩'
     }
   }
 }
