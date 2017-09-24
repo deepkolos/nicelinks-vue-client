@@ -15,6 +15,11 @@ export default {
   warmReminder: '温馨提示',
   niceLinksStr: '倾城之链',
 
+  skill: '技术客栈',
+  resource: '资源之家',
+  life: '写意人生',
+  info: '信息快讯',
+
   injectLinks: '注入新链接',
   findMore: '发现更多',
   themeCollection: '倾城主题集',
@@ -54,5 +59,6 @@ export default {
   rewardme: '倾情打赏',
 
   enterPwdTip: '请输入密码(至少包含一个字母和数字，6至18位)',
-  enterLegalPwdTip: '请输入合法密码'
+  enterLegalPwdTip: '请输入合法密码',
+  enterLegalUrl: '请输入合法地址'
 }

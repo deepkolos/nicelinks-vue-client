@@ -5,7 +5,8 @@
       <div class="form form-horizontal">
         <el-form :model="fillForm" :rules="rules" ref="fillForm">
           <div class="form-group">
-            <label class="col-sm-3 control-label"> {{ this.$t('linkAddressStr') }} <em>*</em>：</label>
+            <label class="col-sm-3 control-label">
+                {{ this.$t('linkAddressStr') }} <em>*</em>：</label>
             <div class="col-sm-8">
               <el-form-item prop="urlPath">
                 <el-input
@@ -34,8 +35,8 @@
                 <el-select class="wrap-block" v-model="fillForm.classify"
                   :placeholder="this.$t('pleaseSelect') + this.$t('linkClassifyStr')">
                   <el-option
-                    v-for="item in classifyList" :key="item.key"
-                    :label="item.key"
+                    v-for="item in classifyList" :key="item.value"
+                    :label="$t(item.name)"
                     :value="item.value">
                   </el-option>
                 </el-select>

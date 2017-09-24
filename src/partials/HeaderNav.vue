@@ -70,8 +70,10 @@
       </div>
       <div v-else class="not-loggedin">
         <el-button type="text" @click="onGotoLoginClick">{{ $t('signIn') }}</el-button>
-        <span>/</span>
-        <el-button type="text" @click="onGotoSignUpClick">{{ $t('signUp') }}</el-button>
+        <span v-if="isShowSignUp">/</span>
+        <el-button v-if="isShowSignUp" type="text" @click="onGotoSignUpClick">
+          {{ $t('signUp') }}
+        </el-button>
       </div>
     </nav>
   </header>
@@ -80,8 +82,6 @@
 
 <script>
 import $config from 'config'
-import Cookies from 'js-cookie'
-import Vue from 'vue'
 
 export default {
   data () {
@@ -111,8 +111,11 @@ export default {
       if (this.userInfo) {
         let defaultAvatar = 'http://image.nicelinks.site/default-avatar.jpeg'
         let userAvatar = this.userInfo.profile && this.userInfo.profile.avatar
-        return `/api/avatar/${userAvatar}` || defaultAvatar
+        return userAvatar ? `/api/avatar/${userAvatar}` : defaultAvatar
       }
+    },
+    isShowSignUp () {
+      return window.innerWidth >= 480 || this.$getCurrentLang() === 'zh'
     }
   },
 
@@ -155,9 +158,7 @@ export default {
     },
 
     onSwitchLangClick () {
-      let currentLang = Vue.config.lang === 'zh' ? 'en' : 'zh'
-      Vue.config.lang = currentLang
-      Cookies.set('lang', currentLang)
+      this.$switchLang()
     },
 
     onLogoClick () {
@@ -198,20 +199,6 @@ export default {
       }).catch((error) => {
         this.$message.error(`${error}`)
       })
-    }
-  },
-  locales: {
-    zh: {
-      skill: '技术客栈',
-      resource: '资源之家',
-      life: '写意人生',
-      info: '信息快讯'
-    },
-    en: {
-      skill: 'Technical Inn',
-      resource: 'Resources',
-      life: 'Life Art',
-      info: 'Information'
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="login-wrap">
-    <div class="login-box">
+    <div class="login-box" v-loading.body="isLoading">
       <a href="/"><img src="../assets/images/nice_links.png" alt="nice links logo"></a>
       <h3>{{ isSignUpPage ? $t('signUp') : $t('signIn') }}</h3>
       <div class="form-group">
@@ -31,11 +31,11 @@
             <template slot="prepend"><icon class="icons" name="password"></icon></template>
           </el-input>
         </el-form-item>
-        <el-button type="primary" :loading="isLoading" v-if="!isSignUpPage"
+        <el-button type="primary" v-if="!isSignUpPage"
           @click="onLoginClick" size="large">{{ $t('signIn') }}</el-button>
-        <el-button :loading="isLoading" v-else
+        <el-button v-else
           @click="onSignupClick" size="large">{{ $t('signUp') }}</el-button>
-        <el-button type="text" :loading="isLoading"
+        <el-button type="text"
           @click="onForgotPwdClick" size="large">{{ $t('forgetPwd') }}</el-button>
       </el-form>
     </div>

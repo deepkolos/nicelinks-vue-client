@@ -11,7 +11,7 @@
             <el-table :data="tableData" stripe style="width: 100%">
               <el-table-column prop="classify" :label="$t('linkClassifyStr')" width="100">
                 <template scope="scope">
-                  {{ classifyList[scope.row.classify]['key'] }}
+                  {{ $t(classifyList[scope.row.classify]['name']) }}
                 </template>
               </el-table-column>
               <el-table-column prop="active" label="是否已激活" width="100">

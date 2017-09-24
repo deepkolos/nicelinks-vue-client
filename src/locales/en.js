@@ -15,6 +15,11 @@ export default {
   warmReminder: 'Warm Reminder',
   niceLinksStr: 'Nice Links',
 
+  skill: 'Technical Inn',
+  resource: 'Resources',
+  life: 'Life Art',
+  info: 'Information',
+
   injectLinks: 'Inject New Link',
   findMore: 'Find More',
   themeCollection: 'Theme Collections',
@@ -53,5 +58,6 @@ export default {
   rewardme: 'Reward Me',
 
   enterPwdTip: 'Enter Password(Contains at least one letter and number, 6-18)',
-  enterLegalPwdTip: 'Enter A Valid Password'
+  enterLegalPwdTip: 'Enter A Valid Password',
+  enterLegalUrl: 'Please enter a valid address'
 }

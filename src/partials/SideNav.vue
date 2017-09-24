@@ -8,7 +8,7 @@
       </template>
       <el-menu-item v-for="(item, index) in navList"
         :key="item.value" @click="handleClick(item)" :index="item.name">
-        {{ item.key }}
+        {{ $t(item.name) }}
       </el-menu-item>
     </el-submenu>
     <el-menu-item index="2" @click="onActivateInjectDlg">
@@ -20,7 +20,10 @@
     <el-menu-item index="4" @click="onTagsClick">
       <icon class="sidenav-icon" name="tag"></icon>{{ $t('tagsCollection') }}
     </el-menu-item>
-    <el-menu-item index="5" v-if="isAdminFlag" @click="onManageClick">
+    <el-menu-item index="5" @click="onSwitchLangClick">
+      <icon class="sidenav-icon" name="switch-lang"></icon>{{ $t('switchLang') }}
+    </el-menu-item>
+    <el-menu-item index="6" v-if="isAdminFlag" @click="onManageClick">
       <i class="sidenav-icon el-icon-setting"></i>{{ $t('management') }}
     </el-menu-item>
   </el-menu>
@@ -65,6 +68,11 @@ export default {
 
     onTagsClick () {
       this.$router.push('/collections/tags')
+      this.triggerSideNav()
+    },
+
+    onSwitchLangClick () {
+      this.$switchLang()
       this.triggerSideNav()
     },
 
