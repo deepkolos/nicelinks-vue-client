@@ -34,9 +34,6 @@ export default {
   },
 
   watch: {
-    $router (val) {
-      console.log(val)
-    }
   },
 
   created () {

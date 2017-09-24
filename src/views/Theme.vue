@@ -40,8 +40,11 @@ export default {
     let params = {}
     params.theme = decodeURIComponent(this.$route.params.theme)
     params.userId = this.userInfo && this.userInfo._id || ''
+
+    this.isLoading = true
     this.$apis.getNiceLinks(params).then(result => {
       this.niceLinksArr = result
+      this.isLoading = false
     }).catch((error) => {
       this.isLoading = false
       this.$message.error(`${error}`)
