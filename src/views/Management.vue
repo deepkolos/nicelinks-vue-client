@@ -88,7 +88,7 @@ export default{
         sortType: -1,
         sortTarget: 'created'
       },
-      currentRowData: []
+      currentRowData: {}
     }
   },
 

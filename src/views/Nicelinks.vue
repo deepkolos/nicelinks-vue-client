@@ -6,7 +6,8 @@
           <div class="entry-list">
             <div class="operate-sort">
               <el-tabs v-model="activeName" type="card" @tab-click="onHandleClick">
-                <el-tab-pane v-for="(item, index) in operateTabList" :label="item.label" :name="item.name">
+                <el-tab-pane v-for="(item, index) in operateTabList"
+                  :label="$t(item.name)" :name="item.name">
                 </el-tab-pane>
               </el-tabs>
             </div>
@@ -15,7 +16,7 @@
               <el-button type="primary" icon="plus" size="large" v-if="isShowLoadMore"
                 @click="onLoadMoreClick">{{ $t('loadMoreStr') }}
               </el-button>
-              <el-alert v-else title="大人，暂未能获取到更多数据" type="info"> </el-alert>
+              <el-alert v-else :title="$t('noMoreInfo')" type="info"> </el-alert>
             </div>
           </div>
           <aside-list></aside-list>
@@ -46,19 +47,16 @@ export default {
       },
       operateTabList: [
         {
-          label: '热门分享',
           name: 'hot',
           sortTarget: 'likes',
           sortType: -1
         },
         {
-          label: '最新分享',
           name: 'new',
           sortTarget: 'created',
           sortType: -1
         },
         {
-          label: '最早分享',
           name: 'old',
           sortTarget: 'created',
           sortType: 1
@@ -135,6 +133,21 @@ export default {
     },
 
     onHandleClick () {
+    }
+  },
+
+  locales: {
+    zh: {
+      hot: '热门分享',
+      new: '最新分享',
+      old: '最早分享',
+      noMoreInfo: '大人，暂未能获取到更多数据'
+    },
+    en: {
+      hot: 'Popular Share',
+      new: 'Latest Share',
+      old: 'Earliest Share',
+      noMoreInfo: 'King, No more data available yet.'
     }
   }
 }

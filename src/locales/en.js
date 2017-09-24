@@ -20,6 +20,7 @@ export default {
   themeCollection: 'Theme Collections',
   tagsCollection: 'Tags Collections',
   management: 'Management',
+  switchLang: 'Switch Lang',
   isAcive: 'Is Acive',
 
   linkAddressStr: 'Address Link',

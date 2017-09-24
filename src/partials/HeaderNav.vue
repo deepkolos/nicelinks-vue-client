@@ -15,7 +15,7 @@
       <div class="operate-link">
         <el-tabs v-model="activeName" @tab-click="handleClick">
           <el-tab-pane v-for="item in navList"
-            :key="item.value" :label="item.key" :name="item.name">
+            :key="item.value" :label="$t(item.name)" :name="item.name">
           </el-tab-pane>
         </el-tabs>
       </div>
@@ -29,7 +29,7 @@
       <div class="find-more">
         <el-dropdown @command="handleCommand" trigger="click">
           <span class="el-dropdown-link">
-            更多发现<i class="el-icon-caret-bottom el-icon--right"></i>
+            {{ $t('findMore') }}<i class="el-icon-caret-bottom el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown" class="find-more-dropdown-menu">
             <el-dropdown-item command="ThemeCollection">
@@ -37,6 +37,9 @@
             </el-dropdown-item>
             <el-dropdown-item command="TagsCollection">
               <icon class="vector-icon" name="tag"></icon>{{ $t('tagsCollection') }}
+            </el-dropdown-item>
+            <el-dropdown-item command="SwitchLang">
+              <icon class="vector-icon" name="switch-lang"></icon>{{ $t('switchLang') }}
             </el-dropdown-item>
             <el-dropdown-item v-if="isAdminFlag" command="Manage">
               <i class="vector-icon el-icon-setting"></i>{{ $t('management') }}
@@ -77,6 +80,8 @@
 
 <script>
 import $config from 'config'
+import Cookies from 'js-cookie'
+import Vue from 'vue'
 
 export default {
   data () {
@@ -149,6 +154,12 @@ export default {
       this.$router.push('/manage')
     },
 
+    onSwitchLangClick () {
+      let currentLang = Vue.config.lang === 'zh' ? 'en' : 'zh'
+      Vue.config.lang = currentLang
+      Cookies.set('lang', currentLang)
+    },
+
     onLogoClick () {
       this.$router.push('/')
       this.$bus.emit('fetch-search')
@@ -187,6 +198,20 @@ export default {
       }).catch((error) => {
         this.$message.error(`${error}`)
       })
+    }
+  },
+  locales: {
+    zh: {
+      skill: '技术客栈',
+      resource: '资源之家',
+      life: '写意人生',
+      info: '信息快讯'
+    },
+    en: {
+      skill: 'Technical Inn',
+      resource: 'Resources',
+      life: 'Life Art',
+      info: 'Information'
     }
   }
 }

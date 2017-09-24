@@ -20,6 +20,7 @@ export default {
   themeCollection: '倾城主题集',
   tagsCollection: '倾城标签集',
   management: '后台管理',
+  switchLang: '切换语言',
   isAcive: '是否激活',
 
   linkAddressStr: '链接地址',

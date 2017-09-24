@@ -3,7 +3,10 @@
     <footer class="footer">
       <div class="footer-body">
         <div class="content">
-          <p><a target="_blank" class="link" href="/">倾城之链</a>: 云集世间优秀站点</p>
+          <p>
+            <a target="_blank" class="link" href="/">{{ $t('niceLinks') }}</a>
+            : {{ $t('mySiteFunc') }}
+          </p>
         </div>
         <div class="contact">
           <a v-for="item in contactArray"
@@ -17,7 +20,8 @@
         </div>
         <div class="icp">
           <span>{{ copyright }}</span>
-          <a class="link" target="_blank" href="http://jeffjade.com">晚晴幽草轩</a>出品
+          <a class="link" target="_blank" href="http://jeffjade.com">晚晴幽草轩</a>
+          {{ $t('produced') }}
         </div>
       </div>
     </footer>
@@ -53,6 +57,19 @@ export default {
       return sourceData.filter((element) => {
         return isMobile ? !element['notInMobile'] : true
       })
+    }
+  },
+
+  locales: {
+    zh: {
+      niceLinks: '倾城之链',
+      mySiteFunc: '云集世间优秀站点',
+      produced: '出品'
+    },
+    en: {
+      niceLinks: 'Nice Links',
+      mySiteFunc: 'Gathered in the world excellent site',
+      produced: 'Produced'
     }
   }
 }
