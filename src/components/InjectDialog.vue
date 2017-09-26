@@ -182,6 +182,7 @@ export default {
               message: this.$t('successAddTip'),
               type: 'success'
             })
+            this.$refs.fillForm.resetFields()
             this.$bus.emit('inject-success')
           }).catch((error) => {
             console.log(error)
