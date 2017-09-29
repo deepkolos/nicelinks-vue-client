@@ -186,15 +186,20 @@ export default {
         }
         .tag{
           cursor: pointer;
+          &:hover{
+            color: $element-blue;
+          }
         }
         .tag + .tag{
           &:before{
             margin: 0 .1em;
             content: "/";
+            color: $meta-item-color;
           }
         }
         .classify{
           color: $meta-classify-color;
+          font-size: 500;
         }
       }
       .action-list{

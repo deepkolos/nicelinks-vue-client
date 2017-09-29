@@ -162,6 +162,7 @@ export default {
     },
 
     onLogoClick () {
+      this.$bus.$emit('trigger-sidenav')
       this.$router.push('/')
       this.$bus.emit('fetch-search')
     },

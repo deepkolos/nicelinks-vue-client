@@ -24,7 +24,7 @@ export default {
   data () {
     return {
       isShowVisitCount: false,
-      activeNames: []
+      activeNames: ['friendshipLinks']
     }
   },
 
