@@ -27,7 +27,7 @@
       <h3 class="title">
         <a class="title-link" :href="item.urlPath" target="_blank">{{ item.title }}</a>
       </h3>
-      <slot></slot>
+      <slot name="link-desc"></slot>
       <div class="action-list">
         <div class="action-item" @click.stop="onLikeClick(item)">
           <icon class="icons" :name="item.isLikes ? 'likes-down' : 'likes'"></icon>
@@ -38,6 +38,7 @@
           <span class="item-num">{{ item.dislikes }}</span>
         </div>
       </div>
+      <slot name="link-share"></slot>
     </div>
   </div>
 </div>

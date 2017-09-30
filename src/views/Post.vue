@@ -5,7 +5,13 @@
         <div class="main-container">
           <div class="entry-list">
             <links-list :pdata="niceLinksArr">
-              <div class="link-desc" v-html="niceLinksArr[0] && niceLinksArr[0].desc"></div>
+              <div slot="link-desc" class="link-desc" v-html="niceLinksArr[0] && niceLinksArr[0].desc">
+              </div>
+              <social-share slot="link-share"
+                :share-url="currentPath"
+                :share-content="makeShareContent(niceLinksArr[0])"
+                :hashtags="makeShareTags(niceLinksArr[0])">
+              </social-share>
             </links-list>
           </div>
           <aside-list></aside-list>
@@ -16,23 +22,25 @@
 </template>
 
 <script>
+import SocialShare from 'components/SocialShare'
+
 export default {
   name: 'Post',
 
   data () {
     return {
       isLoading: false,
-      niceLinksArr: []
+      niceLinksArr: [],
+      currentPath: window.document.location.href,
+      shareTitle: ''
     }
   },
 
   watch: {
-    $router (val) {
-      console.log(val)
-    }
   },
 
   components: {
+    SocialShare
   },
 
   created () {
@@ -53,6 +61,15 @@ export default {
   },
 
   methods: {
+    makeShareContent (item = {}) {
+      let defaultText = '我在#倾城之链#发现绝好网站 —— @NAME：@URL (@DESC)；欢迎前来围观、品评。'
+      return defaultText.replace('@NAME', item.title).replace('@URL', item.urlPath).replace('@DESC', item.desc)
+    },
+
+    makeShareTags (item = {}) {
+      let defaultTagsStr = 'Skill,Resource,Life,Information'
+      return item.tags ? item.tags.join(',') : defaultTagsStr
+    }
   }
 }
 </script>

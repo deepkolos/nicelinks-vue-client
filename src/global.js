@@ -6,11 +6,13 @@ import locales from './locales'
 
 import Cookies from 'js-cookie'
 import VueBus from 'vue-bus'
+import SocialSharing from 'vue-social-sharing'
 import { $apis, $util, $document, $auth, $lodash } from 'helper'
 
 Vue.use(ElementUI)
 Vue.use(VueI18n)
 Vue.use(VueBus)
+Vue.use(SocialSharing)
 
 Vue.prototype.$apis = $apis
 Vue.prototype.$util = $util
