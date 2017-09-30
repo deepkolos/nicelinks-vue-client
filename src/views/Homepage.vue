@@ -23,7 +23,7 @@
                   :label="isUserSelf ? $t('myDislikes') : $t('hisDislikes')">
                 </el-tab-pane>
               </el-tabs>
-              <links-list :pdata="myLinksList"></links-list>
+              <links-list :pdata="myLinksList" :is-loading="isLoading"></links-list>
             </el-card>
           </div>
           <aside-list></aside-list>

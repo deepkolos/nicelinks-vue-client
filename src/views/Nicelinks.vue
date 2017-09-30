@@ -11,7 +11,7 @@
                 </el-tab-pane>
               </el-tabs>
             </div>
-            <links-list :pdata="niceLinksArr"></links-list>
+            <links-list :pdata="niceLinksArr" :is-loading="isLoading"></links-list>
             <div class="load-more">
               <el-button type="primary" icon="plus" size="large" v-if="isShowLoadMore"
                 @click="onLoadMoreClick">{{ $t('loadMoreStr') }}

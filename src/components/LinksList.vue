@@ -1,13 +1,17 @@
 <template>
 <div class="links-list">
-  <div v-if="pdata.length <= 0">
-    <el-card class="box-card">
-      <div slot="header" class="clearfix">
-        <h4>{{ $t('warmReminder') }}</h4>
-      </div>
-      <div class="no-result-tip" v-html="$t('noResultTip')"></div>
-    </el-card>
+  <div class="moudle" v-if="pdata.length <= 0">
+    <div class="content">
+      <el-card class="box-card" v-if="!isLoading">
+        <div slot="header" class="clearfix">
+          <h4>{{ $t('warmReminder') }}</h4>
+        </div>
+        <div class="no-result-tip" v-html="$t('noResultTip')"></div>
+      </el-card>
+      <content-placeholder v-else slot="link-desc" :rows="placeholderRows"></content-placeholder>
+    </div>
   </div>
+
   <div class="moudle" v-for="(item, index) in pdata" v-if="pdata.length > 0">
     <div class="content" @click.self.prevent="onMoudleClick(item)">
       <div class="meta">
@@ -45,6 +49,7 @@
 </template>
 
 <script>
+import ContentPlaceholder from 'vue-content-placeholder'
 import $config from 'config'
 
 export default {
@@ -53,7 +58,37 @@ export default {
     return {
       classifyList: $config.classify,
       themeList: $config.theme,
-      tagsList: $config.tags
+      tagsList: $config.tags,
+      placeholderRows: [
+        {
+          height: '2rem',
+          boxes: [[0, '30%']]
+        },
+        {
+          height: '1rem',
+          boxes: [[0, 0]]
+        },
+        {
+          height: '1rem',
+          boxes: [['3rem', '88%']]
+        },
+        {
+          height: '1rem',
+          boxes: [[0, 0]]
+        },
+        {
+          height: '1rem',
+          boxes: [['3rem', '88%']]
+        },
+        {
+          height: '2rem',
+          boxes: [[0, 0]]
+        },
+        {
+          height: '2rem',
+          boxes: [[0, '88%']]
+        }
+      ]
     }
   },
 
@@ -61,10 +96,15 @@ export default {
     pdata: {
       type: [Array, Object],
       default: []
+    },
+    isLoading: {
+      type: Boolean,
+      default: false
     }
   },
 
   components: {
+    ContentPlaceholder
   },
 
   created () {
@@ -82,7 +122,6 @@ export default {
         let actionIdx = action === 'likes' ? 'isLikes' : 'isDislikes'
         row[actionIdx] = !row[actionIdx]
       }).catch((error) => {
-        this.isLoading = false
         this.$message.error(`${error}`)
       })
     },

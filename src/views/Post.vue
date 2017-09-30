@@ -1,12 +1,11 @@
 <template>
   <div id="post-page" class="wrapper">
-    <div class="panel-default" v-loading.body="isLoading">
+    <div class="panel-default">
       <div class="panel-body">
         <div class="main-container">
           <div class="entry-list">
-            <links-list :pdata="niceLinksArr">
-              <div slot="link-desc" class="link-desc" v-html="niceLinksArr[0] && niceLinksArr[0].desc">
-              </div>
+            <links-list :pdata="niceLinksArr" :is-loading="isLoading">
+              <div slot="link-desc" class="link-desc" v-html="niceLinksArr[0] && niceLinksArr[0].desc"></div>
               <social-share slot="link-share"
                 :share-url="currentPath"
                 :share-content="makeShareContent(niceLinksArr[0])"
@@ -29,7 +28,7 @@ export default {
 
   data () {
     return {
-      isLoading: false,
+      isLoading: true,
       niceLinksArr: [],
       currentPath: window.document.location.href,
       shareTitle: ''

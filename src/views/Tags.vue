@@ -4,7 +4,7 @@
       <div class="panel-body">
         <div class="main-container">
           <div class="entry-list">
-            <links-list :pdata="niceLinksArr"></links-list>
+            <links-list :pdata="niceLinksArr" :is-loading="isLoading"></links-list>
           </div>
           <aside-list></aside-list>
         </div>
