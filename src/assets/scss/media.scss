@@ -9,8 +9,8 @@
 
 @media screen and (max-width: $mobile-screen) {
   .icons{
-    width: 2em;
-    height: 2em;
+    width: 2rem;
+    height: 2rem;
     margin: 0 .77em;
   }
   .button{
@@ -36,11 +36,16 @@
         left: 50%;
         right: 50%;
         transform: translate(-50%);
-        margin: 9px 0px;
+        margin: 0px;
       }
       .header-logo-a{
         display: inline-block;
         width: 100%;
+        height: $header-mobile-height;
+        .header-logo-img{
+          width: 80%;
+          margin: 10px 0;
+        }
       }
       .menu{
         display: block;

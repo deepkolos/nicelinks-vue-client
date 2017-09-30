@@ -36,10 +36,10 @@ export default {
   },
 
   created () {
-    this.$bus.on('trigger-sidenav', () => {
+    this.$bus.on('trigger-sidenav', (isHide = false) => {
       let app = document.getElementById('app')
-      app.className = !app.className ? 'menu-expand' : ''
-      this.isShowSideNav = !this.isShowSideNav
+      app.className = (!isHide && !app.className) ? 'menu-expand' : ''
+      this.isShowSideNav = !isHide && !this.isShowSideNav
     })
 
     this.$bus.on('activate-inject-dlg', () => {

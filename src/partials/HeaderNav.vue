@@ -162,7 +162,7 @@ export default {
     },
 
     onLogoClick () {
-      this.$bus.$emit('trigger-sidenav')
+      this.$bus.$emit('trigger-sidenav', true)
       this.$router.push('/')
       this.$bus.emit('fetch-search')
     },
@@ -224,8 +224,8 @@ export default {
     .header-logo{
       display: inline-block;
       float: left;
-      margin: 18px 20px 18px 0;
-      width: 13em;
+      margin: 15px 0;
+      width: 180px;
       .header-logo-a{
         height: $header-height / 2;
         color: #333;
@@ -240,11 +240,13 @@ export default {
       float: left;
     }
     .inject-btn, .find-more{
+      cursor: pointer;
       margin: 0 12px;
       display: inline-block;
       float: left;
     }
     .account-dropdown{
+      cursor: pointer;
       display: inline-block;
       float: right;
       .avatar{
