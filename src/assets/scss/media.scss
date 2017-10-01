@@ -13,6 +13,9 @@
     height: 2rem;
     margin: 0 .77em;
   }
+  .form-group{
+    margin-bottom: 10px;
+  }
   .button{
     color: #111;
     background-image: radial-gradient(circle farthest-corner at center, #eee 20%, #ccc 68%)
@@ -113,6 +116,9 @@
   #app .header .nav .not-loggedin,
   #app .header .nav .el-dropdown{
     margin-right: 0;
+  }
+  .el-card__body{
+    padding: 15px 10px;
   }
 }
 

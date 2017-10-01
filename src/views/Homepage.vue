@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" id="homepage">
+  <div class="wrapper homepage">
     <div class="panel-default" v-loading.body="isLoading">
       <div class="panel-body">
         <div class="main-container">
@@ -34,14 +34,14 @@
                     <p class="nickname" v-if="mUserInfo.profile.nickname">
                       {{ mUserInfo.profile.nickname }}
                     </p>
-                    <p class="gray">{{ nicerNumText }}</p>
+                    <span class="gray">{{ nicerNumText }}</span>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-3 control-label">{{$t('personalWebsite')}}:</label>
                   <div class="col-sm-6">
                     <p class="text-padding" v-if="!mUserInfo.profile.website">
-                      $t('noFill')
+                      {{ $t('noFill') }}
                     </p>
                     <el-button v-else type="text" @click="onLinkClick(mUserInfo.profile)">
                       {{ mUserInfo.profile.website }}
@@ -51,7 +51,7 @@
                 <div class="form-group">
                   <label class="col-sm-3 control-label">{{$t('profile')}}:</label>
                   <div class="col-sm-6">
-                    <p class="text-padding">
+                    <p class="text-padding gray">
                       {{ mUserInfo.profile.description || $t('noFill') }}
                     </p>
                   </div>
@@ -195,28 +195,34 @@ export default{
 @import "./../assets/scss/variables.scss";
 @import './../assets/scss/mixins.scss';
 
-.base-info{
-  .avatar{
-    float: left;
-    border-radius: 50%;
-    height: 80px;
-    width: 80px;
-    box-shadow: 0 0 0 2px #fff;
-    position: relative;
-    margin: 0;
+.homepage{
+  .el-card__header{
+    padding: 10px 10px;
   }
-  .info{
-    @include flex-box-center(column, space-around, left);
-    height: 80px;
-    float: left;
-    margin-left: 15px;
-    .username{
-      font-size: $font-large;
-      font-weight: 500;
+  .base-info{
+    .avatar{
+      float: left;
+      border-radius: 50%;
+      height: 6rem;
+      width: 6rem;
+      box-shadow: 0 0 0 2px #fff;
+      position: relative;
+      margin: 0;
     }
-  }
-  .text-padding{
-    padding: 10px 0;
+    .info{
+      @include flex-box-center(column, space-around, left);
+      width: calc(100% - 7rem);
+      height: 6rem;
+      float: left;
+      margin-left: 1rem;
+      .username{
+        font-size: $font-large;
+        font-weight: 500;
+      }
+    }
+    .text-padding{
+      padding: 10px 0;
+    }
   }
 }
 </style>
