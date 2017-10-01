@@ -86,6 +86,10 @@ export default {
     return $ajax.post(requestUrl('setProfile'), data)
   },
 
+  getUserInfo (data) {
+    return $ajax.get(requestUrl('getUserInfo'), data)
+  },
+
   crawlLinksInfo (data) {
     return $ajax.get(requestUrl('crawlLinksInfo'), data)
   },
