@@ -31,8 +31,29 @@
                   <img class="avatar" :src="userAvatar" alt="">
                   <div class="info">
                     <p class="username">{{ mUserInfo.username }}</p>
-                    <p class="nickname" v-if="mUserInfo.nickname">{{ mUserInfo.nickname }}</p>
+                    <p class="nickname" v-if="mUserInfo.profile.nickname">
+                      {{ mUserInfo.profile.nickname }}
+                    </p>
                     <p class="gray">{{ nicerNumText }}</p>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">{{$t('personalWebsite')}}:</label>
+                  <div class="col-sm-6">
+                    <p class="text-padding" v-if="!mUserInfo.profile.website">
+                      $t('noFill')
+                    </p>
+                    <el-button v-else type="text" @click="onLinkClick(mUserInfo.profile)">
+                      {{ mUserInfo.profile.website }}
+                    </el-button>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">{{$t('profile')}}:</label>
+                  <div class="col-sm-6">
+                    <p class="text-padding">
+                      {{ mUserInfo.profile.description || $t('noFill') }}
+                    </p>
                   </div>
                 </div>
               </el-card>
@@ -59,7 +80,9 @@ export default{
       isShowBaseInfo: true,
       activeName: 'BaseInfo',
       myLinksList: [],
-      mUserInfo: {},
+      mUserInfo: {
+        profile: {}
+      },
       nicerNumText: '',
       tabApiObj: {
         MyPublish: 'getMyPublish',
@@ -97,8 +120,10 @@ export default{
       let params = {username: this.$route.params.id}
       this.$apis.getUserInfo(params).then(result => {
         this.mUserInfo = result
-        let cTemp = this.$t('nicerNumText').replace('@X', 1)
-        this.nicerNumText = cTemp.replace('@TIME', result.activeTime || result.createdAt)
+        let cTemp = this.$t('nicerNumText').replace('@X', result.number || 1)
+        let joinTime = result.activeTime || result.createdAt
+        joinTime = (new Date(joinTime)).Format('yyyy-MM-dd hh:mm:ss')
+        this.nicerNumText = cTemp.replace('@TIME', joinTime)
       }).catch((error) => {
         this.$message.error(`${error}`)
         this.isLoading = true
@@ -132,6 +157,10 @@ export default{
       if (item.name !== 'BaseInfo') {
         this.requestApiUpdateList(item.name)
       }
+    },
+
+    onLinkClick (item) {
+      item.website ? document.location.href = item.website : ''
     }
   },
 
@@ -144,7 +173,8 @@ export default{
       hisPublish: 'His Publish',
       hisLikes: 'His Likes',
       hisDislikes: 'His Dislikes',
-      nicerNumText: 'Nice Links Member No. @X, Join in @TIME'
+      nicerNumText: 'Nice Links Member No. @X, Join in @TIME',
+      noFill: 'Not yet filled'
     },
     zh: {
       baseInfo: '基本信息',
@@ -154,7 +184,8 @@ export default{
       hisPublish: '他的发布',
       hisLikes: '他的点赞',
       hisDislikes: '他的狂踩',
-      nicerNumText: '倾城之链第 @X 号成员，加入于 @TIME'
+      nicerNumText: '倾城之链第 @X 号成员，加入于 @TIME',
+      noFill: '暂未填写'
     }
   }
 }
@@ -179,6 +210,13 @@ export default{
     height: 80px;
     float: left;
     margin-left: 15px;
+    .username{
+      font-size: $font-large;
+      font-weight: 500;
+    }
+  }
+  .text-padding{
+    padding: 10px 0;
   }
 }
 </style>
