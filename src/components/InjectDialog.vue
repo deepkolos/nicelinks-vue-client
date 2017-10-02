@@ -99,6 +99,8 @@
 import $config from 'config'
 
 export default {
+  name: 'InjectDialog',
+
   data () {
     return {
       isShowDlgFlag: false,

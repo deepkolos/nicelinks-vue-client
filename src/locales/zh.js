@@ -12,6 +12,7 @@ export default {
   cancel: '取 消',
   confirm: '确 定',
   update: '更 新',
+  operation: '操作',
   warmReminder: '温馨提示',
   niceLinksStr: '倾城之链',
 

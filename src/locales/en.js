@@ -12,6 +12,7 @@ export default {
   cancel: 'Cancel',
   confirm: 'Confirm',
   update: 'Update',
+  operation: 'Operation',
   warmReminder: 'Warm Reminder',
   niceLinksStr: 'Nice Links',
 

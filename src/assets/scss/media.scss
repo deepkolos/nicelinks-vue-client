@@ -72,6 +72,7 @@
 
   #app .side-nav{
     top: $header-mobile-height;
+    height: calc(100% - 60px);
   }
 
   #app .menu-expand{
@@ -108,6 +109,9 @@
       .page-responsive{
         overflow: hidden;
       }
+      .el-card__body{
+        padding: 15px 10px;
+      }
     }
   }
 }
@@ -116,9 +120,6 @@
   #app .header .nav .not-loggedin,
   #app .header .nav .el-dropdown{
     margin-right: 0;
-  }
-  .el-card__body{
-    padding: 15px 10px;
   }
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <div id="inject-links-dlg">
+  <div id="edit-dialog">
     <el-dialog stripe :title="$t('injectLinks')"
       v-model="isShowDlgFlag" size="small" v-loading.body="isLoading">
       <div class="form form-horizontal">
@@ -35,7 +35,7 @@
                   :placeholder="this.$t('pleaseSelect') + this.$t('linkClassifyStr')">
                   <el-option
                     v-for="item in classifyList" :key="item.key"
-                    :label="item.key"
+                    :label="$t(item.name)"
                     :value="item.value">
                   </el-option>
                 </el-select>
@@ -108,6 +108,8 @@
 import $config from 'config'
 
 export default {
+  name: 'EditDialog',
+
   data () {
     return {
       isShowDlgFlag: false,
@@ -176,9 +178,9 @@ export default {
           this.isLoading = true
 
           let params = this.$_.clone(this.fillForm, true)
-          params.userId = this.userInfo && this.userInfo._id
-          params.role = this.userInfo && this.userInfo.role
-          params.createdBy = this.userInfo && this.userInfo.username
+          // 其基本信息不能改变，只是加上管理者 Id & Role @17-10-02；
+          params.managerId = this.userInfo && this.userInfo._id
+          params.managerRole = this.userInfo && this.userInfo.role
 
           this.$apis.updateNiceLinks(params).then(result => {
             this.isLoading = false

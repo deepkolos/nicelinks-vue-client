@@ -14,12 +14,14 @@
                   {{ $t(classifyList[scope.row.classify]['name']) }}
                 </template>
               </el-table-column>
-              <el-table-column prop="active" label="是否已激活" width="100">
+              <el-table-column prop="active" :label="$t('isActived')" width="100">
                 <template scope="scope">
                   <el-tag :type="scope.row.active ? 'success' : 'error'">
-                    {{ scope.row.active ? '是' : '否' }}
+                    {{ scope.row.active ? $t('yes') : $t('no') }}
                   </el-tag>
                 </template>
+              </el-table-column>
+              <el-table-column prop="createdBy" :label="$t('creater')" width="100">
               </el-table-column>
               <el-table-column prop="theme" :label="$t('linkThemeStr')" width="100">
                 <template scope="scope">
@@ -36,7 +38,7 @@
               <el-table-column prop="created" :label="$t('createdDateStr')" min-width="100">
                 <template scope="scope">{{ scope.row.created | dateConvert }}</template>
               </el-table-column>
-              <el-table-column label="操作" width="140">
+              <el-table-column :label="$t('operation')" width="140">
                 <template scope="scope">
                   <el-button
                     size="small"
@@ -63,8 +65,11 @@
         </div>
       </div>
     </div>
-    <edit-dialog v-model="isShowDlgFlag" :pdata="currentRowData"
-      @update-success="onUpdateSuccess"></edit-dialog>
+    <edit-dialog
+      v-model="isShowDlgFlag"
+      :pdata="currentRowData"
+      @update-success="onUpdateSuccess">
+    </edit-dialog>
   </div>
 </template>
 
@@ -185,8 +190,12 @@ export default{
 
   locales: {
     en: {
+      isActived: 'Is Actived',
+      creater: 'Creater'
     },
     zh: {
+      isActived: '是否已激活',
+      creater: '创建者'
     }
   }
 }
