@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper homepage">
-    <div class="panel-default" v-loading.body="isLoading">
+    <div class="panel-default" v-loading="isLoading">
       <div class="panel-body">
         <div class="main-container">
           <div class="entry-list">
@@ -34,13 +34,13 @@
                     <p class="nickname" v-if="mUserInfo.profile.nickname">
                       {{ mUserInfo.profile.nickname }}
                     </p>
-                    <span class="gray">{{ nicerNumText }}</span>
+                    <span class="gray" v-html="nicerNumText"></span>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-3 control-label">{{$t('personalWebsite')}}:</label>
                   <div class="col-sm-6">
-                    <p class="text-padding" v-if="!mUserInfo.profile.website">
+                    <p class="text-padding gray" v-if="!mUserInfo.profile.website">
                       {{ $t('noFill') }}
                     </p>
                     <el-button v-else type="text" @click="onLinkClick(mUserInfo.profile)">
@@ -103,7 +103,7 @@ export default{
     },
     userAvatar () {
       if (this.mUserInfo) {
-        let defaultAvatar = 'http://image.nicelinks.site/default-avatar.jpeg'
+        let defaultAvatar = 'https://image.nicelinks.site/default-avatar.jpeg'
         let userAvatar = this.mUserInfo.profile && this.mUserInfo.profile.avatar
         return userAvatar ? `/api/avatar/${userAvatar}` : defaultAvatar
       }
@@ -112,7 +112,12 @@ export default{
 
   created () {
     this.getUserInfo()
-    this.requestApiUpdateList('MyPublish')
+  },
+
+  watch: {
+    $lang (val) {
+      this.updateDetailInfo()
+    }
   },
 
   methods: {
@@ -120,14 +125,18 @@ export default{
       let params = {username: this.$route.params.id}
       this.$apis.getUserInfo(params).then(result => {
         this.mUserInfo = result
-        let cTemp = this.$t('nicerNumText').replace('@X', result.number || 1)
-        let joinTime = result.activeTime || result.createdAt
-        joinTime = (new Date(joinTime)).Format('yyyy-MM-dd hh:mm:ss')
-        this.nicerNumText = cTemp.replace('@TIME', joinTime)
+        this.updateDetailInfo()
       }).catch((error) => {
         this.$message.error(`${error}`)
         this.isLoading = true
       })
+    },
+
+    updateDetailInfo () {
+      let cTemp = this.$t('nicerNumText').replace('@X', this.mUserInfo.number || 1)
+      let joinTime = this.mUserInfo.activeTime || this.mUserInfo.createdAt
+      joinTime = (new Date(joinTime)).Format('yyyy-MM-dd hh:mm:ss')
+      this.nicerNumText = cTemp.replace('@TIME', joinTime)
     },
 
     requestApiUpdateList (index) {
@@ -173,7 +182,7 @@ export default{
       hisPublish: 'His Publish',
       hisLikes: 'His Likes',
       hisDislikes: 'His Dislikes',
-      nicerNumText: 'Nice Links Member No. @X, Join in @TIME',
+      nicerNumText: `<a href='/'>NICE LINKS</a> Member No. @X, Join in @TIME`,
       noFill: 'Not yet filled'
     },
     zh: {
@@ -184,7 +193,7 @@ export default{
       hisPublish: '他的发布',
       hisLikes: '他的点赞',
       hisDislikes: '他的狂踩',
-      nicerNumText: '倾城之链第 @X 号成员，加入于 @TIME',
+      nicerNumText: `<a href='/'>倾城之链</a>第 @X 号成员，加入于 @TIME`,
       noFill: '暂未填写'
     }
   }

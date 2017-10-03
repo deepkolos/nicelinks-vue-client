@@ -13,6 +13,8 @@ export default {
   confirm: 'Confirm',
   update: 'Update',
   operation: 'Operation',
+  edit: 'Edit',
+  delete: 'Delete',
   warmReminder: 'Warm Reminder',
   niceLinksStr: 'Nice Links',
 
@@ -50,6 +52,7 @@ export default {
   setUsername: 'Set Username',
   setNickname: 'Set Nickname',
   personalWebsite: 'Personal Website',
+  profile: 'Profile',
   saveSeting: 'Save Seting',
   updateAvatar: 'Update Avatar',
 

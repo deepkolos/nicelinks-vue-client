@@ -2,7 +2,7 @@
 <div class="links-list">
   <div class="moudle" v-if="pdata.length <= 0">
     <div class="content">
-      <el-card class="box-card" v-if="!isLoading">
+      <el-card class="tip-box-card" v-if="!isLoading">
         <div slot="header" class="clearfix">
           <h4>{{ $t('warmReminder') }}</h4>
         </div>

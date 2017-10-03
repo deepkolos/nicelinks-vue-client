@@ -109,7 +109,7 @@ export default {
     },
     userAvatar () {
       if (this.userInfo) {
-        let defaultAvatar = 'http://image.nicelinks.site/default-avatar.jpeg'
+        let defaultAvatar = 'https://image.nicelinks.site/default-avatar.jpeg'
         let userAvatar = this.userInfo.profile && this.userInfo.profile.avatar
         return userAvatar ? `/api/avatar/${userAvatar}` : defaultAvatar
       }

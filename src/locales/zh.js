@@ -13,6 +13,8 @@ export default {
   confirm: '确 定',
   update: '更 新',
   operation: '操作',
+  edit: '编辑',
+  delete: '删除',
   warmReminder: '温馨提示',
   niceLinksStr: '倾城之链',
 

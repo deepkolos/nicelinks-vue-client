@@ -140,7 +140,7 @@ export default{
         imgname: '',
         username: ''
       },
-      imgDataUrl: 'http://image.nicelinks.site/default-avatar.jpeg'
+      imgDataUrl: 'https://image.nicelinks.site/default-avatar.jpeg'
     }
   },
 
