@@ -1,7 +1,7 @@
-<p align="center"><a href="https://vuejs.org" target="_blank"><img width="100"src="https://static.nicelinks.site/static/img/nice_links.84a4e69.png"></a></p>
+<p align="center"><a href="https://nicelinks.site/" target="_blank"><img width="100"src="https://raw.githubusercontent.com/nicejade/nicelinks-vue-client/master/src/assets/images/nice_links.png"></a></p>
 
 > A website about assembling nice links created using Vue.js（webpack、es6、element-ui）.
-
+Chinese name: [倾城之链](https://nicelinks.site/)、Her English name is called：[NICELINKS](https://nicelinks.site/). 😊
 ## Build Setup
 
 ``` bash
