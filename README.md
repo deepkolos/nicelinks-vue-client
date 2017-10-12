@@ -1,7 +1,7 @@
-<h1 align='center'>nicelinks-vue-client</h1>
+<p align="center"><a href="https://nicelinks.site/" target="_blank"><img width="100"src="https://raw.githubusercontent.com/nicejade/nicelinks-vue-client/master/src/assets/images/nice_links.png"></a></p>
 
 > A website about assembling nice links created using Vue.js（webpack、es6、element-ui）.
-
+Chinese name: [倾城之链](https://nicelinks.site/)、Her English name is called：[NICELINKS](https://nicelinks.site/). 😊
 ## Build Setup
 
 ``` bash
@@ -27,4 +27,8 @@ npm run e2e
 npm test
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## License
+
+[MIT](http://opensource.org/licenses/MIT)
+
+Copyright (c) 2017-present, [nicejade](https://github.com/nicejade)

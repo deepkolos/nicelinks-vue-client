@@ -9,7 +9,7 @@
     "start": "node build/dev-server.js",
     "commit": "git add . && git cz && git pull && git push",
     "deploy": "git pull && npm run build && node build/deploy.js",
-    "build": "node build/build.js",
+    "build": "NODE_ENV=production node build/build.js",
     "build:dll": "webpack --config build/webpack.dll.conf.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",

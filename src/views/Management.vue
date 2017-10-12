@@ -5,8 +5,8 @@
         <div class="main-container">
           <div class="entry-list">
             <el-tabs v-model="activeName" @tab-click="handleClick">
-              <el-tab-pane label="未审核" name="first"></el-tab-pane>
-              <el-tab-pane label="已审核" name="second"></el-tab-pane>
+              <el-tab-pane :label="$t('unapproved')" name="first"></el-tab-pane>
+              <el-tab-pane :label="$t('approved')" name="second"></el-tab-pane>
             </el-tabs>
             <el-table :data="tableData" stripe style="width: 100%">
               <el-table-column prop="classify" :label="$t('linkClassifyStr')" width="100">
@@ -14,12 +14,14 @@
                   {{ $t(classifyList[scope.row.classify]['name']) }}
                 </template>
               </el-table-column>
-              <el-table-column prop="active" label="是否已激活" width="100">
+              <el-table-column prop="active" :label="$t('isActived')" width="100">
                 <template scope="scope">
                   <el-tag :type="scope.row.active ? 'success' : 'error'">
-                    {{ scope.row.active ? '是' : '否' }}
+                    {{ scope.row.active ? $t('yes') : $t('no') }}
                   </el-tag>
                 </template>
+              </el-table-column>
+              <el-table-column prop="createdBy" :label="$t('creater')" width="100">
               </el-table-column>
               <el-table-column prop="theme" :label="$t('linkThemeStr')" width="100">
                 <template scope="scope">
@@ -36,15 +38,12 @@
               <el-table-column prop="created" :label="$t('createdDateStr')" min-width="100">
                 <template scope="scope">{{ scope.row.created | dateConvert }}</template>
               </el-table-column>
-              <el-table-column label="操作" width="140">
+              <el-table-column :label="$t('operation')" width="160">
                 <template scope="scope">
-                  <el-button
-                    size="small"
-                    @click="handleEdit(scope.row)">编辑</el-button>
-                  <el-button
-                    size="small"
-                    type="danger"
-                    @click="handleDelete(scope.row)">删除</el-button>
+                  <el-button size="small"
+                    @click="handleEdit(scope.row)">{{ $t('edit') }}</el-button>
+                  <el-button size="small" type="danger"
+                    @click="handleDelete(scope.row)">{{ $t('delete') }}</el-button>
                 </template>
               </el-table-column>
             </el-table>
@@ -59,12 +58,14 @@
               </el-pagination>
             </div>
           </div>
-          <!-- <aside-list></aside-list> -->
         </div>
       </div>
     </div>
-    <edit-dialog v-model="isShowDlgFlag" :pdata="currentRowData"
-      @update-success="onUpdateSuccess"></edit-dialog>
+    <edit-dialog
+      v-model="isShowDlgFlag"
+      :pdata="currentRowData"
+      @update-success="onUpdateSuccess">
+    </edit-dialog>
   </div>
 </template>
 
@@ -185,8 +186,16 @@ export default{
 
   locales: {
     en: {
+      approved: 'Approved',
+      unapproved: 'Unapproved',
+      isActived: 'Is Actived',
+      creater: 'Creater'
     },
     zh: {
+      approved: '已审核',
+      unapproved: '未审核',
+      isActived: '是否已激活',
+      creater: '创建者'
     }
   }
 }

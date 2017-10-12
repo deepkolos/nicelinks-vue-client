@@ -11,7 +11,10 @@
   .icons{
     width: 2rem;
     height: 2rem;
-    margin: 0 .77em;
+    margin: 0 .66em;
+  }
+  .form-group{
+    margin-bottom: 10px;
   }
   .button{
     color: #111;
@@ -69,6 +72,7 @@
 
   #app .side-nav{
     top: $header-mobile-height;
+    height: calc(100% - 60px);
   }
 
   #app .menu-expand{
@@ -104,6 +108,9 @@
       }
       .page-responsive{
         overflow: hidden;
+      }
+      .el-card__body{
+        padding: 15px 10px;
       }
     }
   }

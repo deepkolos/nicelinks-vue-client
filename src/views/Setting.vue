@@ -6,7 +6,7 @@
           <div class="entry-list setting">
             <el-card class="box-card">
               <div slot="header" class="clearfix">
-              <el-breadcrumb separator="/">
+                <el-breadcrumb separator="/">
                   <el-breadcrumb-item :to="{ path: '/' }">{{ $t('homePage') }}</el-breadcrumb-item>
                   <el-breadcrumb-item>{{ $t('accountSetting') }}</el-breadcrumb-item>
                 </el-breadcrumb>
@@ -41,8 +41,9 @@
                   <div class="form-group">
                     <label class="col-sm-3 control-label">{{$t('profile')}}:</label>
                     <div class="col-sm-9">
-                      <el-input type="textarea" :autosize="{ minRows: 4, maxRows: 6}"
-                        placeholder="" v-model="fillForm.profile.description"></el-input>
+                      <el-input type="textarea"  :autosize="{ minRows: 4, maxRows: 6}"
+                        :maxlength="140" placeholder="" v-model="fillForm.profile.description">
+                      </el-input>
                     </div>
                   </div>
                 </el-form>
@@ -139,7 +140,7 @@ export default{
         imgname: '',
         username: ''
       },
-      imgDataUrl: 'http://image.nicelinks.site/default-avatar.jpeg'
+      imgDataUrl: 'https://image.nicelinks.site/default-avatar.jpeg'
     }
   },
 

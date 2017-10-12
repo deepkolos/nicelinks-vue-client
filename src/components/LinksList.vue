@@ -2,7 +2,7 @@
 <div class="links-list">
   <div class="moudle" v-if="pdata.length <= 0">
     <div class="content">
-      <el-card class="box-card" v-if="!isLoading">
+      <el-card class="tip-box-card" v-if="!isLoading">
         <div slot="header" class="clearfix">
           <h4>{{ $t('warmReminder') }}</h4>
         </div>
@@ -13,7 +13,7 @@
   </div>
 
   <div class="moudle" v-for="(item, index) in pdata" v-if="pdata.length > 0">
-    <div class="content" @click.self.prevent="onMoudleClick(item)">
+    <div class="content" @click="onMoudleClick(item)">
       <div class="meta">
         <span class="item classify"
           @click.stop="onThemeClick(item.theme)">
@@ -29,7 +29,9 @@
         </span>
       </div>
       <h3 class="title">
-        <a class="title-link" :href="item.urlPath" target="_blank">{{ item.title }}</a>
+        <a class="title-link" @click.stop="onLinkClick(item)"
+          href="javascript:;" target="_blank">{{ item.title }}
+        </a>
       </h3>
       <slot name="link-desc"></slot>
       <div class="action-list">
@@ -168,6 +170,10 @@ export default {
     onUserClick (username) {
       let userName = username || this.userInfo.username
       this.$router.push(`/member/${userName}`)
+    },
+
+    onLinkClick (item) {
+      window.open(item.urlPath, item.title)
     },
 
     onLikeClick (row) {

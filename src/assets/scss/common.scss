@@ -93,6 +93,10 @@ a:hover, a:visited, a:link{
   }
 }
 
+.gray{
+  color: $text-grey;
+}
+
 .form-group:before,
 .form-group:after{
   content: " ";

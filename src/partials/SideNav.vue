@@ -106,14 +106,13 @@ export default {
 @import "./../assets/scss/variables.scss";
   .side-nav{
     text-align: left;
-    height: 100%;
-    min-height: 100%;
+    width: 210px;
+    height: calc(100% - 80px);
     position: fixed;
     overflow-y: scroll;
     left: 0;
     top: $header-height;
     z-index: 1000;
-    width: 210px;
     &::-webkit-scrollbar {
       background: transparent;
       width: 0px;
