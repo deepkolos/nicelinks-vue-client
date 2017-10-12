@@ -14,7 +14,9 @@ module.exports = {
       'vuex',
       'vue-bus',
       'crypto-js/sha256',
-      'crypto-js/md5'
+      'crypto-js/md5',
+      'vue-content-placeholder',
+      'vue-social-sharing'
     ]
   },
   output: {
