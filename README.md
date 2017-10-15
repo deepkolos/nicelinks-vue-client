@@ -1,4 +1,4 @@
-<p align="center"><a href="https://nicelinks.site/" target="_blank"><img width="100"src="https://raw.githubusercontent.com/nicejade/nicelinks-vue-client/master/src/assets/images/nice_links.png"></a></p>
+<p align="center"><a href="https://nicelinks.site/" target="_blank"><img width="100"src="https://github.com/nicejade/nicelinks-vue-client/blob/master/static/modal/nicelin-galaxy.png"></a></p>
 
 > A website about assembling nice links created using Vue.js（webpack、es6、element-ui）.
 Chinese name: [倾城之链](https://nicelinks.site/)、Her English name is called：[NICELINKS](https://nicelinks.site/). 😊

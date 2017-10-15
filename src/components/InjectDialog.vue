@@ -198,10 +198,10 @@ export default {
 
   locales: {
     en: {
-      successAddTip: 'Well, you have successfully added the link'
+      successAddTip: 'Well, you have successfully added the link，Pending audit.'
     },
     zh: {
-      successAddTip: '很好，您已成功添加该链接'
+      successAddTip: '很好，您已成功添加该链接，正在待审核中.'
     }
   }
 }
