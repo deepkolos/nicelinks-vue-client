@@ -18,12 +18,6 @@ export default [
     title: 'Github'
   },
   {
-    path: 'http://www.jianshu.com/u/',
-    name: '9aae3d8f4c3d',
-    class: 'jianshu',
-    title: '简书'
-  },
-  {
     path: 'https://www.zhihu.com/people/',
     name: 'yang-qiong-pu',
     class: 'zhihu',

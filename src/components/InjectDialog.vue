@@ -80,7 +80,10 @@
             <label class="col-sm-3 control-label"> {{ this.$t('linkDescStr') }} <em>*</em>：</label>
             <div class="col-sm-8">
               <el-form-item prop="desc">
-                <el-input :placeholder="this.$t('pleaseSelect') + this.$t('linkDescStr')" v-model="fillForm.desc"></el-input>
+                <el-input type="textarea" :maxlength="360" :autosize="{ minRows: 3, maxRows: 10}"
+                  :placeholder="this.$t('pleaseSelect') + this.$t('linkDescStr')"
+                  v-model="fillForm.desc">
+                </el-input>
               </el-form-item>
             </div>
           </div>
