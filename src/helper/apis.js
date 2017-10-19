@@ -17,6 +17,10 @@ export default {
     return $ajax.get(requestUrl('getAllLinks'), data)
   },
 
+  getAllLinksCount (data) {
+    return $ajax.get(requestUrl('getAllLinksCount'), data)
+  },
+
   getAllTags () {
     return $ajax.get(requestUrl('getAllTags'))
   },

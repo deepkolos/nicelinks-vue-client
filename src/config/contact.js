@@ -30,6 +30,12 @@ export default [
     title: '博客园'
   },
   {
+    path: 'http://www.jianshu.com/u/',
+    name: '9aae3d8f4c3d',
+    class: 'jianshu',
+    title: '简书'
+  },
+  {
     path: 'https://twitter.com/',
     name: 'jeffjade2',
     class: 'twitter',

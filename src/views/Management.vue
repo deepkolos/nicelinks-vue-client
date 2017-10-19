@@ -57,6 +57,7 @@
               <el-pagination
                 @size-change="handleSizeChange"
                 @current-change="handleCurrentChange"
+                :total="tableControl.totalCount"
                 :current-page="tableControl.pageCount"
                 :page-sizes="[20, 50, 100]"
                 :page-size="20" layout="total, sizes, prev, pager, next, jumper">
@@ -89,8 +90,9 @@ export default{
       themeList: $config.theme,
       tableData: [],
       tableControl: {
+        totalCount: 30,
         pageCount: 1,
-        pageSize: 15,
+        pageSize: 20,
         sortType: -1,
         sortTarget: 'created'
       },
@@ -128,6 +130,12 @@ export default{
       }).finally(() => {
         this.isLoading = false
       })
+
+      this.$apis.getAllLinksCount(params).then(result => {
+        this.tableControl.totalCount = result
+      }).catch((error) => {
+        console.log(error)
+      })
     },
 
     fillThemeName (classify, theme) {
@@ -149,6 +157,7 @@ export default{
     },
 
     handleCurrentChange (val) {
+      console.log(val)
       this.tableControl.pageCount = val
       this.initFetch()
     },

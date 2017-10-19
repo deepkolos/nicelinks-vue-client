@@ -192,7 +192,7 @@ export default {
               message: this.$t('successAddTip'),
               type: 'success'
             })
-            this.$bus.emit('update-success')
+            this.$emit('update-success')
           }).catch((error) => {
             console.log(error)
             this.isLoading = false
