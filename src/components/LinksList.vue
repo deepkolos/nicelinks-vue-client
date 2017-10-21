@@ -8,7 +8,8 @@
         </div>
         <div class="no-result-tip" v-html="$t('noResultTip')"></div>
       </el-card>
-      <content-placeholder v-else slot="link-desc" :rows="placeholderRows"></content-placeholder>
+      <content-placeholder v-else slot="link-desc" :rows="placeholderRows">
+      </content-placeholder>
     </div>
   </div>
 
@@ -114,6 +115,11 @@ export default {
 
   methods: {
     dispatchAction (row, action) {
+      if (!this.$isLogin()) {
+        this.$router.push('/login')
+        return
+      }
+
       let params = {
         'userId': this.userInfo._id,
         '_id': row._id,
@@ -177,18 +183,10 @@ export default {
     },
 
     onLikeClick (row) {
-      if (!this.$isLogin()) {
-        this.$router.push('/login')
-        return
-      }
       this.dispatchAction(row, 'likes')
     },
 
     onDislikeClick (row) {
-      if (!this.$isLogin()) {
-        this.$router.push('/login')
-        return
-      }
       this.dispatchAction(row, 'dislikes')
     }
   }

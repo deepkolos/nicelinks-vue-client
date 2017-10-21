@@ -43,7 +43,7 @@ export default {
   loadMoreStr: 'Load More',
 
   validateFailure: 'Verification Failed',
-  noResultTip: 'Sorry, no data available, try <a class="no-result-tip-a" href="/"> Nice link </a>.',
+  noResultTip: `Hey, friend, there's no relevant data here, if you want to know more, Please move to <a class="no-result-tip-a" href="/">NICE LINKS</a>.`,
 
   homepage: 'My Homepage',
   homePage: 'Home Page',

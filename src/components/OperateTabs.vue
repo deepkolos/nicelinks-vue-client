@@ -1,7 +1,7 @@
 <template>
   <div class="operate-tabs">
     <el-tabs v-model="activeName" type="card">
-      <el-tab-pane v-for="(item, index) in operateTabList"
+      <el-tab-pane v-for="(item, index) in operateTabList" :key="item.name"
         :label="$t(item.name)" :name="item.name">
       </el-tab-pane>
     </el-tabs>

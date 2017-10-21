@@ -3,7 +3,7 @@
     <el-button type="primary" icon="plus" size="large" v-if="isShowLoadMore"
       @click="onLoadMoreClick">{{ $t('loadMoreStr') }}
     </el-button>
-    <el-alert v-else :title="$t('noMoreInfo')" type="info"> </el-alert>
+    <el-alert v-else :title="$t('noMoreDataTip')" type="info"> </el-alert>
   </div>
 </template>
 
@@ -41,10 +41,10 @@ export default {
 
   locales: {
     zh: {
-      noMoreInfo: '大人，暂未能获取到更多数据'
+      noMoreDataTip: '嘿，朋友，这儿是有底线的。'
     },
     en: {
-      noMoreInfo: 'King, No more data available yet.'
+      noMoreDataTip: `Hey, friend, The data here is limited.`
     }
   }
 }

@@ -43,7 +43,8 @@ export default {
   loadMoreStr: '加载更多',
 
   validateFailure: '验证失败',
-  noResultTip: '抱歉，暂未有相关数据，请移步 <a class="no-result-tip-a" href="/">Nice Links</a> 试试。',
+  noResultTip: '嘿，朋友，这儿暂未有相关数据；如果您想了解更多，请移步至 <a class="no-result-tip-a" href="/">NICE LINKS</a> 。',
+  confirmTips: '',
 
   homepage: '个人主页',
   homePage: '首页',

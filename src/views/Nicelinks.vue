@@ -10,7 +10,6 @@
           </div>
           <aside-list></aside-list>
         </div>
-        <br>
       </div>
     </div>
   </div>
