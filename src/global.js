@@ -37,6 +37,12 @@ Vue.component('aside-list', AsideList)
 import LinksList from 'components/LinksList'
 Vue.component('links-list', LinksList)
 
+import OperateTabs from 'components/OperateTabs'
+Vue.component('operate-tabs', OperateTabs)
+
+import LoadMore from 'components/LoadMore'
+Vue.component('load-more', LoadMore)
+
 /* Public Filter */
 for (let key in Filters) {
   Vue.filter(key, Filters[key])

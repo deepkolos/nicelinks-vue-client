@@ -50,6 +50,7 @@ module.exports = {
       'config': resolve('src/config'),
       'helper': resolve('src/helper'),
       'views': resolve('src/views'),
+      'mixins': resolve('src/mixins'),
       'partials': resolve('src/partials'),
       'store': resolve('src/store')
     }
