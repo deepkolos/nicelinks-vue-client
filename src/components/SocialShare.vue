@@ -73,7 +73,7 @@ export default {
 
 <style type="text/css" lang="scss">
 .social-share{
-  padding-top: 1rem;
+  padding-top: 1.2rem;
 }
 </style>
 

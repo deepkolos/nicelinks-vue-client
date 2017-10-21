@@ -5,7 +5,10 @@
         <div class="main-container">
           <div class="entry-list">
             <links-list :pdata="niceLinksArr" :is-loading="isLoading">
-              <div slot="link-desc" class="link-desc" v-html="niceLinksArr[0] && niceLinksArr[0].desc"></div>
+              <div slot="link-desc"
+                class="link-desc"
+                v-html="obtainLinkDesc(niceLinksArr[0])">
+              </div>
               <social-share slot="link-share"
                 :share-url="currentPath"
                 :share-content="makeShareContent(niceLinksArr[0])"
@@ -68,6 +71,10 @@ export default {
     makeShareTags (item = {}) {
       let defaultTagsStr = 'Skill,Resource,Life,Information'
       return item.tags ? item.tags.join(',') : defaultTagsStr
+    },
+
+    obtainLinkDesc (item = {}) {
+      return item.desc ? item.desc.split('\n').join('<br>') : ''
     }
   }
 }

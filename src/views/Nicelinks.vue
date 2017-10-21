@@ -5,7 +5,7 @@
         <div class="main-container">
           <div class="entry-list">
             <div class="operate-sort">
-              <el-tabs v-model="activeName" type="card" @tab-click="onHandleClick">
+              <el-tabs v-model="activeName" type="card">
                 <el-tab-pane v-for="(item, index) in operateTabList"
                   :label="$t(item.name)" :name="item.name">
                 </el-tab-pane>
@@ -130,9 +130,6 @@ export default {
     onLoadMoreClick () {
       this.tableControl.pageCount += 1
       this.fetchSearch({}, true)
-    },
-
-    onHandleClick () {
     }
   },
 
