@@ -18,7 +18,8 @@
                     <label class="col-sm-3 control-label">{{$t('setUsername')}}<em>*</em>:</label>
                     <div class="col-sm-9">
                       <el-form-item prop="username">
-                        <el-input placeholder="" v-model="fillForm.username"></el-input>
+                        <el-input placeholder=""
+                          :disabled="true" v-model="fillForm.username"></el-input>
                       </el-form-item>
                     </div>
                   </div>
@@ -182,6 +183,7 @@ export default{
         if (valid) {
           this.isLoading = true
           let params = this.fillForm
+          delete params.username
           this.$apis.setProfile(params).then(result => {
             this.isLoading = false
             this.$message({

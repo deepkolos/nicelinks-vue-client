@@ -1,7 +1,7 @@
 export default [
   {
-    path: '//click.dji.com/AO-121jgY4GHFYJpHq1b?pm=ad_image',
-    image: 'https://u.djicdn.com/uploads/ad_image_file/file/706/250x250.jpg'
+    path: '//click.dji.com/AImNzZn2UOH5A7F_Lc0l?pm=ad_image',
+    image: '//u.djicdn.com/uploads/ad_image_file/file/692/250x250_cn.jpg'
   },
   {
     path: '//click.dji.com/AI0P4L08QwIeyaK1Pi7C?pm=ad_image',

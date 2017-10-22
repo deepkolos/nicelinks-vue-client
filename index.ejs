@@ -40,12 +40,9 @@
       <link rel="<%= chunk.initial ? 'preload' : 'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>">
       <% }}} %>
 
-      <link href="https://cdn.bootcss.com/element-ui/1.4.0/theme-default/index.css" rel="stylesheet">
       <script async src="https://www.google-analytics.com/analytics.js"></script>
-      <!-- <script async src="<%= webpackConfig.output.publicPath %>static/js/autotrack.js"></script>  -->
-      <script src="//cdn.bootcss.com/autotrack/2.4.1/autotrack.js"></script>
-
-      <script src="//cdn.bootcss.com/babel-polyfill/7.0.0-alpha.15/polyfill.min.js"></script>
+      <!-- <script async src="<%= webpackConfig.output.publicPath %>static/js/autotrack.js"></script> -->
+      <script async src="<%= webpackConfig.output.publicPath %>static/js/polyfill.min.js"></script>
     <% } %>
   </head>
 
@@ -53,9 +50,11 @@
     <div id="app"></div>
     <!-- built files will be auto injected -->
     <script  src="<%= webpackConfig.output.publicPath %>static/js/vendor.dll.js"></script>
-    <script async src="<%= webpackConfig.output.publicPath %>static/js/browsermodal.js"></script>
+    <!--[if lt IE 9]>
+      <script async src="<%= webpackConfig.output.publicPath %>static/js/browsermodal.js"></script>
+    <![endif]-->
   </body>
   <script>
-    console.log('Welcome To %cNICE LINKS', 'font-size:3em;background-color: #666666;-webkit-background-clip: text;-moz-background-clip: text;background-clip: text;color: transparent;text-shadow: rgba(255,255,255,0.6) 0px 3px 3px;')
+    console.log('Welcome To %cNICE LINKS', 'font-size:3em;background-color: #666666;-webkit-background-clip: text;-moz-background-clip: text;background-clip: text;color: transparent;text-shadow: rgba(255,255,255,0.9) 0px 1px 1px;')
   </script>
 </html>

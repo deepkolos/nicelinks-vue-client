@@ -22,13 +22,13 @@
                 <el-tab-pane name="MyLikes"
                   :label="isUserSelf ? $t('myLikes') : $t('hisLikes')">
                 </el-tab-pane>
-                <el-tab-pane name="MyDislikes"
+                <el-tab-pane name="MyDislikes" v-if="isUserSelf"
                   :label="isUserSelf ? $t('myDislikes') : $t('hisDislikes')">
                 </el-tab-pane>
               </el-tabs>
               <el-card class="box-card base-info" v-if="isShowBaseInfo">
                 <div slot="header" class="clearfix">
-                  <img class="avatar" :src="userAvatar" alt="">
+                  <img class="avatar" :src="userAvatar" alt="User Avatar">
                   <div class="info">
                     <p class="username">{{ mUserInfo.username }}</p>
                     <p class="nickname" v-if="mUserInfo.profile.nickname">

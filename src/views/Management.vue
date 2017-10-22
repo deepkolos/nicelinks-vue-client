@@ -22,20 +22,25 @@
                 </template>
               </el-table-column>
               <el-table-column prop="createdBy" :label="$t('creater')" width="100">
+                <template scope="scope">
+                  <el-button type="text" @click="onCreaterClick(scope.row.createdBy)">
+                    {{ scope.row.createdBy }}
+                  </el-button>
+                </template>
               </el-table-column>
               <el-table-column prop="theme" :label="$t('linkThemeStr')" width="100">
                 <template scope="scope">
                 {{ fillThemeName(scope.row.classify, scope.row.theme) }}
                 </template>
               </el-table-column>
-              <el-table-column prop="urlPath" :label="$t('linkAddressStr')" width="180">
+              <el-table-column prop="urlPath" :label="$t('linkAddressStr')" min-width="180">
                 <template scope="scope">
                   <a class="title-link" :href="scope.row.urlPath" target="_blank">
                     {{ scope.row.title }}
                   </a>
                 </template>
               </el-table-column>
-              <el-table-column prop="created" :label="$t('createdDateStr')" min-width="100">
+              <el-table-column prop="created" :label="$t('createdDateStr')" width="160">
                 <template scope="scope">{{ scope.row.created | dateConvert }}</template>
               </el-table-column>
               <el-table-column :label="$t('operation')" width="160">
@@ -52,9 +57,11 @@
               <el-pagination
                 @size-change="handleSizeChange"
                 @current-change="handleCurrentChange"
+                :total="tableControl.totalCount"
                 :current-page="tableControl.pageCount"
+                :page-size="tableControl.pageSize"
                 :page-sizes="[20, 50, 100]"
-                :page-size="20" layout="total, sizes, prev, pager, next, jumper">
+                layout="total, sizes, prev, pager, next, jumper">
               </el-pagination>
             </div>
           </div>
@@ -84,8 +91,9 @@ export default{
       themeList: $config.theme,
       tableData: [],
       tableControl: {
+        totalCount: 30,
         pageCount: 1,
-        pageSize: 15,
+        pageSize: 20,
         sortType: -1,
         sortTarget: 'created'
       },
@@ -123,6 +131,12 @@ export default{
       }).finally(() => {
         this.isLoading = false
       })
+
+      this.$apis.getAllLinksCount(params).then(result => {
+        this.tableControl.totalCount = result
+      }).catch((error) => {
+        console.log(error)
+      })
     },
 
     fillThemeName (classify, theme) {
@@ -140,10 +154,13 @@ export default{
 
     handleSizeChange (val) {
       this.tableControl.pageSize = val
+      this.initFetch()
     },
 
     handleCurrentChange (val) {
+      console.log(val)
       this.tableControl.pageCount = val
+      this.initFetch()
     },
 
     handleEdit (row) {
@@ -181,6 +198,10 @@ export default{
 
     onUpdateSuccess () {
       this.initFetch()
+    },
+
+    onCreaterClick (username) {
+      this.$router.push(`/member/${username}`)
     }
   },
 

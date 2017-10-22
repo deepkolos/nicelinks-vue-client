@@ -4,7 +4,9 @@
       <div class="panel-body">
         <div class="main-container">
           <div class="entry-list">
+            <operate-tabs @switch-tabs="onSwitchTabs"></operate-tabs>
             <links-list :pdata="niceLinksArr" :is-loading="isLoading"></links-list>
+            <load-more></load-more>
           </div>
           <aside-list></aside-list>
         </div>
@@ -14,20 +16,19 @@
 </template>
 
 <script>
+import partsMixin from 'mixins/partsMixin.js'
+
 export default {
   name: 'Tags',
 
+  mixins: [partsMixin],
+
   data () {
     return {
-      isLoading: false,
-      niceLinksArr: []
     }
   },
 
   watch: {
-    $router (val) {
-      console.log(val)
-    }
   },
 
   components: {
@@ -37,20 +38,21 @@ export default {
   },
 
   mounted () {
-    let params = {}
-    params.tags = decodeURIComponent(this.$route.params.tags)
-    params.userId = this.userInfo && this.userInfo._id || ''
-    this.$apis.getLinksByTag(params).then(result => {
-      this.niceLinksArr = result
-    }).catch((error) => {
-      this.isLoading = false
-      this.$message.error(`${error}`)
-    }).finally(() => {
-      this.isLoading = false
-    })
+    this.tableControl.tags = decodeURIComponent(this.$route.params.tags)
+    this.fetchSearch()
   },
 
   methods: {
+    fetchSearch (params = {}) {
+      this.$apis.getLinksByTag(this.drawAjaxParams(params)).then(result => {
+        this.niceLinksArr = result
+      }).catch((error) => {
+        this.isLoading = false
+        this.$message.error(`${error}`)
+      }).finally(() => {
+        this.isLoading = false
+      })
+    }
   }
 }
 </script>
