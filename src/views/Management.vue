@@ -59,8 +59,9 @@
                 @current-change="handleCurrentChange"
                 :total="tableControl.totalCount"
                 :current-page="tableControl.pageCount"
+                :page-size="tableControl.pageSize"
                 :page-sizes="[20, 50, 100]"
-                :page-size="20" layout="total, sizes, prev, pager, next, jumper">
+                layout="total, sizes, prev, pager, next, jumper">
               </el-pagination>
             </div>
           </div>

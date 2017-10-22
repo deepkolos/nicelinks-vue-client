@@ -1,18 +1,20 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
-import Filters from './filters'
 import VueI18n from 'vue-i18n'
-import locales from './locales'
-
+import VueTouch from 'vue-touch'
 import Cookies from 'js-cookie'
 import VueBus from 'vue-bus'
 import SocialSharing from 'vue-social-sharing'
+
 import { $apis, $util, $document, $auth, $lodash } from 'helper'
+import locales from './locales'
+import Filters from './filters'
 
 Vue.use(ElementUI)
 Vue.use(VueI18n)
 Vue.use(VueBus)
 Vue.use(SocialSharing)
+Vue.use(VueTouch, {name: 'v-touch'})
 
 Vue.prototype.$apis = $apis
 Vue.prototype.$util = $util
