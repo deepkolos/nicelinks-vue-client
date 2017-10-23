@@ -57,7 +57,7 @@ export default {
   saveSeting: '保存设置',
   updateAvatar: '更新头像',
 
-  adPosition: '广告位',
+  adPosition: '广而告之',
   visitCount: '网站统计',
   friendshipLinks: '友情链接',
   rewardme: '倾情打赏',
