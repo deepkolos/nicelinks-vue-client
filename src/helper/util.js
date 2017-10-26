@@ -41,24 +41,12 @@ export default {
     return str
   },
 
-  resMsg (res) {
-    let key = {
-      zh: 'Chinese',
-      en: 'English'
-    }[Vue.config.lang]
-    try {
-      // 有些接口暂时只提供了Chinese 没提供English
-      let obj = JSON.parse(res.Message)
-      return obj[key] || obj.Chinese
-    } catch (e) {
-      return res && res.Message
-    }
-  },
-
-  titleLang (zhStr, enStr) {
+  setTitleLang (zhStr, enStr) {
+    let NICE_ZH = `倾城之链`
+    let NICE_EN = `NICE LINKS`
     return {
-      zh: zhStr,
-      en: enStr
+      zh: zhStr ? `${NICE_ZH} | ${zhStr}` : NICE_ZH,
+      en: enStr ? `${NICE_EN} | ${enStr}` : enStr
     }
   },
 
@@ -129,7 +117,7 @@ export default {
     return [currentH, currentM, currentS].join(delimiter)
   },
 
-  /* -----------------------------localStorage------------------------------------ */
+  /* -----------------------------localStorage------------------------------------ Start */
   /*
    * set localStorage
    */
@@ -156,4 +144,5 @@ export default {
     if (!name) return
     window.localStorage.removeItem(name)
   }
+  /* -----------------------------localStorage------------------------------------ End */
 }

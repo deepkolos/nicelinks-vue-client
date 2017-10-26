@@ -6,14 +6,14 @@ let commonConf = [{
   path: '/login',
   alias: '/register',
   meta: {
-    title: $util.titleLang('登录', 'Login'),
+    title: $util.setTitleLang('登录', 'Login'),
     ignoreAuth: true
   },
-  component: resolve => require(['../views/Login'], resolve)
+  component: resolve => require(['partials/Login'], resolve)
 }, {
   path: '*',
   meta: {
-    title: $util.titleLang('404', '404 Not Found')
+    title: $util.setTitleLang('404', '404 Not Found')
   },
   component: NotFound
 }, {

@@ -23,6 +23,7 @@ export default {
       let clustrmapsScript = document.createElement('script')
       clustrmapsScript.type = 'text/javascript'
       clustrmapsScript.id = 'clustrmaps'
+      clustrmapsScript.async = true
       clustrmapsScript.src = '//cdn.clustrmaps.com/map_v2.js?d=_BvmVKKc1sJ7eaB66Dj16gQPcw4NyUxkIpfeDRnZoRA'
       clustrmapsCount.appendChild(clustrmapsScript)
     }
