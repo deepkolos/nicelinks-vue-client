@@ -56,16 +56,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-@import "./../assets/scss/variables.scss";
-
-#tags-page{
-  .link-desc{
-    color: $link-desc;
-    border-left: 2px solid #000;
-    margin: 15px auto;
-    padding-left: 10px;
-  }
-}
-</style>
