@@ -1,6 +1,6 @@
 export default {
   $vuexSetUserInfo (state, info) {
-    if (!info) {
+    if (!info || !state) {
       return
     }
     state.userId = info._id

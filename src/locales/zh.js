@@ -44,7 +44,7 @@ export default {
 
   validateFailure: '验证失败',
   noResultTip: '嘿，朋友，这儿暂未有相关数据；如果您想了解更多，请移步至 <a class="no-result-tip-a" href="/">NICE LINKS</a> 。',
-  confirmTips: '',
+  dislikesTips: '如果您确定这是一个很需要改进的网站，那么您可以尽情点击确定；否则请您三思。',
 
   homepage: '个人主页',
   homePage: '首页',

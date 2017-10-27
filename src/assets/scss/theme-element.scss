@@ -47,3 +47,19 @@
     }
   }
 }
+
+.el-message-box__wrapper{
+  .el-message-box{
+    width: 86%;
+    min-width: 300px;
+    max-width: 450px;
+    .el-message-box__header{
+      .el-message-box__title{
+        display: inline-block;
+      }
+      .el-message-box__close{
+        float: right;
+      }
+    }
+  }
+}

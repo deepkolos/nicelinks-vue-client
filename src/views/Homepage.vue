@@ -111,7 +111,13 @@ export default{
   },
 
   created () {
-    this.getUserInfo()
+    this.isLoading = true
+    this.$getUserInfo().then(result => {
+      this.updateDetailInfo()
+    }).catch((error) => {
+      this.$message.error(`${error}`)
+      this.isLoading = true
+    })
   },
 
   watch: {
@@ -121,7 +127,7 @@ export default{
   },
 
   methods: {
-    getUserInfo () {
+    /* getUserInfo () {
       let params = {username: this.$route.params.id}
       this.$apis.getUserInfo(params).then(result => {
         this.mUserInfo = result
@@ -130,7 +136,7 @@ export default{
         this.$message.error(`${error}`)
         this.isLoading = true
       })
-    },
+    }, */
 
     updateDetailInfo () {
       let cTemp = this.$t('nicerNumText').replace('@X', this.mUserInfo.number || 1)
