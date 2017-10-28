@@ -76,12 +76,5 @@ export default {
       title: $util.setTitleLang('倾城主题', 'Nice Themes')
     },
     component: resolve => require(['views/ThemeCollections'], resolve)
-  }, {
-    path: 'manage',
-    meta: {
-      needAuth: false,
-      title: $util.setTitleLang('倾城管理', 'Management')
-    },
-    component: resolve => require(['views/Management'], resolve)
   }]
 }

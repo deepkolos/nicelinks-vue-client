@@ -21,6 +21,10 @@ export default {
     return $ajax.get(requestUrl('getAllLinksCount'), data)
   },
 
+  getAllUsers (data) {
+    return $ajax.get(requestUrl('getAllUsers'), data)
+  },
+
   getAllTags () {
     return $ajax.get(requestUrl('getAllTags'))
   },
