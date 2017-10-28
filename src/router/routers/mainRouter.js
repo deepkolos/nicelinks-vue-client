@@ -14,7 +14,7 @@ export default {
   }, {
     path: 'setting',
     meta: {
-      needLogin: true,
+      isNeedLogin: true,
       title: $util.setTitleLang('设置', 'Setting')
     },
     component: resolve => require(['views/Setting'], resolve)

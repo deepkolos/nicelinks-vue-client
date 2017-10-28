@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import sha256 from 'crypto-js/sha256'
 import md5 from 'crypto-js/md5'
+import {STORAGE_PREFIX} from 'config/constant'
+
+const getStorageName = (name = '') => {
+  return `${STORAGE_PREFIX}-${name}`
+}
 
 if (typeof String.prototype.startsWith !== 'function') {
   Window.String.prototype.startsWith = function (prefix) {
@@ -121,28 +126,55 @@ export default {
   /*
    * set localStorage
    */
-  setStorage (name, content) {
+  setLocalStorage (name, content) {
     if (!name) return
     if (typeof content !== 'string') {
       content = JSON.stringify(content)
     }
-    window.localStorage.setItem(name, content)
+    window.localStorage.setItem(getStorageName(name), content)
   },
 
   /**
    * get localStorage
    */
-  getStorage (name) {
+  getLocalStorage (name) {
     if (!name) return
-    return window.localStorage.getItem(name)
+    let content = window.localStorage.getItem(getStorageName(name))
+    return JSON.parse(content)
   },
 
   /**
    * delete localStorage
    */
-  removeStorage (name) {
+  removeLocalStorage (name) {
     if (!name) return
-    window.localStorage.removeItem(name)
-  }
+    window.localStorage.removeItem(getStorageName(name))
+  },
   /* -----------------------------localStorage------------------------------------ End */
+  /* ----------------------------sessionStorage----------------------------------- Start */
+  setSessionStorage (name, content) {
+    if (!name) return
+    if (typeof content !== 'string') {
+      content = JSON.stringify(content)
+    }
+    window.sessionStorage.setItem(getStorageName(name), content)
+  },
+
+  /**
+   * get sessionStorage
+   */
+  getSessionStorage (name) {
+    if (!name) return
+    let content = window.sessionStorage.getItem(getStorageName(name))
+    return JSON.parse(content)
+  },
+
+  /**
+   * delete sessionStorage
+   */
+  removeSessionStorage (name) {
+    if (!name) return
+    window.sessionStorage.removeItem(getStorageName(name))
+  }
+  /* ----------------------------sessionStorage----------------------------------- End */
 }

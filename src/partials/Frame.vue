@@ -53,6 +53,10 @@ export default {
 
     if (!this.$auth.checkSession()) {
       this.$store.commit('$vuexSetUserInfo', {})
+    } else {
+      if (!this.$util.getSessionStorage('userInfo')) {
+        this.$getUserInfo()
+      }
     }
   },
 

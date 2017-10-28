@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper" id="manage-index">
-    <div class="panel-default" v-loading="isLoading">
+    <div class="panel-default">
       <div class="panel-body">
         <div class="operate-area">
           <el-button :plain="true" type="success"

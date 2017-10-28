@@ -1,1 +1,1 @@
-export const STORAGE_KEY = 'nicelinks-vuex-storage'
+export const STORAGE_PREFIX = 'ns-storage'
