@@ -11,11 +11,15 @@ export default {
       document.title = to.meta.title[Vue.config.lang]
     }
 
-    if (to.meta && !to.meta.needAuth) {
+    if (to.meta && !to.meta.needLogin && !to.meta.needAuth) {
       next()
     } else {
       if ($auth.checkSession()) {
-        next()
+        if (to.meta.needAuth) {
+          $auth.checkAuth() && next()
+        } else {
+          next()
+        }
       } else {
         next({
           path: '/login'
