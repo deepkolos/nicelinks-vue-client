@@ -1,9 +1,10 @@
 <template>
   <div class="page-wrap">
     <header-nav></header-nav>
-    <side-nav ref="sideNav" v-if="isMobile" v-show="isShowSideNav"></side-nav>
+    <transition name="slide">
+      <side-nav ref="sideNav" v-if="isMobile" v-show="isShowSideNav"></side-nav>
+    </transition>
     <main @click="hideMenu" class="main">
-      <!-- <transition name="fade"></transition> -->
       <router-view  :key="$route.path"></router-view>
       <footer-nav></footer-nav>
     </main>
@@ -21,7 +22,6 @@ export default {
   name: 'homepage',
   data () {
     return {
-      title: 'Nice Links',
       isMobile: window.innerWidth <= 960,
       isShowSideNav: false,
       isShowDlgFlag: false
@@ -65,3 +65,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+@import "../assets/scss/variables.scss";
+
+.slide-enter-active, .slide-leave-active {
+  width: $side-nav-width;
+  transition: width .5s;
+}
+.slide-enter, .slide-leave-to{
+  width: 0;
+}
+</style>

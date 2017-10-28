@@ -106,7 +106,7 @@ export default {
 @import "./../assets/scss/variables.scss";
   .side-nav{
     text-align: left;
-    width: 210px;
+    // width: $side-nav-width;
     height: calc(100% - 80px);
     position: fixed;
     overflow-y: scroll;
