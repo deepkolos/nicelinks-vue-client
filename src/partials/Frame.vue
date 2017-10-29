@@ -75,9 +75,18 @@ export default {
 
 .slide-enter-active, .slide-leave-active {
   width: $side-nav-width;
-  transition: width .5s;
+  opacity: 1;
+  -webkit-transition: all 200ms cubic-bezier(0.125, 0.565, 0.860, 0.310);
+   -moz-transition: all 200ms cubic-bezier(0.125, 0.565, 0.860, 0.310);
+     -o-transition: all 200ms cubic-bezier(0.125, 0.565, 0.860, 0.310);
+        transition: all 200ms cubic-bezier(0.125, 0.565, 0.860, 0.310);
+  -webkit-transition-timing-function: cubic-bezier(0.125, 0.565, 0.860, 0.310);
+     -moz-transition-timing-function: cubic-bezier(0.125, 0.565, 0.860, 0.310);
+       -o-transition-timing-function: cubic-bezier(0.125, 0.565, 0.860, 0.310);
+          transition-timing-function: cubic-bezier(0.125, 0.565, 0.860, 0.310);
 }
 .slide-enter, .slide-leave-to{
   width: 0;
+  opacity: 0;
 }
 </style>
