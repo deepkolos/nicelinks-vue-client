@@ -6,7 +6,7 @@ import Cookies from 'js-cookie'
 import VueBus from 'vue-bus'
 import SocialSharing from 'vue-social-sharing'
 
-import { $apis, $util, $document, $auth, $lodash, $errorReport } from 'helper'
+import { $apis, $util, $document, $auth, $lodash } from 'helper'
 import locales from './locales'
 import Filters from './filters'
 
@@ -17,7 +17,7 @@ Vue.use(SocialSharing)
 Vue.use(VueTouch, {name: 'v-touch'})
 
 // Initialize the sentry error reporting @2017-10-29
-$errorReport.init()
+// $errorReport.init()
 
 Vue.prototype.$apis = $apis
 Vue.prototype.$util = $util

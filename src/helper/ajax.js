@@ -1,6 +1,6 @@
 import axios from 'axios'
 import $q from 'q'
-import { $util, $errorReport } from 'helper'
+import { $util } from 'helper'
 
 function requestHandle (params) {
   let defer = $q.defer()
@@ -23,7 +23,7 @@ function requestHandle (params) {
         defer.reject()
       }
     }).catch(err => {
-      $errorReport.captureException(err)
+      // $errorReport.captureException(err)
       defer.reject(err)
     })
 
