@@ -16,7 +16,6 @@ Vue.mixin({
     //   'userInfo'
     // ])
     userInfo () {
-      console.log(this.$store)
       return this.$store && this.$store.state.userInfo || null
     }
   },

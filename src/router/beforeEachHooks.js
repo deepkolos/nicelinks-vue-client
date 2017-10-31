@@ -11,7 +11,9 @@ export default {
     }
 
     if (to.meta.isNeedAuth) {
-      $auth.checkAuth() ? next() : next({path: '/not-found'})
+      $auth.checkAuth().then(result => {
+        return result ? next() : next({path: '/not-found'})
+      })
     } else if (to.meta.isNeedLogin) {
       $auth.checkSession() ? next() : next({path: '/login'})
     } else {
