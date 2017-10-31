@@ -10,10 +10,14 @@ var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 var SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 var LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 var ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
+var PrerenderSpaPlugin = require('prerender-spa-plugin')
 
 var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : config.build.env
+
+console.log(config)
 
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -43,7 +47,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     // }),
     new ParallelUglifyPlugin({
       cacheDir: '.cache/',
-      uglifyJS:{
+      uglifyJS: {
         output: {
           comments: false,
           beautify: false
@@ -103,6 +107,18 @@ var webpackConfig = merge(baseWebpackConfig, {
       name: 'manifest',
       chunks: ['vendor']
     }),
+    // copy custom static assets
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../static'),
+        to: config.build.assetsSubDirectory,
+        ignore: ['.*']
+      }
+    ]),
+    new PrerenderSpaPlugin(
+      path.join(__dirname, 'dist'),
+      [ '/', '/resource', '/info', '/skill', '/life', '/collections/theme', '/collections/tags']
+    ),
     // service worker caching
     new SWPrecacheWebpackPlugin({
       cacheId: 'my-vue-app',
@@ -111,7 +127,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       minify: true,
       stripPrefix: 'dist/'
     }),
-    new LodashModuleReplacementPlugin
+    new LodashModuleReplacementPlugin()
   ]
 })
 
