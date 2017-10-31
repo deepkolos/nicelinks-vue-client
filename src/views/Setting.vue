@@ -17,10 +17,7 @@
                   <div class="form-group">
                     <label class="col-sm-3 control-label">{{$t('setUsername')}}<em>*</em>:</label>
                     <div class="col-sm-9">
-                      <el-form-item prop="username">
-                        <el-input placeholder=""
-                          :disabled="true" v-model="fillForm.username"></el-input>
-                      </el-form-item>
+                      <el-input placeholder="" :disabled="true" v-model="fillForm.username"></el-input>
                     </div>
                   </div>
                   <div class="form-group">
@@ -122,9 +119,6 @@ export default{
         }
       },
       rules: {
-        'username': [
-          { required: true, message: this.$t('pleaseEnter'), trigger: 'change,blur' }
-        ],
         'profile.nickname': [
           { required: false, message: this.$t('pleaseEnter'), trigger: 'change,blur' }
         ],
