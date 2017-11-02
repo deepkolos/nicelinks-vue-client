@@ -19,7 +19,7 @@ import FooterNav from 'partials/FooterNav'
 import InjectDialog from 'components/InjectDialog'
 
 export default {
-  name: 'homepage',
+  name: 'Frame',
   data () {
     return {
       isMobile: window.innerWidth <= 960,

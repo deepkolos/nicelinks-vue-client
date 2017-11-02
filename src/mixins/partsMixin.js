@@ -22,14 +22,24 @@ export default {
 
   methods: {
     drawAjaxParams (params = {}) {
-      Object.assign(params, this.tableControl)
+      this.$_.cloneDeep(params, this.tableControl)
+
       params.userId = this.userInfo && this.userInfo._id || ''
+      if (this.$route.params.tags) {
+        params.tags = decodeURIComponent(this.$route.params.tags)
+      }
+
+      if (this.$route.params.theme) {
+        params.theme = decodeURIComponent(this.$route.params.theme)
+      }
       return params
     },
 
     fetchSearch (params = {}, isLoadMore) {
       this.isLoading = true
-      this.$apis.getNiceLinks(this.drawAjaxParams(params)).then(result => {
+      params = this.drawAjaxParams(params)
+      let apiName = params.tags ? 'getLinksByTag' : 'getNiceLinks'
+      this.$apis[apiName](params).then(result => {
         this.isLoading = false
         if (!result || result.length <= 0) {
           this.isShowLoadMore = false

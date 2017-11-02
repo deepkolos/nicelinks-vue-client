@@ -5,15 +5,19 @@
         <div class="main-container">
           <div class="entry-list">
             <el-tabs v-model="activeName" @tab-click="handleClick">
-              <el-tab-pane :label="$t('unapproved')" name="first"></el-tab-pane>
-              <el-tab-pane :label="$t('approved')" name="second"></el-tab-pane>
+              <el-tab-pane label="未激活" name="first"></el-tab-pane>
+              <el-tab-pane label="已激活" name="second"></el-tab-pane>
             </el-tabs>
             <el-table :data="tableData" stripe style="width: 100%">
               <el-table-column prop="number" label="第几成员" width="100">
                 <template scope="scope">{{ scope.row.number }}</template>
               </el-table-column>
               <el-table-column prop="username" label="用户名" width="160">
-                <template scope="scope">{{ scope.row.username }}</template>
+                <template scope="scope">
+                  <el-button type="text" @click.stop="onUserClick(scope.row.username)">
+                    {{ scope.row.username }}
+                  </el-button>
+                </template>
               </el-table-column>
               <el-table-column prop="active" :label="$t('isActived')" width="100">
                 <template scope="scope">
@@ -22,7 +26,7 @@
                   </el-tag>
                 </template>
               </el-table-column>
-              <el-table-column prop="email" label="注册邮箱" width="160">
+              <el-table-column prop="email" label="注册邮箱" min-width="160">
                 <template scope="scope">{{ scope.row.email }}</template>
               </el-table-column>
               <el-table-column prop="registeTime" :label="$t('createdDateStr')" width="160">
@@ -145,6 +149,11 @@ export default{
 
     onUpdateSuccess () {
       this.initFetch()
+    },
+
+    onUserClick (username) {
+      let userName = username || this.userInfo.username
+      this.$router.push(`/member/${userName}`)
     },
 
     onCreaterClick (username) {

@@ -35,24 +35,13 @@ export default {
   },
 
   created () {
-  },
-
-  mounted () {
-    this.tableControl.tags = decodeURIComponent(this.$route.params.tags)
     this.fetchSearch()
   },
 
+  mounted () {
+  },
+
   methods: {
-    fetchSearch (params = {}) {
-      this.$apis.getLinksByTag(this.drawAjaxParams(params)).then(result => {
-        this.niceLinksArr = result
-      }).catch((error) => {
-        this.isLoading = false
-        this.$message.error(`${error}`)
-      }).finally(() => {
-        this.isLoading = false
-      })
-    }
   }
 }
 </script>

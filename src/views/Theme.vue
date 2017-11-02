@@ -35,11 +35,10 @@ export default {
   },
 
   created () {
+    this.fetchSearch()
   },
 
   mounted () {
-    this.tableControl.theme = decodeURIComponent(this.$route.params.theme)
-    this.fetchSearch()
   },
 
   methods: {
