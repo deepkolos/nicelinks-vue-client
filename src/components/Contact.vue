@@ -27,10 +27,9 @@
 
 <script>
 import $config from 'config'
-import { $document } from 'helper'
 
 export default {
-  name: 'contract',
+  name: 'Contract',
   data () {
     return {
       contactArray: this.filterEntryInMobile($config.contact)
@@ -43,7 +42,7 @@ export default {
       this.contactArray.forEach((element, index, array) => {
         ((ele, idx) => {
           setTimeout(() => {
-            $document.toggleClass(document.getElementsByClassName(ele.class)[0], 'clicked')
+            this.$document.toggleClass(document.getElementsByClassName(ele.class)[0], 'clicked')
           }, idx * 128)
         })(element, index)
       })

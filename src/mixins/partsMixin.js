@@ -22,7 +22,7 @@ export default {
 
   methods: {
     drawAjaxParams (params = {}) {
-      this.$_.cloneDeep(params, this.tableControl)
+      Object.assign(params, this.$_.cloneDeep(this.tableControl))
 
       params.userId = this.userInfo && this.userInfo._id || ''
       if (this.$route.params.tags) {
@@ -36,9 +36,10 @@ export default {
     },
 
     fetchSearch (params = {}, isLoadMore) {
-      this.isLoading = true
       params = this.drawAjaxParams(params)
       let apiName = params.tags ? 'getLinksByTag' : 'getNiceLinks'
+
+      this.isLoading = true
       this.$apis[apiName](params).then(result => {
         this.isLoading = false
         if (!result || result.length <= 0) {

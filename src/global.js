@@ -12,8 +12,8 @@ import Filters from './filters'
 
 Vue.use(ElementUI)
 Vue.use(VueI18n)
-Vue.use(VueBus)
 Vue.use(SocialSharing)
+Vue.use(VueBus)
 Vue.use(VueTouch, {name: 'v-touch'})
 
 // Initialize the sentry error reporting @2017-10-29
