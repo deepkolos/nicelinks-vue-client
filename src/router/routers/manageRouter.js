@@ -19,15 +19,22 @@ export default {
     path: 'links',
     meta: {
       isNeedAuth: true,
-      title: $util.setTitleLang('倾城管理', 'Management')
+      title: $util.setTitleLang('倾城站点', 'NICE SITE')
     },
     component: resolve => require(['views/manage/Links'], resolve)
   }, {
     path: 'users',
     meta: {
       isNeedAuth: true,
-      title: $util.setTitleLang('倾城管理', 'Management')
+      title: $util.setTitleLang('倾城用户', 'NICE USER')
     },
     component: resolve => require(['views/manage/Users'], resolve)
+  }, {
+    path: 'adverts',
+    meta: {
+      isNeedAuth: true,
+      title: $util.setTitleLang('倾城广告', 'NICE ADVERTS')
+    },
+    component: resolve => require(['views/manage/Adverts'], resolve)
   }]
 }

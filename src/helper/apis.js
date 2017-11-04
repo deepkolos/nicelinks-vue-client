@@ -104,5 +104,12 @@ export default {
 
   updateAvatar (data) {
     return $ajax.post(requestUrl('updateAvatar'), data)
+  },
+  // ---------------------Config-----------------------
+  getAdverts (data) {
+    return $ajax.get(requestUrl('getAdverts'), data)
+  },
+  updateAdverts (data) {
+    return $ajax.post(requestUrl('updateAdverts'), data)
   }
 }
