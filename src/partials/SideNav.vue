@@ -23,9 +23,15 @@
     <el-menu-item index="5" @click="onSwitchLangClick">
       <icon class="sidenav-icon" name="switch-lang"></icon>{{ $t('switchLang') }}
     </el-menu-item>
-    <el-menu-item index="6" v-if="isAdminFlag" @click="onManageClick">
-      <i class="sidenav-icon el-icon-setting"></i>{{ $t('management') }}
-    </el-menu-item>
+    <el-submenu index="6" v-if="isAdminFlag">
+      <template slot="title">
+        <i class="sidenav-icon el-icon-setting"></i>{{ $t('management') }}
+      </template>
+      <el-menu-item v-for="(item, index) in manageList"
+        :key="item.path" @click="handleManageClick(item)" :index="item.path">
+        {{ $t(item.name) }}
+      </el-menu-item>
+    </el-submenu>
   </el-menu>
 </div>
 </template>
@@ -37,7 +43,17 @@ export default {
   name: 'SideNav',
   data () {
     return {
-      navList: $config.classify
+      navList: $config.classify,
+      manageList: [{
+        name: '管理链接',
+        path: 'links'
+      }, {
+        name: '管理用户',
+        path: 'users'
+      }, {
+        name: '管理广告',
+        path: 'adverts'
+      }]
     }
   },
 
@@ -86,6 +102,11 @@ export default {
       this.$bus.emit('fetch-search', {
         'classify': item.value
       })
+      this.triggerSideNav()
+    },
+
+    handleManageClick (item) {
+      this.$router.push(`/manage/${item.path}`)
       this.triggerSideNav()
     },
 

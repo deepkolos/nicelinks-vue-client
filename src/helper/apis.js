@@ -106,10 +106,19 @@ export default {
     return $ajax.post(requestUrl('updateAvatar'), data)
   },
   // ---------------------Config-----------------------
+  getSysConf (data) {
+    return $ajax.get(requestUrl('getSysConf'), data)
+  },
+
   getAdverts (data) {
     return $ajax.get(requestUrl('getAdverts'), data)
   },
+
   updateAdverts (data) {
     return $ajax.post(requestUrl('updateAdverts'), data)
+  },
+
+  removeAdverts (data) {
+    return $ajax.post(requestUrl('removeAdverts'), data)
   }
 }

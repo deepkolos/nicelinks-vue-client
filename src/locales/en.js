@@ -14,6 +14,7 @@ export default {
   update: 'Update',
   operation: 'Operation',
   edit: 'Edit',
+  save: 'Save',
   delete: 'Delete',
   warmReminder: 'Warm Reminder',
   niceLinksStr: 'Nice Links',

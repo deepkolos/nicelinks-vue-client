@@ -14,6 +14,7 @@ export default {
   update: '更 新',
   operation: '操作',
   edit: '编辑',
+  save: '保存',
   delete: '删除',
   warmReminder: '温馨提示',
   niceLinksStr: '倾城之链',

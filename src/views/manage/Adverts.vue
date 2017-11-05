@@ -4,6 +4,19 @@
       <div class="panel-body">
         <div class="main-container">
           <div class="entry-list">
+            <el-carousel trigger="click" class="jade-gg-body"
+              indicator-position="outside" :interval='3600' height="256px">
+              <el-carousel-item v-for="(item, index) in tableData" :key="index">
+                <a :href="item.path" target=_blank>
+                  <img :src="item.image">
+                </a>
+              </el-carousel-item>
+            </el-carousel>
+            <div class="form-group">
+              <el-button :plain="true" type="success" size="large"
+              @click="onAddAdsClick">添加广告
+              </el-button>
+            </div>
             <el-table :data="tableData" stripe style="width: 100%">
               <el-table-column prop="path" label="地址" min-width="200">
                 <template scope="scope">
@@ -25,12 +38,14 @@
                 </template>
               </el-table-column>
               <el-table-column prop="modifyTime" label="修改时间" width="160">
-                <template scope="scope">{{ scope.row.registeTime | dateConvert }}</template>
+                <template scope="scope">
+                  {{ scope.row.modifyTime | dateConvert }}
+                </template>
               </el-table-column>
               <el-table-column :label="$t('operation')" width="160">
                 <template scope="scope">
                   <el-button size="small"
-                    @click="handleSave(scope.row)">{{ $t('edit') }}
+                    @click="handleSave(scope.row)">{{ $t('save') }}
                   </el-button>
                   <el-button size="small" type="danger"
                     @click="handleDelete(scope.row)">{{ $t('delete') }}
@@ -64,9 +79,6 @@ export default{
   },
 
   watch: {
-    activeName (val) {
-      this.initFetch()
-    }
   },
 
   methods: {
@@ -84,34 +96,43 @@ export default{
     },
 
     handleSave (row) {
-    },
-
-    handleDelete (params) {
-      this.$confirm('此操作将永久删除该条目, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
-      }).then(() => {
-        // body
-      }).catch(() => {
-        this.$message({
-          type: 'info',
-          message: '已取消删除'
-        })
+      this.isLoading = true
+      this.$apis.updateAdverts(row).then(result => {
+        this.isLoading = false
+        this.$message({message: `已成功保存`, type: 'success'})
+      }).catch((error) => {
+        this.isLoading = false
+        this.$message.error(`${error}`)
+      }).finally(() => {
+        this.isLoading = false
       })
     },
 
-    onUpdateSuccess () {
-      this.initFetch()
+    handleDelete (row) {
+      this.$confirm('此操作将永久删除该条目, 是否继续?', this.$t('warmReminder'), {
+        confirmButtonText: this.$t('confirm'),
+        cancelButtonText: this.$t('cancel'),
+        type: 'warning'
+      }).then(() => {
+        this.isLoading = true
+        this.$apis.removeAdverts(row).then(result => {
+          this.$message({message: `已成功删除`, type: 'success'})
+          this.initFetch()
+        }).catch((error) => {
+          this.isLoading = false
+          this.$message.error(`${error}`)
+        })
+      }).catch(() => {
+      })
     },
 
-    onUserClick (username) {
-      let userName = username || this.userInfo.username
-      this.$router.push(`/member/${userName}`)
-    },
-
-    onCreaterClick (username) {
-      this.$router.push(`/member/${username}`)
+    onAddAdsClick () {
+      this.tableData.push({
+        path: '',
+        image: '',
+        active: true,
+        modifyTime: new Date()
+      })
     }
   },
 

@@ -1,6 +1,6 @@
 <template>
   <aside class="aside-list">
-    <ads-position></ads-position>
+    <ads-position :adverts-list="advertsList"></ads-position>
     <el-collapse v-model="activeNames" @change="handleChange">
       <el-collapse-item :title="$t('friendshipLinks')" name="friendshipLinks">
         <friendship-links></friendship-links>
@@ -24,11 +24,20 @@ export default {
   data () {
     return {
       isShowVisitCount: false,
+      advertsList: [],
       activeNames: ['friendshipLinks']
     }
   },
 
   watch: {
+  },
+
+  created () {
+    this.$apis.getSysConf().then(result => {
+      this.advertsList = result.advertsList
+    }).catch((error) => {
+      this.$message.error(`${error}`)
+    })
   },
 
   components: {
