@@ -30,6 +30,9 @@ export default {
   tagsCollection: '倾城标签集',
   management: '后台管理',
   switchLang: '切换语言',
+  manageLinks: '管理链接',
+  manageUsers: '管理用户',
+  manageAdverts: '管理广告',
   isAcive: '是否激活',
 
   linkAddressStr: '链接地址',

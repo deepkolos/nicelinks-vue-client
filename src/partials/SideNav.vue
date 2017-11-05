@@ -27,8 +27,8 @@
       <template slot="title">
         <i class="sidenav-icon el-icon-setting"></i>{{ $t('management') }}
       </template>
-      <el-menu-item v-for="(item, index) in manageList"
-        :key="item.path" @click="handleManageClick(item)" :index="item.path">
+      <el-menu-item v-for="(item, index) in $util.getManageList()" :key="index"
+        @click="handleManageClick(item)" :index="item.path">
         {{ $t(item.name) }}
       </el-menu-item>
     </el-submenu>
@@ -43,17 +43,7 @@ export default {
   name: 'SideNav',
   data () {
     return {
-      navList: $config.classify,
-      manageList: [{
-        name: '管理链接',
-        path: 'links'
-      }, {
-        name: '管理用户',
-        path: 'users'
-      }, {
-        name: '管理广告',
-        path: 'adverts'
-      }]
+      navList: $config.classify
     }
   },
 

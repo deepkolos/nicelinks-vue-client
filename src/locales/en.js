@@ -30,6 +30,9 @@ export default {
   tagsCollection: 'Tags Collections',
   management: 'Management',
   switchLang: 'Switch Lang',
+  manageLinks: 'Manage Links',
+  manageUsers: 'Manage Users',
+  manageAdverts: 'Manage Adverts',
   isAcive: 'Is Acive',
 
   linkAddressStr: 'Address Link',

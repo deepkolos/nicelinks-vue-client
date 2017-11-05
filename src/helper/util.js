@@ -55,6 +55,19 @@ export default {
     }
   },
 
+  getManageList () {
+    return [{
+      name: 'manageLinks',
+      path: 'links'
+    }, {
+      name: 'manageUsers',
+      path: 'users'
+    }, {
+      name: 'manageAdverts',
+      path: 'adverts'
+    }]
+  },
+
   getUrlParam (name) {
     var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
     var r = window.location.search.substr(1).match(reg)
