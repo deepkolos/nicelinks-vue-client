@@ -9,6 +9,13 @@ export default {
     title: $util.setTitleLang('倾城管理', 'Management')
   },
   children: [{
+    path: '/',
+    meta: {
+      isNeedAuth: true,
+      title: $util.setTitleLang('倾城管理', 'Management')
+    },
+    component: resolve => require(['views/manage/Index'], resolve)
+  }, {
     path: 'links',
     meta: {
       isNeedAuth: true,
