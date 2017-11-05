@@ -8,7 +8,7 @@ export default {
     path: '/',
     alias: ['resource', 'info', 'skill', 'life'],
     meta: {
-      title: $util.setTitleLang('', '')
+      title: $util.setTitleLang('NICE LINKS', '倾城之链')
     },
     component: resolve => require(['views/Nicelinks'], resolve)
   }, {

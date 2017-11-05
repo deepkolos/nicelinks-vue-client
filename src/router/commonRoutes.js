@@ -13,7 +13,7 @@ let commonConf = [{
 }, {
   path: '*',
   meta: {
-    title: $util.setTitleLang('404', '404 Not Found')
+    title: $util.setTitleLang('404', '404')
   },
   component: NotFound
 }, {

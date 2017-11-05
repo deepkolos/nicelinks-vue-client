@@ -11,18 +11,19 @@
 
 <script>
 export default{
-  name: 'not-found',
-  components: {
-  },
+  name: 'NotFound',
+
   data () {
     return {
     }
   },
+
   methods: {
     onBackClick () {
       this.$router.push('/')
     }
   },
+
   locales: {
     en: {
       return: 'Home Page',
