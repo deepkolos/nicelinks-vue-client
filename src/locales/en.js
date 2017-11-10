@@ -48,7 +48,7 @@ export default {
 
   validateFailure: 'Verification Failed',
   noResultTip: `Hey, friend, there's no relevant data here, if you want to know more, Please move to <a class="no-result-tip-a" href="/">NICE LINKS</a>.`,
-  dislikesTips: 'If you are sure that this is a very need to improve the site, then you can click to determine; otherwise you think twice',
+  dislikesTips: `If you are sure that this is a website that needs to be improved, you can click on sure; otherwise, think twice please;After all, this may indirectly affect other people's judgment of the site.`,
 
   homepage: 'My Homepage',
   homePage: 'Home Page',
