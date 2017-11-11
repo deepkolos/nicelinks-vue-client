@@ -3,7 +3,7 @@
     <h3 class="aside-widget-title">{{ $t('adPosition') }}</h3>
     <el-carousel trigger="click" class="jade-gg-body"
       indicator-position="outside" :interval='3600' height="256px">
-      <el-carousel-item v-for="(item, index) in adsList" :key="index">
+      <el-carousel-item v-for="(item, index) in advertsList" :key="index">
         <a :href="item.path" target=_blank>
           <img :src="item.image">
         </a>
@@ -13,13 +13,18 @@
 </template>
 
 <script>
-import $config from 'config'
-
 export default {
   name: 'AdsPosition',
+
   data () {
     return {
-      adsList: $config.ads
+    }
+  },
+
+  props: {
+    advertsList: {
+      type: [Array],
+      default: []
     }
   },
 

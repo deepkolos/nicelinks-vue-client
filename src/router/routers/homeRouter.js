@@ -1,14 +1,9 @@
-function setTitleLang (zhStr, enStr) {
-  return {
-    zh: zhStr,
-    en: enStr
-  }
-}
+import { $util } from 'helper'
 
 export default {
   path: '/about',
   meta: {
-    title: setTitleLang('晚晴幽草轩', '晚晴幽草轩')
+    title: $util.setTitleLang('', '')
   },
   component: resolve => require(['views/AboutMe'], resolve)
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" id="manage-page">
+  <div class="wrapper" id="manage-links">
     <div class="panel-default" v-loading.body="isLoading">
       <div class="panel-body">
         <div class="main-container">
@@ -80,7 +80,7 @@
 import EditDialog from 'components/EditDialog'
 import $config from 'config'
 export default{
-  name: 'Manage',
+  name: 'ManageLinks',
 
   data () {
     return {
@@ -223,9 +223,9 @@ export default{
 </script>
 
 <style lang="scss">
-@import "./../assets/scss/variables.scss";
+@import "./../../assets/scss/variables.scss";
 
-#manage-page{
+#manage-links{
   .entry-list{
     width: 100%;
     padding: 15px;

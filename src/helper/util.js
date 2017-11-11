@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import sha256 from 'crypto-js/sha256'
 import md5 from 'crypto-js/md5'
+import {STORAGE_PREFIX} from 'config/constant'
+
+const getStorageName = (name = '') => {
+  return `${STORAGE_PREFIX}-${name}`
+}
 
 if (typeof String.prototype.startsWith !== 'function') {
   Window.String.prototype.startsWith = function (prefix) {
@@ -41,25 +46,26 @@ export default {
     return str
   },
 
-  resMsg (res) {
-    let key = {
-      zh: 'Chinese',
-      en: 'English'
-    }[Vue.config.lang]
-    try {
-      // 有些接口暂时只提供了Chinese 没提供English
-      let obj = JSON.parse(res.Message)
-      return obj[key] || obj.Chinese
-    } catch (e) {
-      return res && res.Message
+  setTitleLang (zhStr, enStr) {
+    let NICE_ZH = `倾城之链`
+    let NICE_EN = `NICE LINKS`
+    return {
+      zh: zhStr ? `${NICE_ZH} | ${zhStr}` : NICE_ZH,
+      en: enStr ? `${NICE_EN} | ${enStr}` : enStr
     }
   },
 
-  titleLang (zhStr, enStr) {
-    return {
-      zh: zhStr,
-      en: enStr
-    }
+  getManageList () {
+    return [{
+      name: 'manageLinks',
+      path: 'links'
+    }, {
+      name: 'manageUsers',
+      path: 'users'
+    }, {
+      name: 'manageAdverts',
+      path: 'adverts'
+    }]
   },
 
   getUrlParam (name) {
@@ -90,7 +96,8 @@ export default {
     for (let key in query) {
       str.push(key + '=' + query[key])
     }
-    return url + '?' + str.join('&')
+    let paramStr = str.join('&')
+    return paramStr ? `${url}?${paramStr}` : url
   },
 
   isLegalUrl (str) {
@@ -129,31 +136,59 @@ export default {
     return [currentH, currentM, currentS].join(delimiter)
   },
 
-  /* -----------------------------localStorage------------------------------------ */
+  /* -----------------------------localStorage------------------------------------ Start */
   /*
    * set localStorage
    */
-  setStorage (name, content) {
+  setLocalStorage (name, content) {
     if (!name) return
     if (typeof content !== 'string') {
       content = JSON.stringify(content)
     }
-    window.localStorage.setItem(name, content)
+    window.localStorage.setItem(getStorageName(name), content)
   },
 
   /**
    * get localStorage
    */
-  getStorage (name) {
+  getLocalStorage (name) {
     if (!name) return
-    return window.localStorage.getItem(name)
+    let content = window.localStorage.getItem(getStorageName(name))
+    return JSON.parse(content)
   },
 
   /**
    * delete localStorage
    */
-  removeStorage (name) {
+  removeLocalStorage (name) {
     if (!name) return
-    window.localStorage.removeItem(name)
+    window.localStorage.removeItem(getStorageName(name))
+  },
+  /* -----------------------------localStorage------------------------------------ End */
+  /* ----------------------------sessionStorage----------------------------------- Start */
+  setSessionStorage (name, content) {
+    if (!name) return
+    if (typeof content !== 'string') {
+      content = JSON.stringify(content)
+    }
+    window.sessionStorage.setItem(getStorageName(name), content)
+  },
+
+  /**
+   * get sessionStorage
+   */
+  getSessionStorage (name) {
+    if (!name) return
+    let content = window.sessionStorage.getItem(getStorageName(name))
+    return JSON.parse(content)
+  },
+
+  /**
+   * delete sessionStorage
+   */
+  removeSessionStorage (name) {
+    if (!name) return
+    window.sessionStorage.removeItem(getStorageName(name))
   }
+  /* ----------------------------sessionStorage----------------------------------- End */
 }

@@ -11,7 +11,7 @@
 import partsMixin from 'mixins/partsMixin.js'
 
 export default {
-  name: 'load-more',
+  name: 'LoadMore',
 
   mixins: [partsMixin],
 

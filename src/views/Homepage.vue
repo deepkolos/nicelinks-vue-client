@@ -111,7 +111,7 @@ export default{
   },
 
   created () {
-    this.getUserInfo()
+    this.getUserInfoByUsername()
   },
 
   watch: {
@@ -121,14 +121,16 @@ export default{
   },
 
   methods: {
-    getUserInfo () {
+    getUserInfoByUsername () {
+      this.isLoading = true
       let params = {username: this.$route.params.id}
       this.$apis.getUserInfo(params).then(result => {
         this.mUserInfo = result
         this.updateDetailInfo()
       }).catch((error) => {
         this.$message.error(`${error}`)
-        this.isLoading = true
+      }).finally(() => {
+        this.isLoading = false
       })
     },
 

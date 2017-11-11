@@ -14,6 +14,7 @@ export default {
   update: '更 新',
   operation: '操作',
   edit: '编辑',
+  save: '保存',
   delete: '删除',
   warmReminder: '温馨提示',
   niceLinksStr: '倾城之链',
@@ -29,6 +30,9 @@ export default {
   tagsCollection: '倾城标签集',
   management: '后台管理',
   switchLang: '切换语言',
+  manageLinks: '管理链接',
+  manageUsers: '管理用户',
+  manageAdverts: '管理广告',
   isAcive: '是否激活',
 
   linkAddressStr: '链接地址',
@@ -44,7 +48,7 @@ export default {
 
   validateFailure: '验证失败',
   noResultTip: '嘿，朋友，这儿暂未有相关数据；如果您想了解更多，请移步至 <a class="no-result-tip-a" href="/">NICE LINKS</a> 。',
-  confirmTips: '',
+  dislikesTips: '如果你确定这是一个很(/不)需要改进的网站，那么你可以尽情点击确定；否则，还请三思；毕竟这可能间接影响到别人对此网站的评判。',
 
   homepage: '个人主页',
   homePage: '首页',
@@ -57,7 +61,7 @@ export default {
   saveSeting: '保存设置',
   updateAvatar: '更新头像',
 
-  adPosition: '广告位',
+  adPosition: '广而告之',
   visitCount: '网站统计',
   friendshipLinks: '友情链接',
   rewardme: '倾情打赏',

@@ -35,37 +35,13 @@ export default {
   },
 
   created () {
-  },
-
-  mounted () {
-    this.tableControl.tags = decodeURIComponent(this.$route.params.tags)
     this.fetchSearch()
   },
 
+  mounted () {
+  },
+
   methods: {
-    fetchSearch (params = {}) {
-      this.$apis.getLinksByTag(this.drawAjaxParams(params)).then(result => {
-        this.niceLinksArr = result
-      }).catch((error) => {
-        this.isLoading = false
-        this.$message.error(`${error}`)
-      }).finally(() => {
-        this.isLoading = false
-      })
-    }
   }
 }
 </script>
-
-<style lang="scss">
-@import "./../assets/scss/variables.scss";
-
-#tags-page{
-  .link-desc{
-    color: $link-desc;
-    border-left: 2px solid #000;
-    margin: 15px auto;
-    padding-left: 10px;
-  }
-}
-</style>

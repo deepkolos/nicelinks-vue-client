@@ -43,7 +43,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     // }),
     new ParallelUglifyPlugin({
       cacheDir: '.cache/',
-      uglifyJS:{
+      uglifyJS: {
         output: {
           comments: false,
           beautify: false
@@ -111,7 +111,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       minify: true,
       stripPrefix: 'dist/'
     }),
-    new LodashModuleReplacementPlugin
+    new LodashModuleReplacementPlugin()
   ]
 })
 

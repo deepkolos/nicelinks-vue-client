@@ -23,9 +23,15 @@
     <el-menu-item index="5" @click="onSwitchLangClick">
       <icon class="sidenav-icon" name="switch-lang"></icon>{{ $t('switchLang') }}
     </el-menu-item>
-    <el-menu-item index="6" v-if="isAdminFlag" @click="onManageClick">
-      <i class="sidenav-icon el-icon-setting"></i>{{ $t('management') }}
-    </el-menu-item>
+    <el-submenu index="6" v-if="isAdminFlag">
+      <template slot="title">
+        <i class="sidenav-icon el-icon-setting"></i>{{ $t('management') }}
+      </template>
+      <el-menu-item v-for="(item, index) in $util.getManageList()" :key="index"
+        @click="handleManageClick(item)" :index="item.path">
+        {{ $t(item.name) }}
+      </el-menu-item>
+    </el-submenu>
   </el-menu>
 </div>
 </template>
@@ -89,6 +95,11 @@ export default {
       this.triggerSideNav()
     },
 
+    handleManageClick (item) {
+      this.$router.push(`/manage/${item.path}`)
+      this.triggerSideNav()
+    },
+
     triggerSideNav () {
       this.$bus.$emit('trigger-sidenav')
     },
@@ -106,7 +117,7 @@ export default {
 @import "./../assets/scss/variables.scss";
   .side-nav{
     text-align: left;
-    width: 210px;
+    // width: $side-nav-width;
     height: calc(100% - 80px);
     position: fixed;
     overflow-y: scroll;

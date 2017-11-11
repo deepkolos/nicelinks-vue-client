@@ -116,3 +116,14 @@ a:hover, a:visited, a:link{
 .no-padding{
   padding: 0;
 }
+
+.link-desc{
+  color: $link-desc;
+  border-left: 2px solid #000000;
+  margin: 15px auto;
+  padding-left: 10px;
+  word-break: break-all;
+  line-height: 1.8rem;
+  font-size: $font-small;
+  word-spacing: 3px;
+}

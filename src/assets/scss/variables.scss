@@ -1,7 +1,10 @@
-// color
-$blue: #2196f3;         // header
-$element-blue: #20a0ff; // header
-$dark-blue: #0c82df;    // header hover
+//------------------------ color ------------------------
+$blue: #2196f3;
+$element-blue: #20a0ff;
+$dark-blue: #0c82df;
+$grey: #f7f8f9;
+$black: #333333;
+$red: #fa0101;
 
 $color-enter-link: #bb1c33;
 
@@ -16,10 +19,6 @@ $footer-grey-bg: #eaeaea;
 $footer-link: #888888;
 $footer-link-hover: #263238;
 
-$grey: #f7f8f9;    // body bg
-$black: #333;      // font color
-$red: #fa0101;
-
 $entry-list-bg: #fff;
 $entry-btn-grey: #e4e8f1;
 $entry-btn-hover: #97a8be;
@@ -28,7 +27,7 @@ $aside-list-a-color: #48576a;
 
 $link-title: #2e3135;
 $link-title-hover: #000;
-$link-desc: #999999;
+$link-desc: #333333;
 
 $moudle-border-color: #d1d5da;
 $item-border-color: rgba(178,186,194,.5);
@@ -36,12 +35,14 @@ $item-border-color: rgba(178,186,194,.5);
 $meta-item-color: #b2bac2;
 $meta-classify-color: #009a61;
 
-// size
+//----------------------- font size -----------------------
 $font-large: 18px;
 $font-medium: 16px;
 $font-small: 14px;
 
+//--------------------- width height ----------------------
 $mobile-screen: 960px;
+$side-nav-width: 210px;
 
 $header-height: 80px;
 $header-mobile-height: 60px;

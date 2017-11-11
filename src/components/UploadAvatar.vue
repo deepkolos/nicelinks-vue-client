@@ -109,6 +109,8 @@ let mimesConf = {
 }
 
 export default {
+  name: 'UploadAvatar',
+
   props: {
     // 域，上传文件name，触发事件会带上（如果一个页面多个图片上传控件，可以做区分
     field: {

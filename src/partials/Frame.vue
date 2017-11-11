@@ -1,9 +1,10 @@
 <template>
   <div class="page-wrap">
     <header-nav></header-nav>
-    <side-nav ref="sideNav" v-if="isMobile" v-show="isShowSideNav"></side-nav>
+    <transition name="slide">
+      <side-nav ref="sideNav" v-if="isMobile" v-show="isShowSideNav"></side-nav>
+    </transition>
     <main @click="hideMenu" class="main">
-      <!-- <transition name="fade"></transition> -->
       <router-view  :key="$route.path"></router-view>
       <footer-nav></footer-nav>
     </main>
@@ -18,10 +19,9 @@ import FooterNav from 'partials/FooterNav'
 import InjectDialog from 'components/InjectDialog'
 
 export default {
-  name: 'homepage',
+  name: 'Frame',
   data () {
     return {
-      title: 'Nice Links',
       isMobile: window.innerWidth <= 960,
       isShowSideNav: false,
       isShowDlgFlag: false
@@ -53,6 +53,10 @@ export default {
 
     if (!this.$auth.checkSession()) {
       this.$store.commit('$vuexSetUserInfo', {})
+    } else {
+      if (!this.$util.getSessionStorage('userInfo')) {
+        this.$getUserInfo()
+      }
     }
   },
 
@@ -65,3 +69,24 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+@import "../assets/scss/variables.scss";
+
+.slide-enter-active, .slide-leave-active {
+  width: $side-nav-width;
+  opacity: 1;
+  -webkit-transition: all 200ms cubic-bezier(0.125, 0.565, 0.860, 0.310);
+   -moz-transition: all 200ms cubic-bezier(0.125, 0.565, 0.860, 0.310);
+     -o-transition: all 200ms cubic-bezier(0.125, 0.565, 0.860, 0.310);
+        transition: all 200ms cubic-bezier(0.125, 0.565, 0.860, 0.310);
+  -webkit-transition-timing-function: cubic-bezier(0.125, 0.565, 0.860, 0.310);
+     -moz-transition-timing-function: cubic-bezier(0.125, 0.565, 0.860, 0.310);
+       -o-transition-timing-function: cubic-bezier(0.125, 0.565, 0.860, 0.310);
+          transition-timing-function: cubic-bezier(0.125, 0.565, 0.860, 0.310);
+}
+.slide-enter, .slide-leave-to{
+  width: 0;
+  opacity: 0;
+}
+</style>

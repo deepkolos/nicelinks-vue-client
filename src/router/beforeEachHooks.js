@@ -5,22 +5,19 @@ import Vue from 'vue'
 import { $auth } from 'helper'
 
 export default {
-  // 检查登录态
-  checkLoginAuth (to, from, next) {
+  checkVisitAuth (to, from, next) {
     if (to.meta.title && to.meta.title[Vue.config.lang]) {
       document.title = to.meta.title[Vue.config.lang]
     }
 
-    if (to.meta && !to.meta.needAuth) {
-      next()
+    if (to.meta.isNeedAuth) {
+      $auth.checkAuth().then(result => {
+        return result ? next() : next({path: '/404'})
+      })
+    } else if (to.meta.isNeedLogin) {
+      $auth.checkSession() ? next() : next({path: '/login'})
     } else {
-      if ($auth.checkSession()) {
-        next()
-      } else {
-        next({
-          path: '/login'
-        })
-      }
+      next()
     }
   }
 }

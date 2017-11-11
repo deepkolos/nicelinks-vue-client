@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Cookies from 'js-cookie'
 import { $util } from 'helper'
-import {mapState, mapActions} from 'vuex'
+import {mapActions} from 'vuex'
 
 Vue.mixin({
   data () {
@@ -10,14 +10,19 @@ Vue.mixin({
   },
 
   computed: {
-    ...mapState([
-      'userInfo'
-    ])
+    // Element-UI this.$confirm/this.$msgbox 等会激发 this.$store 为 undefined;
+    // 导致报错如下：Cannot read property 'state' of undefined;所以如下 hack 处理如下;
+    // ...mapState([
+    //   'userInfo'
+    // ])
+    userInfo () {
+      return this.$store && this.$store.state.userInfo || null
+    }
   },
 
   methods: {
     ...mapActions([
-      'getUserInfo'
+      '$getUserInfo'
     ]),
 
     $isLogin () {

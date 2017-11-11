@@ -187,7 +187,14 @@ export default {
     },
 
     onDislikeClick (row) {
-      this.dispatchAction(row, 'dislikes')
+      this.$confirm(this.$t('dislikesTips'), this.$t('warmReminder'), {
+        confirmButtonText: this.$t('confirm'),
+        cancelButtonText: this.$t('cancel'),
+        type: 'warning'
+      }).then(() => {
+        this.dispatchAction(row, 'dislikes')
+      }).catch(() => {
+      })
     }
   }
 }

@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'operate-tabs',
+  name: 'OperateTabs',
 
   data () {
     return {

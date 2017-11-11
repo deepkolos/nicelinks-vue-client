@@ -20,10 +20,9 @@ import { $document } from 'helper'
 import $config from 'config'
 
 export default {
-  name: 'rewardMe',
+  name: 'RewardMe',
   data () {
     return {
-      title: '晚晴幽草轩',
       payWay: 'weixin',
       rewardArr: $config.reward
     }

@@ -1,5 +1,6 @@
 var path = require('path')
 var shell = require('shelljs')
+var chalk = require('chalk')
 
 let sourcePath = path.resolve(__dirname, '../dist/*')
 
@@ -30,4 +31,4 @@ shell.cp('-R', sourcePath, targetPath)
 // shell.config.silent = true
 // shell.config.silent = false
 
-console.log('Deploy Has been completed.')
+console.log(chalk.green('\n√ Success: ') + 'Deploy Has been completed.')

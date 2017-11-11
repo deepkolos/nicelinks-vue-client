@@ -21,6 +21,10 @@ export default {
     return $ajax.get(requestUrl('getAllLinksCount'), data)
   },
 
+  getAllUsers (data) {
+    return $ajax.get(requestUrl('getAllUsers'), data)
+  },
+
   getAllTags () {
     return $ajax.get(requestUrl('getAllTags'))
   },
@@ -100,5 +104,21 @@ export default {
 
   updateAvatar (data) {
     return $ajax.post(requestUrl('updateAvatar'), data)
+  },
+  // ---------------------Config-----------------------
+  getSysConf (data) {
+    return $ajax.get(requestUrl('getSysConf'), data)
+  },
+
+  getAdverts (data) {
+    return $ajax.get(requestUrl('getAdverts'), data)
+  },
+
+  updateAdverts (data) {
+    return $ajax.post(requestUrl('updateAdverts'), data)
+  },
+
+  removeAdverts (data) {
+    return $ajax.post(requestUrl('removeAdverts'), data)
   }
 }
